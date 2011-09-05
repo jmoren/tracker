@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
+  belongs_to :user
   has_many :task_lists
   has_many :bug_lists
   attr_accessible :name, :description, :start_date, :end_date, :status, :user_id

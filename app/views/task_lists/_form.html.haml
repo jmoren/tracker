@@ -1,9 +1,16 @@
 = form_for @task_list do |f|
   = f.error_messages
-  = f.hidden_field :project_id, :value => @project.id
+  - if @task_list.new_record?
+    = f.hidden_field :project_id, :value => @project.id
   %p
     = f.label :title
-    %br
     = f.text_field :title
+  %p
+    = f.label :status
+    = f.select :status, TaskList::STATUS
+  %p
+    = f.label :commnets
+    %br
+    = f.text_area :comments, :cols => 80, :rows => 5
   %p
     = f.submit

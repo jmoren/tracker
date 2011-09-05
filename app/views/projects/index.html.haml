@@ -15,7 +15,7 @@
       %td= project.start_date
       %td= project.end_date
       %td= project.status
-      %td= project.user_id
+      %td= project.user.username
       %td= link_to 'Show', project
       %td= link_to 'Edit', edit_project_path(project)
       %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete

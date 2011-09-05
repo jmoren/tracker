@@ -21,6 +21,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @task_list = TaskList.find(params[:task_list_id])
+    @task.user = current_user
     if @task.save
       redirect_to @task.task_list, :notice => "Successfully created task."
     else

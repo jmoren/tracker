@@ -6,7 +6,10 @@
     (
     = link_to @task_list.project.name, @task_list.project
     )
-
+%small
+  = "Created by #{@task_list.user.try(:username) || 'unknown'} on #{l @task_list.created_at, :format => '%d, %A %B of %Y'}"
+%p
+  = @task_list.comments
 .task_list_button
   = link_to "Task Panel", task_list_tasks_path(@task_list)
 .task_list_button

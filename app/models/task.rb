@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :project
   belongs_to :task_list
-
+  belongs_to :user
   STATUS=['created','progress','commited','testing','aproved','merged']
   PRIORITY=['hight','medium','low']
   attr_accessible :task_list_id, :project_id, :description, :status, :user_id, :priority
