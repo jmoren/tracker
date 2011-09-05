@@ -1,0 +1,17 @@
+= form_for [@task_list,@task] do |f|
+  = f.error_messages
+  = f.hidden_field :task_list_id, :value => @task_list.id
+  = f.hidden_field :project_id, :value => @task_list.project.id
+  %p
+    = f.label :status
+    = f.select :status, Task::STATUS
+  %p
+    = f.label :priority
+    = f.select :priority, Task::PRIORITY
+  %p  
+    = f.label :description
+    %br
+    = f.text_area :description, :cols => 80, :rows => 5
+  
+  %p
+    = f.submit

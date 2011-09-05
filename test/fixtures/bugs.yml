@@ -1,0 +1,15 @@
+one:
+  bug_list_id: 1
+  project_id: 1
+  description: MyText
+  status: MyString
+  user_id: 1
+  owner: 1
+
+two:
+  bug_list_id: 1
+  project_id: 1
+  description: MyText
+  status: MyString
+  user_id: 1
+  owner: 1

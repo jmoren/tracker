@@ -1,0 +1,27 @@
+- title "Bug"
+
+%p
+  %strong Bug List:
+  = @bug.bug_list_id
+%p
+  %strong Project:
+  = @bug.project_id
+%p
+  %strong Description:
+  = @bug.description
+%p
+  %strong Status:
+  = @bug.status
+%p
+  %strong User:
+  = @bug.user_id
+%p
+  %strong Owner:
+  = @bug.owner
+
+%p
+  = link_to "Edit", edit_bug_path(@bug)
+  |
+  = link_to "Destroy", @bug, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", bugs_path

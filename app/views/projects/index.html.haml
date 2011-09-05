@@ -1,0 +1,23 @@
+- title "Projects"
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Start date
+    %th End date
+    %th Status
+    %th User
+  - for project in @projects
+    %tr
+      %td= project.name
+      %td= project.description
+      %td= project.start_date
+      %td= project.end_date
+      %td= project.status
+      %td= project.user_id
+      %td= link_to 'Show', project
+      %td= link_to 'Edit', edit_project_path(project)
+      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Project", new_project_path

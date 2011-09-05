@@ -1,0 +1,43 @@
+class TaskListsController < ApplicationController
+  def index
+    @task_lists = TaskList.all
+  end
+
+  def show
+    @task_list = TaskList.find(params[:id])
+    @tasks = @task_list.tasks
+  end
+
+  def new
+    @task_list = TaskList.new
+    @project = Project.find(params[:project_id])
+  end
+
+  def create
+    @task_list = TaskList.new(params[:task_list])
+    if @task_list.save
+      redirect_to @task_list, :notice => "Successfully created task list."
+    else
+      render :action => 'new'
+    end
+  end
+
+  def edit
+    @task_list = TaskList.find(params[:id])
+  end
+
+  def update
+    @task_list = TaskList.find(params[:id])
+    if @task_list.update_attributes(params[:task_list])
+      redirect_to @task_list, :notice  => "Successfully updated task list."
+    else
+      render :action => 'edit'
+    end
+  end
+
+  def destroy
+    @task_list = TaskList.find(params[:id])
+    @task_list.destroy
+    redirect_to task_lists_url, :notice => "Successfully destroyed task list."
+  end
+end

@@ -1,0 +1,28 @@
+- title "Task List"
+%h1
+  Title:
+  = @task_list.title.titleize
+  %small
+    (
+    = link_to @task_list.project.name, @task_list.project
+    )
+
+.task_list_button
+  = link_to "Task Panel", task_list_tasks_path(@task_list)
+.task_list_button
+  = link_to "Add task", new_task_list_task_path(@task_list)
+.clear
+#list_tasks
+  %h2 Tasks
+  %ul
+    - @tasks.order('status').each do |task|
+      %li{:id => task.id, :class => 'task_item left', :title => "Status: #{task.status}"}
+        = render task
+    .clear
+%p
+  = link_to "Edit", edit_task_list_path(@task_list)
+  |
+  = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", task_lists_path
+

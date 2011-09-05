@@ -1,0 +1,40 @@
+- title "Task list: #{@task_list.title.titleize}"
+%small
+  Created on
+  %strong
+    = l @task_list.created_at, :format => '%A, %d %B of %Y'
+  by me
+
+:javascript
+  $(function() {
+    $( ".draggable" ).draggable({revert: 'invalid'});
+    $( ".droppable" ).droppable({
+      greedy: true,
+      hoverClass: 'drophover',
+      drop: function(ev,el){
+        var st = $(this).find('input.status').val();
+        var id = $(el.draggable).attr('id');
+        $.post('/tasks/status?id=' + id + '&status=' + st, function(){$(el.draggable).remove()});
+      }
+    });
+  });
+</script>
+.flash.left{:style => "display:none"}
+.task_list_button.right
+  = link_to "Back to List", @task_list
+.clear
+#panel{:style => "width:100%"}
+  #created.panel
+    = render :partial =>"tasks", :locals => { :tasks => @created, :status => 'created' }
+  #progress.panel
+    = render :partial => "tasks", :locals => { :tasks => @in_progress, :status => 'progress' }
+  #commited.panel
+    = render :partial => "tasks", :locals =>{ :tasks => @commited, :status => 'commited' }
+  #testing.panel
+    = render :partial => "tasks", :locals => { :tasks => @testing, :status => 'testing' }
+  #aproved.panel
+    = render :partial => "tasks", :locals => { :tasks => @aproved, :status => 'aproved' }
+  #merged.panel
+    = render :partial => "tasks", :locals => { :tasks => @merged, :status => 'merged' }
+.clear
+

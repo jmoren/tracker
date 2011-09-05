@@ -1,0 +1,27 @@
+- title "Task"
+
+%p
+  %strong Task List:
+  = @task.task_list_id
+%p
+  %strong Project:
+  = @task.project_id
+%p
+  %strong Description:
+  = @task.description
+%p
+  %strong Status:
+  = @task.status
+%p
+  %strong User:
+  = @task.user_id
+%p
+  %strong Priority:
+  = @task.priority
+
+%p
+  = link_to "Edit", edit_task_path(@task)
+  |
+  = link_to "Destroy", @task, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", tasks_path

@@ -1,0 +1,15 @@
+.task{:class => task.status}
+  .task_description
+    .label Description:
+    %p= truncate(task.description, :length => 80 )
+  .task_status
+    .label Priority:
+    = task.priority
+  .footer
+    .links.right
+      = link_to 'Edit', edit_task_path(task)
+      = link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete, :remote => true
+    .info.left
+      = "ID # #{task.id}"
+    .clear
+

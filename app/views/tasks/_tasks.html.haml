@@ -1,0 +1,10 @@
+.title
+  = status.titleize
+.content.droppable
+  %input{:type => 'hidden', :value => status, :name => 'status', :class => 'status'}
+  %ul
+    - tasks.each do |task|
+      %li.left{:id => task.id, :class => "draggable"}
+        = render task
+    .clear
+

@@ -1,0 +1,2 @@
+module BugListsHelper
+end

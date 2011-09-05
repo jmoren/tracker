@@ -1,0 +1,15 @@
+- title "Bug List"
+
+%p
+  %strong Project:
+  = @bug_list.project_id
+%p
+  %strong Title:
+  = @bug_list.title
+
+%p
+  = link_to "Edit", edit_bug_list_path(@bug_list)
+  |
+  = link_to "Destroy", @bug_list, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", bug_lists_path

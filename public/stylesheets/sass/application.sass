@@ -1,0 +1,164 @@
+$primary_color: #4b7399
+
+body
+  background-color: $primary_color
+  font:
+    family: Verdana, Helvetica, Arial
+    size: 14px
+
+a
+  color: blue
+  img
+    border: none
+
+.clear
+  clear: both
+  height: 0
+  overflow: hidden
+
+#container
+  width: 90%
+  margin: 0 auto
+  background: white
+  padding: 20px 40px
+  border: solid 1px black
+  margin-top: 20px
+
+#flash_notice,
+#flash_error,
+#flash_alert
+  padding: 5px 8px
+  margin: 10px 0
+
+#flash_notice
+  background-color: #ccffcc
+  border: solid 1px #66cc66
+
+#flash_error,
+#flash_alert
+  background-color: #ffcccc
+  border: solid 1px #cc6666
+
+.fieldWithErrors
+  display: inline
+
+.error_messages
+  width: 400px
+  border: 2px solid #cf0000
+  padding: 0
+  padding-bottom: 12px
+  margin-bottom: 20px
+  background-color: #f0f0f0
+  font:
+    size: 12px
+  h2
+    text-align: left
+    padding: 5px 5px 5px 15px
+    margin: 0
+    font:
+      weight: bold
+      size: 12px
+    background-color: #cc0000
+    color: white
+  p
+    margin: 8px 10px
+  ul
+    margin: 0
+
+.flash
+  width: 30%
+  margin: auto
+  text-align: center
+  padding: 5px 10px
+  background-color: #ccffcc
+  border: solid 1px #66cc66
+  border-radius: 4px
+.task_list_button
+  a
+    border: solid 1px #ccc
+    border-radius: 5px
+    color: #666
+    text-decoration: none
+    background: #f1f1f1
+    font-weight: bold
+    padding: 5px
+    margin: 5px
+    float: left
+    &:hover
+      background: #DD4B39
+      border: solid 1px #DD4B39
+      color: #fff
+.left
+  float: left
+.right
+  float: right
+
+#list_tasks
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+  li.task_item
+    width: 15% !important
+    margin: 5px
+
+.panel
+  .content
+    min-height: 150px
+    border: #ccc solid 1px
+    padding: 3px
+    margin: 5px 0
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+  .drophover
+    background: #fafafa
+  .title
+    color: #DD4B39
+    font-weight: bold
+
+.progress
+  border: solid 1px #EEF296
+  background: #EEF296
+.commited
+  border: solid 1px #C8D4FA
+  background: #C8D4FA
+.aproved
+  border: solid 1px #A4F56E
+  background: #A4F56E
+.merged
+  border: solid 1px #ccc
+  background: #f1f1f1
+.created
+  border: solid 1px #ccc
+  background: #fff
+.testing
+  border: solid 1px #DD4B39
+  background: #FACAC8
+
+.task
+  border-radius: 5px
+  padding: 10px
+  height: 125px
+  width: 130px
+  margin: 5px
+  font-size: 11px
+  .label
+    display: inline
+    font-weight: bold
+    margin: 0
+  .task_description
+    height: 85px
+  .task_status
+    color: #000
+    margin: 3px 0
+  .footer
+    border-top: #222 1px solid
+    padding-top: 5px
+    font-size: 10px
+  &:hover
+    border: solid #666 2px
+    margin: 4px
+    cursor: pointer
+

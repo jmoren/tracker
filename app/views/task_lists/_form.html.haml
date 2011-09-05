@@ -1,0 +1,9 @@
+= form_for @task_list do |f|
+  = f.error_messages
+  = f.hidden_field :project_id, :value => @project.id
+  %p
+    = f.label :title
+    %br
+    = f.text_field :title
+  %p
+    = f.submit
