@@ -3,7 +3,7 @@ $primary_color: #4b7399
 body
   background-color: $primary_color
   font:
-    family: Verdana, Helvetica, Arial
+    family: Ubuntu,Verdana, Helvetica, Arial
     size: 14px
 
 a
@@ -81,12 +81,14 @@ a
     text-decoration: none
     background: #f1f1f1
     font-weight: bold
-    padding: 5px
+    padding: 5px 10px
     margin: 5px
     float: left
     &:hover
-      background: #DD4B39
-      border: solid 1px #DD4B39
+      background: #4183C4 
+      //background: #DD4B39
+      //border: solid 1px #DD4B39
+      border: solid 1px blue 
       color: #fff
 .left
   float: left
@@ -161,4 +163,50 @@ a
     border: solid #666 2px
     margin: 4px
     cursor: pointer
+#title
+  font-size: 20px
+  font-weight: bold
+  margin: 5px 0
+#menu
+  margin: 10px 3px
+.text_area
+  background: #f1f1f1
+  padding: 5px
+  border: solid #ccc 1px
+  border-radius: 5px
+  min-height: 50px
+  textarea
+    width: 99%
 
+#col_right
+  width: 15%
+  padding: 10px
+#col_left
+  width: 80%
+  padding: 10px
+.project
+  border: solid #ccc 1px
+  padding: 5px
+  margin: 5px 0
+  .title
+    padding-left: 30px
+    font-size: 15px
+    font-weight: bold
+  .owner
+    font-size: 11px
+  .links, .more_link
+    float: right
+    font-size: 11px 
+  .minus
+    padding-left: 20px
+    background: url('/images/minus.png') no-repeat !important
+  .more
+    padding-left: 20px
+    background: url('/images/more.png') 0 0 no-repeat
+
+.open
+  background: url('/images/open.png') 1% 7px no-repeat
+.closed
+  background: url('/images/closed.png') 1% 7px no-repeat
+.reopened
+  background: url('/images/reopened.png') 1% 7px no-repeat

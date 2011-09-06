@@ -1,5 +1,15 @@
-- title "Task List"
-%h1
+:javascript
+  $(function(){
+    $('#new_task_link').click(function(){
+      $('#task_form').slideToggle('slow');
+    });
+    $('#cancel_link').click(function(){
+      $('#new_task')[0].reset();
+      $('#task_form').slideToggle('slow');
+      return false;
+    });
+  });
+#title
   Title:
   = @task_list.title.titleize
   %small
@@ -9,23 +19,23 @@
 %small
   = "Created by #{@task_list.user.try(:username) || 'unknown'} on #{l @task_list.created_at, :format => '%d, %A %B of %Y'}"
 %p
-  = @task_list.comments
+  = simple_format @task_list.comments, :class => "text_area"
 .task_list_button
-  = link_to "Task Panel", task_list_tasks_path(@task_list)
+  = link_to "Panel", task_list_tasks_path(@task_list)
 .task_list_button
-  = link_to "Add task", new_task_list_task_path(@task_list)
+  = link_to "New Task", "#", :id => "new_task_link"
+.task_list_button
+  = link_to "Edit", edit_task_list_path(@task_list)
+.task_list_button
+  = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete
+.clear
+#task_form{:style => "display:none", :class => "text_area"}
+  = render :partial => 'tasks/form', :locals => {:task => @task_list.tasks.new }
 .clear
 #list_tasks
   %h2 Tasks
-  %ul
+  %ul#tasks
     - @tasks.order('status').each do |task|
-      %li{:id => task.id, :class => 'task_item left', :title => "Status: #{task.status}"}
-        = render task
-    .clear
-%p
-  = link_to "Edit", edit_task_list_path(@task_list)
-  |
-  = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", task_lists_path
+      = render :partial => 'tasks/task_item', :locals => {:task => task}
+  .clear      
 

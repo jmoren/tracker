@@ -29,7 +29,9 @@ class TaskListsController < ApplicationController
 
   def update
     @task_list = TaskList.find(params[:id])
-    if @task_list.update_attributes(params[:task_list])
+    add_user = {}
+    if @task_list.user.nil?; add_user = { :user_id => current_user.id };end 
+    if @task_list.update_attributes(params[:task_list].merge(add_user))
       redirect_to @task_list, :notice  => "Successfully updated task list."
     else
       render :action => 'edit'

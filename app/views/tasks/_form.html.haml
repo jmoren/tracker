@@ -1,11 +1,9 @@
-= form_for [@task_list,@task] do |f|
-  = f.error_messages
+= form_for [@task_list,task], :remote => true do |f|
   = f.hidden_field :task_list_id, :value => @task_list.id
   = f.hidden_field :project_id, :value => @task_list.project.id
   %p
     = f.label :status
     = f.select :status, Task::STATUS
-  %p
     = f.label :priority
     = f.select :priority, Task::PRIORITY
   %p  
@@ -15,3 +13,5 @@
   
   %p
     = f.submit
+    o
+    = link_to "Cancel", "#", :id => "cancel_link"

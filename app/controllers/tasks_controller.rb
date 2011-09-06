@@ -23,9 +23,10 @@ class TasksController < ApplicationController
     @task_list = TaskList.find(params[:task_list_id])
     @task.user = current_user
     if @task.save
-      redirect_to @task.task_list, :notice => "Successfully created task."
-    else
-      render :action => 'new'
+      respond_to do |format|
+        format.html { redirect_to @task.task_list, :notice => "Successfully created task." }
+        format.js
+      end
     end
   end
 

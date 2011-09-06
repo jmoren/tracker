@@ -18,11 +18,6 @@
     = f.date_select :end_date
   %p
     = f.label :status
-    %br
-    = f.text_field :status
-  %p
-    = f.label :user_id
-    %br
-    = f.text_field :user_id
+    = f.select :status, TaskList::STATUS
   %p
     = f.submit

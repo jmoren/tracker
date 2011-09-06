@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  before_filter :load_user, :store_target_location
+  before_filter :allow_only_owner, :except => [:new, :create, :index]
+
   def index
     @projects = Project.all
   end
@@ -38,5 +41,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_url, :notice => "Successfully destroyed project."
+  end
+
+  def load_user
+    @user = current_user
+  end
+  def allow_only_owner
+    redirect_to_target_or_default root_url if current_project.user != current_user
+  end
+  def current_project
+    Project.find(params[:id])
   end
 end

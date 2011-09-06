@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110905200843) do
+ActiveRecord::Schema.define(:version => 20110906000527) do
 
   create_table "bug_lists", :force => true do |t|
     t.integer  "project_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20110905200843) do
     t.datetime "updated_at"
     t.string   "status"
     t.text     "comments"
+    t.integer  "user_id"
   end
 
   create_table "tasks", :force => true do |t|
