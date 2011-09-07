@@ -228,7 +228,7 @@ ul#collaborators {
     ul#collaborators li .email {
       width: 40%; }
     ul#collaborators li .role {
-      width: 30%; }
+      width: 40%; }
     ul#collaborators li .remove {
-      width: 20%;
+      width: 10%;
       text-align: right; }
