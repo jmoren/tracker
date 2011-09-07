@@ -1,0 +1,5 @@
+$('#new_collaborator')[0].reset();
+$('#loading').html("");
+$('ul#collaborators').append("<%= escape_javascript(render :partial => 'projects/collaborator', :locals => {:collaborator => @collaborator, :project => @project }) %>");
+
+$('li#collaborator_<%= @collaborator.id %>').effect('highlight',{} ,5000);

@@ -1,0 +1,5 @@
+%li{:id => "collaborator_#{collaborator.id}"}
+  .collaborator_field.email= collaborator.user.email
+  .collaborator_field.role= collaborator.role
+  .collaborator_field.remove= link_to image_tag('remove.png'), remove_project_path(project, :user => collaborator.id), :remote => true, :method => :post
+  .clear

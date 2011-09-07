@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906000527) do
+ActiveRecord::Schema.define(:version => 20110907123344) do
 
   create_table "bug_lists", :force => true do |t|
     t.integer  "project_id"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20110906000527) do
     t.string   "status"
     t.integer  "user_id"
     t.integer  "owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "collaborators", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

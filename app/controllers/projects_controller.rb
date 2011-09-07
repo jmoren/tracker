@@ -1,13 +1,13 @@
 class ProjectsController < ApplicationController
   before_filter :load_user, :store_target_location
-  before_filter :allow_only_owner, :except => [:new, :create, :index]
-
+  before_filter :allow_members, :except => [:new, :create, :index]
+  before_filter :allow_owner, :only => [:edit, :update, :destroy]
   def index
     @projects = Project.all
   end
 
   def show
-    @project = Project.find(params[:id])
+    current_project
   end
 
   def new
@@ -25,12 +25,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    current_project
   end
 
   def update
-    @project = Project.find(params[:id])
-    if @project.update_attributes(params[:project])
+    if current_project.update_attributes(params[:project])
       redirect_to @project, :notice  => "Successfully updated project."
     else
       render :action => 'edit'
@@ -38,18 +37,61 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
-    @project.destroy
+    current_project.destroy
     redirect_to projects_url, :notice => "Successfully destroyed project."
   end
 
+  def add_collaborator
+    @user = User.find_by_email(params[:email])
+    @collaborator = Collaborator.new(:user_id => @user.id, :role => params[:role])
+    current_project.collaborators << @collaborator
+    respond_to do |format|
+      format.js { render :add_collaborator }
+    end 
+  end
+  
+  def remove_collaborator
+    collaborator = current_project.collaborators.find(params[:user])
+    @id = collaborator.id
+    if collaborator
+      collaborator.destroy
+      text ="Se elimino el colaborador"
+    else
+      text ="No se pudo encontrar el colaborador"
+    end
+    respond_to do |format|
+      format.js {render :remove_collaborator  }
+    end
+  end
+  
+  def update_collaborator(option)
+    @collaborator = Collaborator.find(params[:user])
+    if @collaborator.update(option)
+      text = "Collaborator #{@collaborator.user.username} was successfully updated"
+    else
+      text = "Sorry, we couldn't do it..."
+    end
+    render :text => text
+  end
+
+private
+  
   def load_user
     @user = current_user
   end
-  def allow_only_owner
-    redirect_to_target_or_default root_url if current_project.user != current_user
+  
+  def allow_owner
+    unless current_project.user == current_user
+      redirect_to current_project, :alert => "You don't have permission to do this"
+    end
+  end 
+  def allow_members
+    if !current_project.is_collaborator?(current_user)
+      redirect_to root_url, :alert => "You cant see this project."
+    end
   end
+  
   def current_project
-    Project.find(params[:id])
+    @project ||= Project.find(params[:id])
   end
 end

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :collaborators
   has_many :projects
   has_many :task_lists
   has_many :tasks
@@ -25,7 +26,9 @@ class User < ActiveRecord::Base
   def encrypt_password(pass)
     BCrypt::Engine.hash_secret(pass, password_salt)
   end
-
+  def as_member(project)
+    self.collaborators.where(:project_id => project.id).first
+  end  
   private
 
   def prepare_password

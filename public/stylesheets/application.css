@@ -215,3 +215,20 @@ a {
 
 .reopened {
   background: url("/images/reopened.png") 1% 7px no-repeat; }
+
+ul#collaborators {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul#collaborators li {
+    width: 50%; }
+    ul#collaborators li .collaborator_field {
+      float: left;
+      padding: 5px; }
+    ul#collaborators li .email {
+      width: 40%; }
+    ul#collaborators li .role {
+      width: 30%; }
+    ul#collaborators li .remove {
+      width: 20%;
+      text-align: right; }

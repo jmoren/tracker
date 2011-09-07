@@ -1,13 +1,17 @@
 - title "Project #{@project.name}"
 :javascript
   $(function(){
-    $('#tabs').tabs()
+    $('#tabs').tabs();
+    $('.remote_link').click(function(){
+      $('#loading').html("<img src='/images/loading.gif'>");
+    });
   });
 #tabs
   %ul
     %li= link_to "Project", "#project"
     %li= link_to "Tasks", "#tasks"
     %li= link_to "Bugs", "#bugs"
+    %li= link_to "Config", "#config"
 
   %div{:id => 'project'} 
     %p
@@ -39,10 +43,23 @@
     .tab_link_new
       = link_to "New bug list", new_project_bug_list_path(@project)
     #bugs.list
-      
+  %div{:id => 'config'}
+    .tab_title
+      %h2 Configuration
+    .tab_content
+      = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
+        = text_field_tag :email
+        %select{:id => "role", :name => "role"}
+          - Collaborator::ROLE.each do |r|
+            %option{:value => r}
+              = r
+        = submit_tag "Add", :class => "remote_link"
+        %span#loading
+      %h3 Collaborators
+      %ul#collaborators
+        - @project.collaborators.each do |collaborator|
+          = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }   
   %p
     = link_to "Edit", edit_project_path(@project)
     |
     = link_to "Destroy", @project, :confirm => 'Are you sure?', :method => :delete
-    |
-    = link_to "View All", projects_path

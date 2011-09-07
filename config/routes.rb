@@ -26,6 +26,11 @@ Tracker::Application.routes.draw do
   resources :projects do
     resources :bug_lists
     resources :task_lists
+    member do
+      post :add_collaborator
+      post 'remove'  => "projects#remove_collaborator"
+      put  :update_collaborator
+    end
   end
 
   root :to => "projects#index"
