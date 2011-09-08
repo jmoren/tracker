@@ -5,9 +5,22 @@
     $('.remote_link').click(function(){
       $('#loading').html("<img src='/images/loading.gif'>");
     });
+    $('#email').focus(function(){    
+      $(this).val('');
+      $('#submit_col').attr('disabled',true);
+    });
     $( "#email" ).autocomplete({
       source: "#{get_users_project_path(@project)}",
-      minLength: 2
+      minLength: 2,
+      select: function(event, ui){
+        if (ui.item.value == "#{@project.user.email}"){
+         $('#email').addClass("error_autocomplete");
+         $('#submit_col').attr('disabled',true);
+        }
+        else{
+         $('#submit_col').attr('disabled',false);
+        }
+      }
     });
   });
 #tabs
@@ -50,7 +63,7 @@
           - Collaborator::ROLE.each do |r|
             %option{:value => r}
               = r
-        = submit_tag "Add", :class => "remote_link"
+        = submit_tag "Add", :class => "remote_link", :id => "submit_col", :disabled => 'disabled'
         %span#loading
       %h4 Collaborators
       %ul#collaborators

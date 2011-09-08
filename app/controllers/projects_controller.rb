@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
   end
   def get_users
     sleep 1
-    @users = User.where('email LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) - current_project.user
+    @users = User.where('email LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) 
     respond_to do |format|
       format.js {render :json => @users.collect{|u| [:id => u.id, :label => u.email, :value => u.email ]}.flatten! }
     end
