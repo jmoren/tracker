@@ -4,7 +4,7 @@ Tracker::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   post '/tasks/status' => "tasks#move_status"
-   
+  post '/collaborator/update' => 'projects#update_collaborator' 
   resources :sessions
   resources :users
   resources :tasks, :only => [:show, :edit, :update, :destroy]
@@ -17,7 +17,6 @@ Tracker::Application.routes.draw do
       get :get_users
       post :add_collaborator
       post 'remove'  => "projects#remove_collaborator"
-      put  :update_collaborator
     end
   end
   root :to => "projects#index"

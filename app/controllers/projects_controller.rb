@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   respond_to :json, :html
   before_filter :load_user, :store_target_location
-  before_filter :allow_members, :except => [:new, :create, :index]
+  before_filter :allow_members, :except => [:new, :create, :index, :update_collaborator]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
   def index
     @projects = Project.all
@@ -65,14 +65,15 @@ class ProjectsController < ApplicationController
     end
   end
   
-  def update_collaborator(option)
-    @collaborator = Collaborator.find(params[:user])
-    if @collaborator.update(option)
+  def update_collaborator
+    sleep 2
+    @collaborator = Collaborator.find(params[:id])
+    if @collaborator.update_field('role',params[:value])
       text = "Collaborator #{@collaborator.user.username} was successfully updated"
     else
       text = "Sorry, we couldn't do it..."
     end
-    render :text => text
+    render :text => @collaborator.role
   end
   def get_users
     sleep 1

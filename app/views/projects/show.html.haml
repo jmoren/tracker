@@ -7,6 +7,7 @@
     });
     $('#email').focus(function(){    
       $(this).val('');
+      $('#email').removeClass("error_autocomplete");
       $('#submit_col').attr('disabled',true);
     });
     $( "#email" ).autocomplete({
@@ -18,6 +19,7 @@
          $('#submit_col').attr('disabled',true);
         }
         else{
+         $('#email').removeClass("error_autocomplete");
          $('#submit_col').attr('disabled',false);
         }
       }

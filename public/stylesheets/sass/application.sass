@@ -196,12 +196,12 @@ a
     font-size: 11px
   .links, .more_link
     float: right
-    font-size: 11px 
+    font-size: 11px
   .minus
-    padding-left: 20px
+    padding: 0  0 3px 20px
     background: url('/images/minus.png') no-repeat !important
   .more
-    padding-left: 20px
+    padding: 0 0 3px  20px
     background: url('/images/more.png') 0 0 no-repeat
 
 .open
@@ -223,10 +223,18 @@ ul#collaborators
     .email
       width: 30%
     .role
-      width: 20%
+      width: 30%
     .remove
       width: 10%
       text-align: right
+input#email
+  padding: 3px 5px
+  border: solid 1px #ccc
+  border-radius: 3px
+  font-size: 12px
 .ui-autocomplete-loading 
   background: white url('/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat
+.error_autocomplete
+  background: #F2B6C5 url(/images/remove.png) right center no-repeat
+  border: solid 1px #F2B6C5
 
