@@ -12,24 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110907123344) do
 
-  create_table "bug_lists", :force => true do |t|
-    t.integer  "project_id"
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bugs", :force => true do |t|
-    t.integer  "bug_list_id"
-    t.integer  "project_id"
-    t.text     "description"
-    t.string   "status"
-    t.integer  "user_id"
-    t.integer  "owner"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "collaborators", :force => true do |t|
     t.integer  "user_id"
     t.integer  "project_id"

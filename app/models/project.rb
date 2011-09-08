@@ -2,9 +2,7 @@ class Project < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
   belongs_to :user
   has_many :collaborators
-  has_many :users, :through => :collaborators
   has_many :task_lists
-  has_many :bug_lists
   attr_accessible :name, :description, :start_date, :end_date, :status, :user_id
 
   validate :name, :description, :status, :presence => true
@@ -13,7 +11,7 @@ class Project < ActiveRecord::Base
   validate :dates, :if => Proc.new {|p| !p.start_date.blank? || !p.end_date.blank? }
 
   def is_collaborator?(user)
-    self.users.include?(user) || self.user == user
+    self.collaborators.collect(&:id).include?(user.id) || self.user == user
   end
 private 
   def dates

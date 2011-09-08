@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  respond_to :json, :html
   before_filter :load_user, :store_target_location
   before_filter :allow_members, :except => [:new, :create, :index]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
@@ -73,7 +74,13 @@ class ProjectsController < ApplicationController
     end
     render :text => text
   end
-
+  def get_users
+    sleep 1
+    @users = User.where('email LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) - current_project.user
+    respond_to do |format|
+      format.js {render :json => @users.collect{|u| [:id => u.id, :label => u.email, :value => u.email ]}.flatten! }
+    end
+  end
 private
   
   def load_user

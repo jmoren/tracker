@@ -226,9 +226,12 @@ ul#collaborators {
       float: left;
       padding: 5px; }
     ul#collaborators li .email {
-      width: 40%; }
+      width: 30%; }
     ul#collaborators li .role {
-      width: 40%; }
+      width: 20%; }
     ul#collaborators li .remove {
       width: 10%;
       text-align: right; }
+
+.ui-autocomplete-loading {
+  background: white url("/stylesheets/images/ui-anim_basic_16x16.gif") right center no-repeat; }
