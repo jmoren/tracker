@@ -205,11 +205,11 @@ a
     background: url('/images/more.png') 0 0 no-repeat
 
 .open
-  background: url('/images/open.png') 1% 7px no-repeat
+  background: url('/images/open.png') 1% 8px no-repeat
 .closed
-  background: url('/images/closed.png') 1% 7px no-repeat
+  background: url('/images/closed.png') 1% 8px no-repeat
 .reopened
-  background: url('/images/reopened.png') 1% 7px no-repeat
+  background: url('/images/reopened.png') 1% 8px no-repeat
 
 ul#collaborators
   list-style: none
@@ -217,6 +217,8 @@ ul#collaborators
   padding: 0
   li
     width: 50%
+    padding: 3px
+    line-height: 1.7em
     .collaborator_field
       float: left
       padding: 5px
@@ -224,9 +226,24 @@ ul#collaborators
       width: 30%
     .role
       width: 30%
+      form
+        margin-top: -2px
+        float: left
     .remove
       width: 10%
       text-align: right
+#messages
+  float: left
+  width: 35%
+  margin: 0 20px
+  font-size: 11px
+  padding: 3px 0 3px 30px
+.notice
+  border: solid 1px #66cc66
+  background: #ccffcc url(/images/ok.png) 2% 49% no-repeat
+.alert
+  border: solid 1px #DD4B39
+  background: #F2B6C5 url(/images/error.png) 2% 49% no-repeat
 input#email
   padding: 3px 5px
   border: solid 1px #ccc
@@ -235,6 +252,6 @@ input#email
 .ui-autocomplete-loading 
   background: white url('/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat
 .error_autocomplete
-  background: #F2B6C5 url(/images/remove.png) right center no-repeat
-  border: solid 1px #F2B6C5
+  background: #F2B6C5 url(/images/error.png) right center no-repeat
+  border: solid 1px #DD4B39 !important
 

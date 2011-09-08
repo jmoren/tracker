@@ -1,14 +1,17 @@
-:javascript
-  $(function(){
-    $('.role').editable('/collaborator/update',{
-      data      : " { 'collaborator':'collaborator', 'admin':'admin' }",
-      type      : 'select',
-      submit    : 'Ok',
-      style     : 'display:inline',
-      onblur    : 'cancel',
-      indicator : '<img src="/images/loading.gif">'
+- if current_user.is_admin_or_owner?(project)
+  :javascript
+    $(function(){
+      $('.role').editable('/collaborator/update',{
+        data      : " { 'collaborator':'collaborator', 'admin':'admin' }",
+        type      : 'select',
+        submit    : 'Ok',
+        style     : 'display:inline',
+        onblur    : 'cancel',
+        tooltip   : 'Click to edit...',
+        indicator : '<img src="/images/loading.gif">'
+      });
     });
-  });
+    
 %li{:id => "collaborator_#{collaborator.id}"}
   .collaborator_field.icon= image_tag('user.png')
   .collaborator_field.email= collaborator.user.email

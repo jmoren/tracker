@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   end
   def as_member(project)
     self.collaborators.where(:project_id => project.id).first
+  end
+  def is_admin_or_owner?(project)
+    project.user == self || project.collaborators.where(:role => 'admin').collect(&:user).include?(self)
   end  
   private
 

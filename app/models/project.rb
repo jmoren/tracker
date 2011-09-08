@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   validate :dates, :if => Proc.new {|p| !p.start_date.blank? || !p.end_date.blank? }
 
   def is_collaborator?(user)
-    self.collaborators.collect(&:id).include?(user.id) || self.user == user
+    self.collaborators.collect(&:user).include?(user) || self.user == user
   end
 private 
   def dates

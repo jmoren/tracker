@@ -208,20 +208,22 @@ a {
     background: url("/images/more.png") 0 0 no-repeat; }
 
 .open {
-  background: url("/images/open.png") 1% 7px no-repeat; }
+  background: url("/images/open.png") 1% 8px no-repeat; }
 
 .closed {
-  background: url("/images/closed.png") 1% 7px no-repeat; }
+  background: url("/images/closed.png") 1% 8px no-repeat; }
 
 .reopened {
-  background: url("/images/reopened.png") 1% 7px no-repeat; }
+  background: url("/images/reopened.png") 1% 8px no-repeat; }
 
 ul#collaborators {
   list-style: none;
   margin: 0;
   padding: 0; }
   ul#collaborators li {
-    width: 50%; }
+    width: 50%;
+    padding: 3px;
+    line-height: 1.7em; }
     ul#collaborators li .collaborator_field {
       float: left;
       padding: 5px; }
@@ -229,9 +231,27 @@ ul#collaborators {
       width: 30%; }
     ul#collaborators li .role {
       width: 30%; }
+      ul#collaborators li .role form {
+        margin-top: -2px;
+        float: left; }
     ul#collaborators li .remove {
       width: 10%;
       text-align: right; }
+
+#messages {
+  float: left;
+  width: 35%;
+  margin: 0 20px;
+  font-size: 11px;
+  padding: 3px 0 3px 30px; }
+
+.notice {
+  border: solid 1px #66cc66;
+  background: #ccffcc url(/images/ok.png) 2% 49% no-repeat; }
+
+.alert {
+  border: solid 1px #dd4b39;
+  background: #f2b6c5 url(/images/error.png) 2% 49% no-repeat; }
 
 input#email {
   padding: 3px 5px;
@@ -243,5 +263,5 @@ input#email {
   background: white url("/stylesheets/images/ui-anim_basic_16x16.gif") right center no-repeat; }
 
 .error_autocomplete {
-  background: #f2b6c5 url(/images/remove.png) right center no-repeat;
-  border: solid 1px #f2b6c5; }
+  background: #f2b6c5 url(/images/error.png) right center no-repeat;
+  border: solid 1px #dd4b39 !important; }

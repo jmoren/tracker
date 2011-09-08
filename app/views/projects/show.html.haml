@@ -9,14 +9,16 @@
       $(this).val('');
       $('#email').removeClass("error_autocomplete");
       $('#submit_col').attr('disabled',true);
+      $('#loading').html('');
     });
     $( "#email" ).autocomplete({
       source: "#{get_users_project_path(@project)}",
       minLength: 2,
       select: function(event, ui){
         if (ui.item.value == "#{@project.user.email}"){
-         $('#email').addClass("error_autocomplete");
-         $('#submit_col').attr('disabled',true);
+          $('#email').addClass("error_autocomplete");
+          $('#loading').html("<span style='color:#D00'> This user is the owneri, you must select another</span>");
+          $('#submit_col').attr('disabled',true);
         }
         else{
          $('#email').removeClass("error_autocomplete");
@@ -59,15 +61,18 @@
     .tab_title
       %h3 Configuration
     .tab_content
-      = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
-        = text_field_tag :email
-        %select{:id => "role", :name => "role"}
-          - Collaborator::ROLE.each do |r|
-            %option{:value => r}
-              = r
-        = submit_tag "Add", :class => "remote_link", :id => "submit_col", :disabled => 'disabled'
-        %span#loading
-      %h4 Collaborators
+      - if current_user.is_admin_or_owner?(@project)
+        = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
+          = text_field_tag :email
+          %select{:id => "role", :name => "role"}
+            - Collaborator::ROLE.each do |r|
+              %option{:value => r}
+                = r
+          = submit_tag "Add", :class => "remote_link", :id => "submit_col", :disabled => 'disabled'
+          %span#loading
+      %p    
+        #messages{:style => "display:none"}
+        .clear  
       %ul#collaborators
         - if @project.collaborators.empty?
           %strong You are alone...

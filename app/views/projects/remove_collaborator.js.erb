@@ -1,3 +1,7 @@
+
 $("li#collaborator_<%= @id %>").fadeOut('slow');
 $("li#collaborator_<%= @id %>").remove();
-
+$('#messages').addClass( "<%= @result ? 'notice' : 'alert' %>").html("<%= @text %><span style='float:right;margin: 0 3px'><a href='#' onclick='$(\"#messages\").fadeOut()'> close </a></span>").show();
+<% if @i_am_out %>
+  setTimeout('location.href = "<% projects_url %>"',2000);
+<% end %>

@@ -53,16 +53,25 @@ class ProjectsController < ApplicationController
   
   def remove_collaborator
     collaborator = current_project.collaborators.find(params[:user])
-    @id = collaborator.id
-    if collaborator
-      collaborator.destroy
-      text ="Se elimino el colaborador"
+    if current_user.is_admin_or_owner?(current_project) || collaborator.user == current_user
+      @id = collaborator.id
+      if collaborator
+        @i_am_out = true if current_user == collaborator.user
+        collaborator.destroy
+        @text ="Se elimino el colaborador"
+        @result = true
+      else
+        @text ="No se pudo encontrar el colaborador"
+        @result = false
+      end
+      
     else
-      text ="No se pudo encontrar el colaborador"
+      @text = "You can't delete users if you are not admin or owner"
+      @result = false
     end
     respond_to do |format|
-      format.js {render :remove_collaborator  }
-    end
+      format.js {render :remove_collaborator}
+    end 
   end
   
   def update_collaborator

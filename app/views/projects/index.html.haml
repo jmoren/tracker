@@ -22,10 +22,10 @@
   
 #col_left.left
   - @projects.each do |project|
-    .project{:class => project.status, :title => "Status: #{project.status}"}
+    .project{:class => project.status}
       .links 
         = link_to 'info',"#" , :class => "more_link more", :id => project.id
-      .title
+      .title{ :title => "Status: #{project.status}" }
         = link_to project.name.titleize, project
       %p
         .owner
