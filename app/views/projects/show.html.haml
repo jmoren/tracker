@@ -8,6 +8,7 @@
     $('#email').focus(function(){    
       $(this).val('');
       $('#email').removeClass("error_autocomplete");
+      $('#email').removeClass("ok_autocomplete");
       $('#submit_col').attr('disabled',true);
       $('#loading').html('');
     });
@@ -64,7 +65,7 @@
     .tab_content
       - if current_user.is_admin_or_owner?(@project)
         = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
-          = text_field_tag :email
+          = text_field_tag :email, nil, :size => 30
           %select{:id => "role", :name => "role"}
             - Collaborator::ROLE.each do |r|
               %option{:value => r}
