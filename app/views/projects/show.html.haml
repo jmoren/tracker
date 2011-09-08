@@ -76,11 +76,8 @@
         #messages{:style => "display:none"}
         .clear  
       %ul#collaborators
-        - if @project.collaborators.empty?
-          %strong You are alone...
-        -else 
-          - @project.collaborators.each do |collaborator|
-            = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }   
+        - @project.collaborators.each do |collaborator|
+          = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }   
   %p
     = link_to "Edit", edit_project_path(@project)
     |

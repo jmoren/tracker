@@ -2,9 +2,8 @@
   :javascript
     $(function(){
       $('.remove').click(function(){
-        var id = $(this).attr('id').split('_')[1];
-        $('li#collaborator_'+id).html('<div class="collaborator_field"><img src="/images/loading.gif"> Removing collaborator ... </div><div class="clear"></div>');
-      });  
+        $(this).html('<img src="/images/loading.gif">');
+      });
       $('.role').editable('/collaborator/update',{
         data      : " { 'collaborator':'collaborator', 'admin':'admin' }",
         type      : 'select',
@@ -12,7 +11,7 @@
         style     : 'display:inline',
         onblur    : 'cancel',
         tooltip   : 'Click to edit...',
-        indicator : '<img src="/images/loading.gif">'
+        indicator : '<img style="float:left" src="/images/loading.gif"><span style="font-size: 11px;float:left;margin: -1px 0 0 5px">updating...</span>'
       });
     });
     
