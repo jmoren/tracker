@@ -40,7 +40,8 @@ class TaskListsController < ApplicationController
 
   def destroy
     @task_list = TaskList.find(params[:id])
+    @project = @task_list.project
     @task_list.destroy
-    redirect_to task_lists_url, :notice => "Successfully destroyed task list."
+    redirect_to project_path(@project,:anchor => 'tasks'), :notice => "Successfully destroyed task list."
   end
 end

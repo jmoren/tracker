@@ -56,6 +56,7 @@ class ProjectsController < ApplicationController
     if current_user.is_admin_or_owner?(current_project) || collaborator.user == current_user
       @id = collaborator.id
       if collaborator
+        sleep 3
         @i_am_out = true if current_user == collaborator.user
         collaborator.destroy
         @text ="Se elimino el colaborador"
@@ -75,8 +76,9 @@ class ProjectsController < ApplicationController
   end
   
   def update_collaborator
-    sleep 2
-    @collaborator = Collaborator.find(params[:id])
+    id ||= params[:id].split('_')[1] if params[:id]
+    sleep 3
+    @collaborator = Collaborator.find(id)
     if @collaborator.update_field('role',params[:value])
       text = "Collaborator #{@collaborator.user.username} was successfully updated"
     else

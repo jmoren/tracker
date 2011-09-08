@@ -17,12 +17,13 @@
       select: function(event, ui){
         if (ui.item.value == "#{@project.user.email}"){
           $('#email').addClass("error_autocomplete");
-          $('#loading').html("<span style='color:#D00'> This user is the owneri, you must select another</span>");
+          $('#loading').html("<span style='color:#D00'> This user is the project owner, select another user.</span>");
           $('#submit_col').attr('disabled',true);
         }
         else{
-         $('#email').removeClass("error_autocomplete");
-         $('#submit_col').attr('disabled',false);
+          $('#email').removeClass("error_autocomplete");
+          $('#email').addClass("ok_autocomplete");
+          $('#submit_col').attr('disabled',false);
         }
       }
     });

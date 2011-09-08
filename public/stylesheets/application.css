@@ -263,5 +263,9 @@ input#email {
   background: white url("/stylesheets/images/ui-anim_basic_16x16.gif") right center no-repeat; }
 
 .error_autocomplete {
-  background: #f2b6c5 url(/images/error.png) right center no-repeat;
+  background: #f2b6c5 url(/images/error.png) 98% center no-repeat;
   border: solid 1px #dd4b39 !important; }
+
+.ok_autocomplete {
+  background: #bdf2ae url(/images/ok.png) 98% center no-repeat;
+  border: solid 1px #66cc66 !important; }
