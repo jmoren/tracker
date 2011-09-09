@@ -105,11 +105,13 @@ a
     margin: 5px
 
 .panel
+  float: left
+  width: 30%
+  margin: 5px
   .content
-    min-height: 150px
+    height: 600px
     border: #ccc solid 1px
     padding: 3px
-    margin: 5px 0
     ul
       list-style: none
       margin: 0
@@ -132,7 +134,7 @@ a
 .merged
   border: solid 1px #ccc
   background: #f1f1f1
-.created
+.created, .todo
   border: solid 1px #ccc
   background: #fff
 .testing
@@ -161,7 +163,7 @@ a
     font-size: 10px
   &:hover
     border: solid #666 2px
-    margin: 4px
+    margin: 5px
     cursor: pointer
 #title
   font-size: 20px

@@ -98,20 +98,23 @@ a {
   width: 15% !important;
   margin: 5px; }
 
-.panel .content {
-  min-height: 150px;
-  border: #cccccc solid 1px;
-  padding: 3px;
-  margin: 5px 0; }
-  .panel .content ul {
-    list-style: none;
-    margin: 0;
-    padding: 0; }
-.panel .drophover {
-  background: #fafafa; }
-.panel .title {
-  color: #dd4b39;
-  font-weight: bold; }
+.panel {
+  float: left;
+  width: 30%;
+  margin: 5px; }
+  .panel .content {
+    height: 600px;
+    border: #cccccc solid 1px;
+    padding: 3px; }
+    .panel .content ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+  .panel .drophover {
+    background: #fafafa; }
+  .panel .title {
+    color: #dd4b39;
+    font-weight: bold; }
 
 .progress {
   border: solid 1px #eef296;
@@ -129,7 +132,7 @@ a {
   border: solid 1px #cccccc;
   background: #f1f1f1; }
 
-.created {
+.created, .todo {
   border: solid 1px #cccccc;
   background: white; }
 
@@ -159,7 +162,7 @@ a {
     font-size: 10px; }
   .task:hover {
     border: solid #666666 2px;
-    margin: 4px;
+    margin: 5px;
     cursor: pointer; }
 
 #title {

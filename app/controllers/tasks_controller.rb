@@ -1,12 +1,9 @@
 class TasksController < ApplicationController
   def index
     @task_list = TaskList.find(params[:task_list_id])
-    @created = Task.by_status('created', @task_list)
-    @in_progress = Task.by_status('progress', @task_list)
-    @commited = Task.by_status('commited', @task_list)
-    @testing = Task.by_status('testing', @task_list)
-    @aproved = Task.by_status('aproved', @task_list)
-    @merged = Task.by_status('merged', @task_list)
+    @todo = Task.by_state(1, @task_list)
+    @progress = Task.by_state(2, @task_list)
+    @merged = Task.by_state(3, @task_list)
   end
 
   def show
@@ -22,6 +19,7 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
     @task_list = TaskList.find(params[:task_list_id])
     @task.user = current_user
+    @task.state = 1
     if @task.save
       respond_to do |format|
         format.html { redirect_to @task.task_list, :notice => "Successfully created task." }
@@ -54,14 +52,15 @@ class TasksController < ApplicationController
     end
   end
 
-  def move_status
+  def move_state
     @task = Task.find(params[:id])
     @task_list = @task.task_list
-    st = @task.update_status(params[:status])
-    @tasks = Task.by_status(params[:status],@task_list)
-    respond_to do |format|
-      format.js { render 'move_status' }
-    end
+    st = @task.update_state(params[:state])
+    @dom = params[:state] == 1 ? '#todo' : params[:state] == 2 ? '#progress' : '#done'
+    @tasks = Task.by_state(params[:state],@task_list)
+    #respond_to do |format|
+    #  format.js { render :json => { :success => true } }
+    #end
   end
 end
 

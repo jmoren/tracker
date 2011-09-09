@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907123344) do
+ActiveRecord::Schema.define(:version => 20110909002635) do
 
   create_table "collaborators", :force => true do |t|
     t.integer  "user_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20110907123344) do
     t.string   "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "state"
   end
 
   create_table "users", :force => true do |t|

@@ -3,7 +3,7 @@ Tracker::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
-  post '/tasks/status' => "tasks#move_status"
+  post '/tasks/state' => "tasks#move_state"
   post '/collaborator/update' => 'projects#update_collaborator' 
   resources :sessions
   resources :users

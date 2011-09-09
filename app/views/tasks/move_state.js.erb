@@ -1,0 +1,2 @@
+$('.flash').html("New state: <%= title_hlp(@task.state) %>").show();
+$("#<%= @dom %>").html("<%= escape_javascript(render :partial => 'tasks/tasks', :locals => { :tasks => @tasks , :state => @tasks.first.state}) %>");

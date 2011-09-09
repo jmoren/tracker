@@ -4,10 +4,10 @@
     $( ".droppable" ).droppable({
       greedy: true,
       hoverClass: 'drophover',
-      drop: function(ev,el){
-        var st = $(this).find('input.status').val();
-        var id = $(el.draggable).attr('id');
-        $.post('/tasks/status?id=' + id + '&status=' + st, function(){$(el.draggable).remove()});
+      drop: function(event,ui){
+        var st = $(this).find('input.state').val();
+        var id = $(ui.draggable).attr('id');
+        $.post('/tasks/state?id=' + id + '&state=' + st);
       }
     });
   });
@@ -25,17 +25,11 @@
   = link_to "Back to List", @task_list
 .clear
 #panel{:style => "width:100%"}
-  #created.panel
-    = render :partial =>"tasks", :locals => { :tasks => @created, :status => 'created' }
+  #todo.panel
+    = render :partial =>"tasks", :locals => { :tasks => @todo, :state => 1 }
   #progress.panel
-    = render :partial => "tasks", :locals => { :tasks => @in_progress, :status => 'progress' }
-  #commited.panel
-    = render :partial => "tasks", :locals =>{ :tasks => @commited, :status => 'commited' }
-  #testing.panel
-    = render :partial => "tasks", :locals => { :tasks => @testing, :status => 'testing' }
-  #aproved.panel
-    = render :partial => "tasks", :locals => { :tasks => @aproved, :status => 'aproved' }
-  #merged.panel
-    = render :partial => "tasks", :locals => { :tasks => @merged, :status => 'merged' }
+    = render :partial => "tasks", :locals => { :tasks => @progress, :state => 2 }
+  #done.panel
+    = render :partial => "tasks", :locals => { :tasks => @merged, :state => 3 }
 .clear
 

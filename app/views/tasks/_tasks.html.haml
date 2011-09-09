@@ -1,8 +1,9 @@
 .title
-  = status.titleize
+  = title_hlp(state)
+  = state
 .content.droppable
-  %input{:type => 'hidden', :value => status, :name => 'status', :class => 'status'}
-  %ul
+  %input{:type => 'hidden', :value => state, :name => 'state', :class => 'state'}
+  %ul{:id => "list_#{state}"}
     - tasks.each do |task|
       %li.left{:id => task.id, :class => "draggable"}
         = render task
