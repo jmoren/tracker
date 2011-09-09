@@ -1,5 +1,9 @@
 :javascript
   $(function(){
+    $('a[rel*=facebox]').facebox({        
+      loadingImage : '/images/loader.gif',        
+      closeImage   : '/images/closelabel.png',
+    });
     $('#new_task_link').click(function(){
       $('#task_form').slideToggle('slow');
     });
