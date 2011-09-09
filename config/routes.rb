@@ -7,7 +7,12 @@ Tracker::Application.routes.draw do
   post '/collaborator/update' => 'projects#update_collaborator' 
   resources :sessions
   resources :users
-  resources :tasks, :only => [:show, :edit, :update, :destroy]
+  resources :tasks, :only => [:show, :edit, :update, :destroy] do
+    member do
+      post 'comments/add' => "tasks#add_comments"
+      post 'comments/remove' => "tasks#remove_comments"
+    end  
+  end  
   resources :task_lists do
     resources :tasks, :only => [:index,:new, :create]
   end

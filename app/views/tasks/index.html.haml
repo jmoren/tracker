@@ -1,13 +1,19 @@
 :javascript
   $(function() {
+    $('a[rel*=facebox]').facebox({        
+      loadingImage : '/images/loader.gif',        
+      closeImage   : '/images/closelabel.png',
+    });  
     $( ".draggable" ).draggable({revert: 'invalid'});
     $( ".droppable" ).droppable({
-      greedy: true,
+      tolerance: 'fit', 
       hoverClass: 'drophover',
       drop: function(event,ui){
+        var $item = ui.draggable;
         var st = $(this).find('input.state').val();
         var id = $(ui.draggable).attr('id');
         $.post('/tasks/state?id=' + id + '&state=' + st);
+        $item.remove();
       }
     });
   });
@@ -24,12 +30,12 @@
 .task_list_button.right
   = link_to "Back to List", @task_list
 .clear
-#panel{:style => "width:100%"}
-  #todo.panel
+#panel
+  #todo.panel.droppable
     = render :partial =>"tasks", :locals => { :tasks => @todo, :state => 1 }
-  #progress.panel
+  #progress.panel.droppable
     = render :partial => "tasks", :locals => { :tasks => @progress, :state => 2 }
-  #done.panel
+  #done.panel.droppable
     = render :partial => "tasks", :locals => { :tasks => @merged, :state => 3 }
 .clear
 

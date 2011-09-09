@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    render :layout => false
   end
 
   def new
@@ -51,16 +52,24 @@ class TasksController < ApplicationController
       format.js
     end
   end
-
+  def add_comment
+  end
+  def remove_comment
+  end
   def move_state
     @task = Task.find(params[:id])
     @task_list = @task.task_list
-    st = @task.update_state(params[:state])
-    @dom = params[:state] == 1 ? '#todo' : params[:state] == 2 ? '#progress' : '#done'
+    
+
+    @old_state = @task.state
+    @old_dom = @old_state == 1 ? '#todo' : @old_state == 2 ? '#progress' : '#done'
+    #after update:
+    @task.update_state(params[:state])
+    @state = @task.state
+    @dom = params[:state] == '1' ? '#todo' : params[:state] == '2' ? '#progress' : '#done'
+    
+    @old_tasks = Task.by_state(@old_state, @task_list)
     @tasks = Task.by_state(params[:state],@task_list)
-    #respond_to do |format|
-    #  format.js { render :json => { :success => true } }
-    #end
   end
 end
 

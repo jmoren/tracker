@@ -1,11 +1,10 @@
 .title
-  = title_hlp(state)
-  = state
-.content.droppable
+  %p
+    = title_hlp(state)
+    == (#{tasks.size})
+%ul.content.droppable{:id => "list_#{state}"}
   %input{:type => 'hidden', :value => state, :name => 'state', :class => 'state'}
-  %ul{:id => "list_#{state}"}
-    - tasks.each do |task|
-      %li.left{:id => task.id, :class => "draggable"}
-        = render task
-    .clear
-
+  - tasks.each do |task|
+    %li.left{:id => task.id, :class => "draggable"}
+      = render task
+.clear      

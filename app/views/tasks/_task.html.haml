@@ -9,6 +9,6 @@
     .links.right
       = link_to 'Destroy', task, :method => :delete, :remote => true, :class => "delete_task"
     .info.left
-      = "ID # #{task.id}"
+      = link_to "ID # #{task.id}", task_url(task), :class => 'ajax', :rel => 'facebox'
     .clear
 

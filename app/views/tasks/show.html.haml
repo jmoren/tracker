@@ -1,27 +1,38 @@
 - title "Task"
 
-%p
-  %strong Task List:
-  = @task.task_list_id
-%p
-  %strong Project:
-  = @task.project_id
-%p
-  %strong Description:
-  = @task.description
-%p
-  %strong Status:
-  = @task.status
-%p
-  %strong User:
-  = @task.user_id
-%p
-  %strong Priority:
-  = @task.priority
+#task
+  %p
+    .left
+      %strong Project:
+      = link_to @task.project.name, @task.project
+    .right
+      .left
+        %strong User:
+        = @task.user.username
+      .left{:style => "margin-left: 10px"}
+        %strong Priority:
+        = @task.priority
+      .clear
+    .clear
+  %p
+    .left
+      %strong Description:
+    .right
+      %strong Status:
+      = @task.status
+    .clear
+    = simple_format @task.description, :class => 'text_area'
+  %ul#comments
+    %h4= "Comments #{@task.comments.size}"
+    - @task.comments.each do |comment|
+      = render 'tasks/comment'
+      
+  #comment_form
+    %h4= "#{current_user.username.titleize} you can add a comment here"
+    = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true do
+      = hidden_field 'comment[user]', :value => current_user.id
+      %p= text_area_tag 'comment[body]', nil,:class => "comment_input"
+      %p
+        = submit_tag "Submit"
+        == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();return false;"}
 
-%p
-  = link_to "Edit", edit_task_path(@task)
-  |
-  = link_to "Destroy", @task, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", tasks_path

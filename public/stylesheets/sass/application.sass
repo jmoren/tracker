@@ -20,7 +20,7 @@ a
   width: 90%
   margin: 0 auto
   background: white
-  padding: 20px 40px
+  padding: 20px 
   border: solid 1px black
   margin-top: 20px
 
@@ -69,7 +69,8 @@ a
   width: 30%
   margin: auto
   text-align: center
-  padding: 5px 10px
+  padding: 5px
+  font-size: 12px
   background-color: #ccffcc
   border: solid 1px #66cc66
   border-radius: 4px
@@ -103,24 +104,31 @@ a
   li.task_item
     width: 15% !important
     margin: 5px
-
-.panel
-  float: left
-  width: 30%
-  margin: 5px
-  .content
-    height: 600px
-    border: #ccc solid 1px
-    padding: 3px
-    ul
+#panel
+  .panel
+    float: left
+    min-width: 32%
+    margin: 7px 
+    ul.content
+      min-height: 600px
+      border: #ccc solid 1px
       list-style: none
-      margin: 0
+      margin: 0 auto
       padding: 0
-  .drophover
-    background: #fafafa
-  .title
-    color: #DD4B39
-    font-weight: bold
+      li
+        margin-left: 3px
+    .drophover
+      background: #fafafa
+    .title
+      text-align: center
+      padding-right: 5px
+      border: solid 1px #ccc
+      border-bottom: #fff solid 1px
+      border-top-left-radius: 5px
+      border-top-right-radius: 5px
+      color: #DD4B39
+      font-weight: bold
+      font-size: 17px
 
 .progress
   border: solid 1px #EEF296
@@ -163,7 +171,7 @@ a
     font-size: 10px
   &:hover
     border: solid #666 2px
-    margin: 5px
+    margin: 4px
     cursor: pointer
 #title
   font-size: 20px
@@ -260,3 +268,19 @@ input#email
 .ok_autocomplete
   background: #BDF2AE url(/images/ok.png) 98% center no-repeat
   border: solid 1px #66cc66 !important 
+
+#task
+  width: 600px
+  padding: 10px
+  #new_comment
+    width: 90%
+    margin: auto
+    .comment_input
+      width: 99%
+  ul#comments
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      .head
+      .body

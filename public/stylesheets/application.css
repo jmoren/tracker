@@ -17,7 +17,7 @@ a {
   width: 90%;
   margin: 0 auto;
   background: white;
-  padding: 20px 40px;
+  padding: 20px;
   border: solid 1px black;
   margin-top: 20px; }
 
@@ -64,7 +64,8 @@ a {
   width: 30%;
   margin: auto;
   text-align: center;
-  padding: 5px 10px;
+  padding: 5px;
+  font-size: 12px;
   background-color: #ccffcc;
   border: solid 1px #66cc66;
   border-radius: 4px; }
@@ -98,23 +99,30 @@ a {
   width: 15% !important;
   margin: 5px; }
 
-.panel {
+#panel .panel {
   float: left;
-  width: 30%;
-  margin: 5px; }
-  .panel .content {
-    height: 600px;
+  min-width: 32%;
+  margin: 7px; }
+  #panel .panel ul.content {
+    min-height: 600px;
     border: #cccccc solid 1px;
-    padding: 3px; }
-    .panel .content ul {
-      list-style: none;
-      margin: 0;
-      padding: 0; }
-  .panel .drophover {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0; }
+    #panel .panel ul.content li {
+      margin-left: 3px; }
+  #panel .panel .drophover {
     background: #fafafa; }
-  .panel .title {
+  #panel .panel .title {
+    text-align: center;
+    padding-right: 5px;
+    border: solid 1px #cccccc;
+    border-bottom: white solid 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     color: #dd4b39;
-    font-weight: bold; }
+    font-weight: bold;
+    font-size: 17px; }
 
 .progress {
   border: solid 1px #eef296;
@@ -162,7 +170,7 @@ a {
     font-size: 10px; }
   .task:hover {
     border: solid #666666 2px;
-    margin: 5px;
+    margin: 4px;
     cursor: pointer; }
 
 #title {
@@ -273,3 +281,16 @@ input#email {
 .ok_autocomplete {
   background: #bdf2ae url(/images/ok.png) 98% center no-repeat;
   border: solid 1px #66cc66 !important; }
+
+#task {
+  width: 600px;
+  padding: 10px; }
+  #task #new_comment {
+    width: 90%;
+    margin: auto; }
+    #task #new_comment .comment_input {
+      width: 99%; }
+  #task ul#comments {
+    margin: 0;
+    padding: 0;
+    list-style: none; }

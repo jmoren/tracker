@@ -1,2 +1,23 @@
-$('.flash').html("New state: <%= title_hlp(@task.state) %>").show();
-$("#<%= @dom %>").html("<%= escape_javascript(render :partial => 'tasks/tasks', :locals => { :tasks => @tasks , :state => @tasks.first.state}) %>");
+console.log("ESTADO NUEVO: <%= @state %>");
+console.log("ESTADO VIEJO: <%= @old_state %>");
+$("<%= @dom %>").html("<%= escape_javascript(render :partial => 'tasks/tasks', :locals => { :tasks => @tasks , :state => @state}) %>");
+$("<%= @old_dom %>").html("<%= escape_javascript(render :partial => 'tasks/tasks', :locals => { :tasks => @old_tasks , :state => @old_state}) %>");
+
+$('a[rel*=facebox]').facebox({        
+  loadingImage : '/images/loader.gif',        
+  closeImage   : '/images/closelabel.png',
+});
+$("<%= @dom %>").find('> .title').effect('highlight',{},5000);
+$( ".draggable" ).draggable({revert: 'invalid'});
+$( ".droppable" ).droppable({
+  tolerance: 'fit', 
+  hoverClass: 'drophover',
+  drop: function(event,ui){
+    var $item = ui.draggable;
+    var st = $(this).find('input.state').val();
+    var id = $(ui.draggable).attr('id');
+    $.post('/tasks/state?id=' + id + '&state=' + st);
+    //var $list = $("ul#list_" + st );
+    $item.remove();
+  }
+});
