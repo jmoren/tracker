@@ -1,5 +1,14 @@
-- title "Task"
-
+:javascript
+  $(function(){
+    $('#submit_button').click(function(){
+      if ($('#comment_input ').val() == ''){
+        $('#error').html('<span style="color: #D00;font-size:11px;font-weight:bold">Cant be blank this field!</span>');
+        return false;
+      }else{
+        $('#error').html('');
+      }
+    })
+  })
 #task
   %p
     .left
@@ -18,21 +27,23 @@
     .left
       %strong Description:
     .right
-      %strong Status:
-      = @task.status
+      %strong State:
+      = @task.state == 1 ? "To do" : @task.state == 2 ? "Progress" : "Done"
     .clear
     = simple_format @task.description, :class => 'text_area'
   %ul#comments
-    %h4= "Comments #{@task.comments.size}"
+    #counter
+      %h4= "Comments (#{@task.comments.size})"
     - @task.comments.each do |comment|
-      = render 'tasks/comment'
+      = render :partial => 'tasks/comment', :locals => {:comment => comment}
       
   #comment_form
-    %h4= "#{current_user.username.titleize} you can add a comment here"
-    = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true do
-      = hidden_field 'comment[user]', :value => current_user.id
-      %p= text_area_tag 'comment[body]', nil,:class => "comment_input"
-      %p
-        = submit_tag "Submit"
-        == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();return false;"}
+    %h4 You can add a comment here
+    = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true, :method => :post  do
+      #body
+        = text_area_tag 'body', nil, :id => "comment_input"
+        #error.right
+        #buttons_form
+          = submit_tag "Submit", :id => "submit_button"
+          == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();return false;"}
 

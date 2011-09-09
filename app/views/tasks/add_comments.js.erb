@@ -1,0 +1,4 @@
+$('#counter').html("<h4> Comments (<%= @task.comments.size %>)</h4>");
+$('ul#comments').append("<%= escape_javascript(render :partial => 'tasks/comment', :locals => {:comment => @comment})%>");
+$('#new_comment')[0].reset();
+$("#comment_<%= @comment.id %>").effect('highlight',{},4000);

@@ -1,4 +1,4 @@
-.task{:class => task.status}
+.task{:class => "#{task.status} #{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'}" }
   .task_description
     .label Description:
     %p= truncate(task.description, :length => 80 )
@@ -9,6 +9,6 @@
     .links.right
       = link_to 'Destroy', task, :method => :delete, :remote => true, :class => "delete_task"
     .info.left
-      = link_to "ID # #{task.id}", task_url(task), :class => 'ajax', :rel => 'facebox'
+      = link_to "ID # #{task.id}", task_url(task), :class => 'popup', :rel => "facebox"
     .clear
 

@@ -1,0 +1,4 @@
+$('#counter').html("<h4> Comments (<%= @task.comments.size %>)</h4>");
+$('li#comment_<%= @id %>').fadeOut('slow');
+$('li#comment_<%= @id %>').remove();
+

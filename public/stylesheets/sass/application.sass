@@ -117,6 +117,23 @@ a
       padding: 0
       li
         margin-left: 3px
+        .todo
+          border: solid 1px #ccc
+        .done
+          border: solid 1px #66cc66
+          background: #ccffcc url(/images/ok.png) 95% 8% no-repeat
+        .progress
+          border: solid 1px #EEF296
+          background: #EEF296
+        .commited
+          border: solid 1px #C8D4FA
+          background: #C8D4FA
+        .aproved
+          border: solid 1px #A4F56E
+          background: #A4F56E
+        .testing
+          border: solid 1px #DD4B39
+          background: #FACAC8
     .drophover
       background: #fafafa
     .title
@@ -129,26 +146,6 @@ a
       color: #DD4B39
       font-weight: bold
       font-size: 17px
-
-.progress
-  border: solid 1px #EEF296
-  background: #EEF296
-.commited
-  border: solid 1px #C8D4FA
-  background: #C8D4FA
-.aproved
-  border: solid 1px #A4F56E
-  background: #A4F56E
-.merged
-  border: solid 1px #ccc
-  background: #f1f1f1
-.created, .todo
-  border: solid 1px #ccc
-  background: #fff
-.testing
-  border: solid 1px #DD4B39
-  background: #FACAC8
-
 .task
   border-radius: 5px
   padding: 10px
@@ -170,7 +167,7 @@ a
     padding-top: 5px
     font-size: 10px
   &:hover
-    border: solid #666 2px
+    border: solid #666 2px !important
     margin: 4px
     cursor: pointer
 #title
@@ -273,14 +270,30 @@ input#email
   width: 600px
   padding: 10px
   #new_comment
-    width: 90%
+    width: 100%
     margin: auto
-    .comment_input
-      width: 99%
+    padding: 5px 3px
+    background: #f1f1f1
+    #body
+      width: 95%
+      margin: 0 auto
+      #comment_input
+        width: 99%
+        margin: 3px 0
+        background: #fff
+        border: solid #ccc 1px
+      #buttons_form
+        font-size: 12px
   ul#comments
     margin: 0
     padding: 0
     list-style: none
     li
+      margin: 5px 1px
+      border: solid 1px #ccc
+      padding: 3px
       .head
+        padding: 3px 5px
+        font-size: 11px
       .body
+        padding: 5px

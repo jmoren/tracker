@@ -5,6 +5,6 @@
 %ul.content.droppable{:id => "list_#{state}"}
   %input{:type => 'hidden', :value => state, :name => 'state', :class => 'state'}
   - tasks.each do |task|
-    %li.left{:id => task.id, :class => "draggable"}
+    %li.left{:id => task.id, :class => "draggable "}
       = render task
 .clear      

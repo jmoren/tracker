@@ -52,9 +52,20 @@ class TasksController < ApplicationController
       format.js
     end
   end
-  def add_comment
+  def add_comments
+    @task = Task.find(params[:id])
+    @comment = Comment.new(:user_id => current_user.id, :body => params[:body], :task_id => @task.id)
+    if @comment.save
+      @task.reload
+      render :add_comments
+    end
+    
   end
-  def remove_comment
+  def remove_comments
+    @task = Task.find(params[:id])
+    @comment = @task.comments.find(params[:comment])
+    @id = @comment.id
+    @comment.destroy
   end
   def move_state
     @task = Task.find(params[:id])
