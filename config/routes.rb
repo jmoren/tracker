@@ -5,6 +5,7 @@ Tracker::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   post '/tasks/state' => "tasks#move_state"
   post '/collaborator/update' => 'projects#update_collaborator' 
+  post '/tasks/update/status' => 'tasks#update_status' 
   resources :sessions
   resources :users
   resources :tasks, :only => [:show, :edit, :update, :destroy] do

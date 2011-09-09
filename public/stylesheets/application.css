@@ -110,18 +110,6 @@ a {
   border: solid 1px #eef296;
   background: #eef296; }
 
-.commited {
-  border: solid 1px #c8d4fa;
-  background: #c8d4fa; }
-
-.aproved {
-  border: solid 1px #a4f56e;
-  background: #a4f56e; }
-
-.testing {
-  border: solid 1px #dd4b39;
-  background: #facac8; }
-
 #panel .panel {
   float: left;
   min-width: 32%;
@@ -150,19 +138,26 @@ a {
 .task {
   border-radius: 5px;
   padding: 10px;
-  height: 125px;
-  width: 130px;
+  min-height: 150px;
+  width: 140px;
   margin: 5px;
   font-size: 11px; }
   .task .label {
     display: inline;
     font-weight: bold;
-    margin: 0; }
+    margin: 0;
+    width: 40px; }
   .task .task_description {
     height: 85px; }
-  .task .task_status {
+  .task .task_status, .task .priority {
     color: black;
     margin: 3px 0; }
+  .task .current_status {
+    float: left; }
+    .task .current_status form select {
+      font-size: 11px !important;
+      margin: 0;
+      padding: 0; }
   .task .footer {
     border-top: #222222 1px solid;
     padding-top: 5px;

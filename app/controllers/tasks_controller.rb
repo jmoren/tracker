@@ -67,6 +67,7 @@ class TasksController < ApplicationController
     @id = @comment.id
     @comment.destroy
   end
+
   def move_state
     @task = Task.find(params[:id])
     @task_list = @task.task_list
@@ -81,6 +82,12 @@ class TasksController < ApplicationController
     
     @old_tasks = Task.by_state(@old_state, @task_list)
     @tasks = Task.by_state(params[:state],@task_list)
+  end
+  def update_status
+    id ||= params[:id].split('_')[1] if params[:id]
+    @task = Task.find(id) 
+    @task.update_status(params[:value])
+    render :text => @task.status
   end
 end
 
