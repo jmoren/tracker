@@ -6,7 +6,7 @@
       on
       = l comment.created_at, :format => '%A, %d of %B %Y'
     .right
-      = link_to image_tag('minus.png'), comments_remove_task_path(comment.task, :comment => comment.id), :remote => true, :method => :post
+      = link_to image_tag('minus.png', 'original-title' => 'Delete this comment', :class => 'tipsy-s'), comments_remove_task_path(comment.task, :comment => comment.id), :remote => true, :method => :post
     .clear
   .body
     %em= comment.body

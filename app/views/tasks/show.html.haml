@@ -1,5 +1,6 @@
 :javascript
   $(function(){
+    $('.tipsy-s').tipsy({gravity: 's', live: true});
     $('#submit_button').click(function(){
       if ($('#comment_input ').val() == ''){
         $('#error').html('<span style="color: #D00;font-size:11px;font-weight:bold">Cant be blank this field!</span>');
@@ -42,12 +43,12 @@
       = render :partial => 'tasks/comment', :locals => {:comment => comment}
       
   #comment_form
-    %h4 You can add a comment here
+    %h4 Comment this task
     = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true, :method => :post  do
       #body
         = text_area_tag 'body', nil, :id => "comment_input"
         #error.right
         #buttons_form
           = submit_tag "Submit", :id => "submit_button"
-          == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();return false;"}
+          == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();$('#error').html('');return false;"}
 

@@ -25,13 +25,13 @@
 %p
   = simple_format @task_list.comments, :class => "text_area"
 .task_list_button
-  = link_to "Panel", task_list_tasks_path(@task_list)
+  = link_to "Panel", task_list_tasks_path(@task_list), 'original-title' => "You can manage your task here", :class => 'tipsy-s'
 .task_list_button
-  = link_to "New Task", "#", :id => "new_task_link"
+  = link_to "New Task", "#", :id => "new_task_link", 'original-title' => "Create a new task", :class => 'tipsy-s'
 .task_list_button
-  = link_to "Edit", edit_task_list_path(@task_list)
+  = link_to "Edit", edit_task_list_path(@task_list), 'original-title' => "Edit your task list", :class => 'tipsy-s'
 .task_list_button
-  = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete
+  = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete, 'original-title' => "Delete this task list and its tasks", :class => 'tipsy-s'
 .clear
 #task_form{:style => "display:none", :class => "text_area"}
   = render :partial => 'tasks/form', :locals => {:task => @task_list.tasks.new }
