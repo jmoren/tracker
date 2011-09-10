@@ -1,4 +1,9 @@
 .task{:class => "#{task.status} #{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'}" }
+  .assigned
+    .label.left{:style => "width: 55px"} Assigned:
+    .current_user.left{:id => "user_#{task.id}"}
+      = task.assigned.nil? ? "Edit this field" : task.assigned.username
+    .clear
   .task_description
     .label Description:
     %p= truncate(task.description, :length => 80 )

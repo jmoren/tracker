@@ -13,6 +13,22 @@ class Project < ActiveRecord::Base
   def is_collaborator?(user)
     self.collaborators.collect(&:user).include?(user) || self.user == user
   end
+  def all_members
+    @members = []
+    @members << self.user
+    self.collaborators.each do |c|
+      @members << c.user
+    end
+    return @members
+  end
+  def all_members_formatted
+    members = ""
+    members += '\'' + self.user.username + '\':\'' + self.user.username + '\','
+    self.collaborators.each do |c|
+      members += '\'' + c.user.username + '\':\'' + c.user.username + '\','
+    end
+    return members
+  end
 private 
   def dates
     if (self.start_date && self.end_date.blank?) || (self.end_date && self.start_date.blank?)

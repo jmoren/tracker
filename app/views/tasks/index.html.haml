@@ -13,12 +13,12 @@
         var st = $(this).find('input.state').val();
         var id = $(ui.draggable).attr('id');
         $.post('/tasks/state?id=' + id + '&state=' + st);
-        $item.remove();
+        $item.fadeOut('slow').remove();
       }
     });
     $('.task').live('click',function(){
       $('.current_status').editable('/tasks/update/status',{
-        data      : " { 'pending':'pending','working':'working','stacked':'stacked','aproved':'aproved','abandoned':'abandoned' }",
+        data      : " { 'pending':'pending','working':'working','locked':'locked','aproved':'aproved','abandoned':'abandoned' }",
         type      : 'select',
         onblur    : 'submit',
         tooltip   : 'Click to edit...',
@@ -27,6 +27,18 @@
           $(this).parent().parent().after().html("<div class=\" " + value + "\"><div class=\"label left\" style=\"width: 50px\">Status:</div> " 
                                             +"<div class=\"current_status left\" id=\"status_7\">"
                                             + value + "</div><div class=\"clear\"></div></div>");
+          console.log(this);
+          console.log(value);
+          console.log(settings);
+        }
+      });
+      $('.current_user').editable('/tasks/update/assigned',{
+        data      : "{#{ @task_list.project.all_members_formatted}}",
+        type      : 'select',
+        onblur    : 'submit',
+        tooltip   : 'Click to edit...',
+        indicator : '<img style="float:left" src="/images/loading.gif">',
+        callback : function(value, settings) {
           console.log(this);
           console.log(value);
           console.log(settings);

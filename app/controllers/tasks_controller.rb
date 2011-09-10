@@ -44,11 +44,11 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
-    @id = @task.id
-    @task_list = @task.task_list
+    @dom = @task.state == 1 ? '#todo' : @task.state == 2 ? '#progress' : '#done'
+    @state = @task.state
+    @tasks = Task.by_state(@task.state, @task.task_list)
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to @task_list, :notice => "Successfully destroyed task." }
       format.js
     end
   end
@@ -88,6 +88,13 @@ class TasksController < ApplicationController
     @task = Task.find(id) 
     @task.update_status(params[:value])
     render :text => @task.status
+  end
+  def update_assigned
+    id ||= params[:id].split('_')[1] if params[:id]
+    @task = Task.find(id) 
+    user = User.find_by_username(params[:value])
+    @task.update_assigned(user.id)
+    render :text => @task.assigned.username
   end
 end
 

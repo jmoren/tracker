@@ -6,6 +6,8 @@
     = f.select :status, Task::STATUS
     = f.label :priority
     = f.select :priority, Task::PRIORITY
+    = f.label :assigned_id
+    = f.select :assigned_id, @collaborators.collect{|c| [c.username, c.id]}, :prompt => true 
   %p  
     = f.label :description
     %br

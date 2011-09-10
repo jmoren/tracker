@@ -112,10 +112,10 @@ a {
 
 #panel .panel {
   float: left;
-  min-width: 32%;
+  width: 32%;
   margin: 7px; }
   #panel .panel ul.content {
-    min-height: 600px;
+    min-height: 800px;
     border: #cccccc solid 1px;
     list-style: none;
     margin: 0 auto;
@@ -152,9 +152,9 @@ a {
   .task .task_status, .task .priority {
     color: black;
     margin: 3px 0; }
-  .task .current_status {
+  .task .current_status, .task .current_user {
     float: left; }
-    .task .current_status form select {
+    .task .current_status form select, .task .current_user form select {
       font-size: 11px !important;
       margin: 0;
       padding: 0; }

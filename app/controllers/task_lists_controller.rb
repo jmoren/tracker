@@ -6,6 +6,7 @@ class TaskListsController < ApplicationController
   def show
     @task_list = TaskList.find(params[:id])
     @tasks = @task_list.tasks
+    @collaborators = @task_list.project.all_members
   end
 
   def new

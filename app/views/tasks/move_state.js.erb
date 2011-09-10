@@ -18,6 +18,6 @@ $( ".droppable" ).droppable({
     var id = $(ui.draggable).attr('id');
     $.post('/tasks/state?id=' + id + '&state=' + st);
     //var $list = $("ul#list_" + st );
-    $item.remove();
+    $item.fadeOut('slow').remove();
   }
 });
