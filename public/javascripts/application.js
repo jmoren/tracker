@@ -1,10 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(function(){
-  $('.tipsy-n').tipsy({gravity: 'n'});
   $('.tipsy-s').tipsy({gravity: 's'});
-  $('.tipsy-w').tipsy({gravity: 'w'});
-  $('.tipsy-e').tipsy({gravity: 'e'});
   $('.delete_task').click(function(){
     var p = $(this).attr('href')
     id = p.split('/')[2]

@@ -1,6 +1,7 @@
 - title "Project #{@project.name}"
 :javascript
   $(function(){
+    $('.focus-example').tipsy({trigger: 'focus'});    
     $('#tabs').tabs();
     $('.remote_link').click(function(){
       $('#loading').html("<img src='/images/loading.gif'>");
@@ -65,8 +66,8 @@
     .tab_content
       - if current_user.is_admin_or_owner?(@project)
         = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
-          = text_field_tag :email, nil, :size => 30
-          %select{:id => "role", :name => "role"}
+          = text_field_tag :email, nil, :size => 30, 'original-title' => "Start typing the email, and check the list", :class => 'focus-example'
+          %select{:id => "role", :name => "role", 'original-title' => "Select a role for this user", :class =>'focus-example' }
             - Collaborator::ROLE.each do |r|
               %option{:value => r}
                 = r
