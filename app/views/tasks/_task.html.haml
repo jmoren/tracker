@@ -22,6 +22,6 @@
     .links.right
       = link_to 'Destroy', task, :method => :delete, :remote => true, :class => "delete_task"
     .info.left
-      = link_to "ID # #{task.id}", task_url(task), :class => 'popup', :rel => "facebox"
+      = link_to "ID # #{task.id}", task_url(task), :class => 'popup', :rel => "facebox", 'original-title' => "View more details", :class => 'tipsy-s'
     .clear
 
