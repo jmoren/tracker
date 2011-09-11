@@ -56,7 +56,6 @@ class ProjectsController < ApplicationController
     if current_user.is_admin_or_owner?(current_project) || collaborator.user == current_user
       @id = collaborator.id
       if collaborator
-        sleep 3
         @i_am_out = true if current_user == collaborator.user
         collaborator.destroy
         @text ="Se elimino el colaborador"
@@ -77,7 +76,6 @@ class ProjectsController < ApplicationController
   
   def update_collaborator
     id ||= params[:id].split('_')[1] if params[:id]
-    sleep 3
     @collaborator = Collaborator.find(id)
     if @collaborator.update_field('role',params[:value])
       text = "Collaborator #{@collaborator.user.username} was successfully updated"
@@ -87,7 +85,6 @@ class ProjectsController < ApplicationController
     render :text => @collaborator.role
   end
   def get_users
-    sleep 1
     @users = User.where('email LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) 
     respond_to do |format|
       format.js {render :json => @users.collect{|u| [:id => u.id, :label => u.email, :value => u.email ]}.flatten! }

@@ -18,19 +18,23 @@
       $('#select_rol').attr('disabled',true);
       $('#loading').html('');
     });
-    $('#email').change(function(){
-      if (!isValidEmailAddress($(this).val())) {
-        $('#email').addClass("error_autocomplete");
-        $('#loading').html("<span style='color:#D00'> This is not a valid email.</span>");
-        $('#submit_col').attr('disabled',true);     
-        $('#select_rol').attr('disabled',true); 
-      }else{
-        $.getJSON('/projects/'+"#{ @project.name}" +'/get_users?term=' + $(this).val() , function(data){if (data == null) { 
+    $('input#email').keyup(function(){
+      if ($(this).val() != ''){
+        if (!isValidEmailAddress($(this).val())) {
           $('#email').addClass("error_autocomplete");
-          $('#loading').html("<span style='color:#D00'> This user doesn't exist.</span>");
-          $('#submit_col').attr('disabled',true); 
+          $('#loading').html("<span style='color:#D00'> This is not a valid email.</span>");
+          $('#submit_col').attr('disabled',true);     
           $('#select_rol').attr('disabled',true); 
-        }});     
+        }else{
+          $.getJSON('/projects/'+'#{ @project.name.downcase}' +'/get_users?term=' + $(this).val() , function(data){
+            if (data == null) { 
+              $('#email').addClass("error_autocomplete");
+              $('#loading').html("<span style='color:#D00'> This user doesn't exist.</span>");
+              $('#submit_col').attr('disabled',true); 
+              $('#select_rol').attr('disabled',true); 
+            }
+          });
+        }
       }
     });
     $( "#email" ).autocomplete({
@@ -47,7 +51,8 @@
           $('#email').removeClass("error_autocomplete");
           $('#email').addClass("ok_autocomplete");
           $('#submit_col').attr('disabled',false);
-          $('#select_rol').attr('disabled',false); 
+          $('#select_rol').attr('disabled',false);
+          $('#loading').html(''); 
         }
       }
     });
