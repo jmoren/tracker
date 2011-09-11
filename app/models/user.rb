@@ -24,7 +24,15 @@ class User < ActiveRecord::Base
     user = find_by_username(login) || find_by_email(login)
     return user if user && user.password_hash == user.encrypt_password(pass)
   end
-
+  def my_projects
+    projects = []
+    projects << Project.where(:user_id => self.id)
+    col = self.collaborators.where(:user_id => self.id)
+    col.each do |c|
+      projects << c.project
+    end
+    return projects.flatten!
+  end
   def encrypt_password(pass)
     BCrypt::Engine.hash_secret(pass, password_salt)
   end

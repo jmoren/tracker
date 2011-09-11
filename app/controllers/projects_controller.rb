@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_filter :allow_members, :except => [:new, :create, :index, :update_collaborator]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
   def index
-    @projects = Project.all
+    @projects = current_user.my_projects
   end
 
   def show

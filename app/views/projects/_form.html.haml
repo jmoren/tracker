@@ -1,3 +1,12 @@
+:javascript
+  $(function(){
+    $('.date').datepicker({
+      dateFormat: 'DD, d MM, yy',
+      showAnim: 'slideDown',
+      changeMonth: true,
+      changeYear: true
+    });
+  })
 #project_form{:style => "width:80%;margin:auto;padding: 10px; border: solid 1px #ccc"}
   %h1 New Project
   = form_for @project do |f|
@@ -12,14 +21,14 @@
     .right{:style => "width: 50%;"}
       %p
         = f.label :start_date
-        = f.date_select :start_date
+        = f.text_field :start_date, :value => @project.start_date ? (l @project.start_date, :format => '%A, %d %B, %Y') : nil,:class => 'date', :size => 30
       %p
         = f.label :end_date
-        = f.date_select :end_date
+        = f.text_field :end_date, :value => @project.end_date ? (l @project.end_date, :format => '%A, %d %B, %Y') : nil, :class => 'date', :size => 30
     .clear
     %p
       = f.label :description
       %br
-      = f.text_area :description, :rows => 5, :cols => 125
+      = f.text_area :description, :rows => 5, :cols => 110
     %p
       = f.submit
