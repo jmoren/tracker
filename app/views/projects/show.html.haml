@@ -1,6 +1,10 @@
 - title "Project #{@project.name}"
 :javascript
   $(function(){
+    function isValidEmailAddress(emailAddress) {
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      return pattern.test(emailAddress);
+    };
     $('.focus-example').tipsy({trigger: 'focus'});    
     $('#tabs').tabs();
     $('.remote_link').click(function(){
@@ -11,7 +15,23 @@
       $('#email').removeClass("error_autocomplete");
       $('#email').removeClass("ok_autocomplete");
       $('#submit_col').attr('disabled',true);
+      $('#select_rol').attr('disabled',true);
       $('#loading').html('');
+    });
+    $('#email').change(function(){
+      if (!isValidEmailAddress($(this).val())) {
+        $('#email').addClass("error_autocomplete");
+        $('#loading').html("<span style='color:#D00'> This is not a valid email.</span>");
+        $('#submit_col').attr('disabled',true);     
+        $('#select_rol').attr('disabled',true); 
+      }else{
+        $.getJSON('/projects/'+"#{ @project.name}" +'/get_users?term=' + $(this).val() , function(data){if (data == null) { 
+          $('#email').addClass("error_autocomplete");
+          $('#loading').html("<span style='color:#D00'> This user doesn't exist.</span>");
+          $('#submit_col').attr('disabled',true); 
+          $('#select_rol').attr('disabled',true); 
+        }});     
+      }
     });
     $( "#email" ).autocomplete({
       source: "#{get_users_project_path(@project)}",
@@ -21,11 +41,13 @@
           $('#email').addClass("error_autocomplete");
           $('#loading').html("<span style='color:#D00'> This user is the project owner, select another user.</span>");
           $('#submit_col').attr('disabled',true);
+          $('#select_rol').attr('disabled',true); 
         }
         else{
           $('#email').removeClass("error_autocomplete");
           $('#email').addClass("ok_autocomplete");
           $('#submit_col').attr('disabled',false);
+          $('#select_rol').attr('disabled',false); 
         }
       }
     });
@@ -67,7 +89,7 @@
       - if current_user.is_admin_or_owner?(@project)
         = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
           = text_field_tag :email, nil, :size => 30, 'original-title' => "Start typing the email, and check the list", :class => 'focus-example'
-          %select{:id => "role", :name => "role", 'original-title' => "Select a role for this user", :class =>'focus-example' }
+          %select{:id => "role", :name => "role", 'original-title' => "Select a role for this user", :class =>'focus-example', :id => 'select_rol', :disabled => 'disabled' }
             - Collaborator::ROLE.each do |r|
               %option{:value => r}
                 = r
