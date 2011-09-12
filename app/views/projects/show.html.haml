@@ -19,7 +19,7 @@
       $('#loading').html('');
     });
     $('input#email').keyup(function(){
-      if ($(this).val() != ''){
+      if ($(this).val() != '' && $(this).val().length > 5){
         if (!isValidEmailAddress($(this).val())) {
           $('#email').addClass("error_autocomplete");
           $('#loading').html("<span style='color:#D00'> This is not a valid email.</span>");
@@ -35,6 +35,9 @@
             }
           });
         }
+      }else{
+        $('#loading').html('');
+        $('#email').removeClass('error_autocomplete');
       }
     });
     $( "#email" ).autocomplete({
