@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
   belongs_to :user
-  has_many :collaborators
-  has_many :task_lists
+  has_many :collaborators, :dependent => :destroy
+  has_many :task_lists, :dependent => :destroy
   attr_accessible :name, :description, :start_date, :end_date, :status, :user_id
 
   validate :name, :description, :status, :presence => true

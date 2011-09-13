@@ -1,3 +1,12 @@
+:javascript
+  $(function(){
+    $('.date').datepicker({
+      dateFormat: 'DD, d MM, yy',
+      showAnim: 'slideDown',
+      changeMonth: true,
+      changeYear: true
+    });
+  })
 = form_for @task_list do |f|
   = f.error_messages
   - if @task_list.new_record?
@@ -8,6 +17,9 @@
   %p
     = f.label :status
     = f.select :status, TaskList::STATUS
+  %p
+    = f.label :end_date
+    = f.text_field :end_date, :size => 20, :class => 'date'
   %p
     = f.label :commnets
     %br

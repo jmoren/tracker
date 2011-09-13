@@ -2,7 +2,7 @@
   .head
     .left
       Created by 
-      %strong= comment.user.username
+      %strong= comment.user.try(:username) || "user deleted"
       on
       = l comment.created_at, :format => '%A, %d of %B %Y'
     .right

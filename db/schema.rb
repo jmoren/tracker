@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910024505) do
+ActiveRecord::Schema.define(:version => 20110913120250) do
 
   create_table "collaborators", :force => true do |t|
     t.integer  "user_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110910024505) do
     t.string   "status"
     t.text     "comments"
     t.integer  "user_id"
+    t.date     "end_date"
   end
 
   create_table "tasks", :force => true do |t|
