@@ -11,6 +11,9 @@ class Task < ActiveRecord::Base
 
   scope :by_state, lambda{|state, tl| where(:state => state, :task_list_id => tl.id)}
 
+  def update_state(state)
+    self.update_attributes(:state => state)
+  end
   def update_field(field, value)
     if field == 'assigned'
       field = 'assigned_id'

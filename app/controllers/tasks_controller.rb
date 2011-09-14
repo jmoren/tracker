@@ -83,6 +83,7 @@ class TasksController < ApplicationController
     @old_tasks = Task.by_state(@old_state, @task_list)
     @tasks = Task.by_state(params[:state],@task_list)
   end
+
   def update_in_place
     if params[:id]
       p = params[:id].split('_')

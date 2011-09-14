@@ -27,6 +27,7 @@ $(function(){
     plugin : function(settings, original) {
         $('textarea', this).autogrow(settings.autogrow);
     }
-})
+  });
+
 });
 
