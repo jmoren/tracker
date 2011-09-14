@@ -103,7 +103,12 @@ class TasksController < ApplicationController
       render :text => msg
     end
   end
-
+  def update_task
+    @task = Task.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
 
 end
 

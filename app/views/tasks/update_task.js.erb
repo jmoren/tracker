@@ -1,0 +1,20 @@
+$("li#<%= @task.id %>").html("<%= escape_javascript(render @task) %>");
+$('a[rel*=facebox]').facebox({
+  loadingImage : '/images/loader.gif',
+  closeImage   : '/images/closelabel.png',
+});
+$("<%= @dom %>").find('> .title').effect('highlight',{},5000);
+$( ".draggable" ).draggable({revert: 'invalid'});
+$( ".droppable" ).droppable({
+  tolerance: 'fit',
+  hoverClass: 'drophover',
+  drop: function(event,ui){
+    var $item = ui.draggable;
+    var st = $(this).find('input.state').val();
+    var id = $(ui.draggable).attr('id');
+    $.post('/tasks/state?id=' + id + '&state=' + st);
+    //var $list = $("ul#list_" + st );
+    $item.fadeOut('slow').remove();
+  }
+});
+
