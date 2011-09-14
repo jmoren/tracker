@@ -59,7 +59,7 @@ class TasksController < ApplicationController
       @task.reload
       render :add_comments
     end
-    
+
   end
   def remove_comments
     @task = Task.find(params[:id])
@@ -71,7 +71,7 @@ class TasksController < ApplicationController
   def move_state
     @task = Task.find(params[:id])
     @task_list = @task.task_list
-    
+
 
     @old_state = @task.state
     @old_dom = @old_state == 1 ? '#todo' : @old_state == 2 ? '#progress' : '#done'
@@ -79,22 +79,30 @@ class TasksController < ApplicationController
     @task.update_state(params[:state])
     @state = @task.state
     @dom = params[:state] == '1' ? '#todo' : params[:state] == '2' ? '#progress' : '#done'
-    
+
     @old_tasks = Task.by_state(@old_state, @task_list)
     @tasks = Task.by_state(params[:state],@task_list)
   end
-  def update_status
-    id ||= params[:id].split('_')[1] if params[:id]
-    @task = Task.find(id) 
-    @task.update_status(params[:value])
-    render :text => @task.status
+  def update_in_place
+    if params[:id]
+      p = params[:id].split('_')
+      field,id = p[0],p[1]
+      if field == 'assigned'
+        value = User.find_by_username(params[:value])
+      else
+        value = params[:value]
+      end
+      @task = Task.find(id)
+      @task.update_field(field, value)
+      if field == 'assigned'
+        msg = @task.assigned.username
+      else
+        msg = @task.send(field)
+      end
+      render :text => msg
+    end
   end
-  def update_assigned
-    id ||= params[:id].split('_')[1] if params[:id]
-    @task = Task.find(id) 
-    user = User.find_by_username(params[:value])
-    @task.update_assigned(user.id)
-    render :text => @task.assigned.username
-  end
+
+
 end
 

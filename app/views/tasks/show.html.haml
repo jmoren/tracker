@@ -8,40 +8,86 @@
       }else{
         $('#error').html('');
       }
-    })
-  })
+    });
+    $('.current_description').editable('/tasks/update_in_place',{
+      indicator : '<img style="float:left" src="/images/loading.gif">',
+      type      : "autogrow",
+      submit    : 'OK',
+      cancel    : 'cancel',
+      tooltip   : "Click to edit...",
+      onblur    : "ignore",
+      cols      : 58,
+      event     : 'dblclick',
+      autogrow : {
+        lineHeight : 16,
+        minHeight  : 32
+      }
+    });
+    $('.current_status').editable('/tasks/update_in_place',{
+      data      : " { 'pending':'pending','working':'working','locked':'locked','aproved':'aproved','abandoned':'abandoned' }",
+      type      : 'select',
+      onblur    : 'submit',
+      tooltip   : 'Click to edit...',
+      event     : 'dblclick',
+      indicator : '<img style="text-align:center" src="/images/loading.gif">'
+    });
+    $('.current_priority').editable('/tasks/update_in_place',{
+      data      : " { 'hight':'high','medium':'medium','low':'low','unknown':'unknown' }",
+      type      : 'select',
+      onblur    : 'submit',
+      tooltip   : 'Click to edit...',
+      event     : 'dblclick',
+      indicator : '<img style="text-align:center" src="/images/loading.gif">'
+    });
+
+    $('.current_assigned').editable('/tasks/update_in_place',{
+      data      : "{#{ @task.task_list.project.all_members_formatted}}",
+      type      : 'select',
+      onblur    : 'submit',
+      event     : 'dblclick',
+      tooltip   : 'Click to edit...',
+      indicator : '<img style="text-align:center" src="/images/loading.gif">'
+    });
+  });
 #task
   %p
     .left
       %strong Project:
       = link_to @task.project.name, @task.project
     .right{:style => "text-align: left"}
-      .left{:style => "width: 120px"}
-        %strong User:
-        = @task.user.try(:username) || "user deleted"
-      .left{:style => "margin: 0 5px;width: 120px"}
-        %strong Priority:
-        = @task.priority
-      .clear
+      .left{:style => "width: 120px;margin: 0 5px;padding: 2px"}
+        .label.left{:style => "width: 50px;"} State:
+        .left{:style => "width: 70px"}= @task.state == 1 ? "To do" : @task.state == 2 ? "Progress" : "Done"
+      .left{:style => "margin: 0 5px;width: 140px;padding: 2px"}
+        .label.left{:style => "width: 50px"} Status:
+        .current_status.left{:id => "status_#{@task.id}", :style => "text-align:right;width: 80px"}
+          = @task.status
+      .left{:style => "margin: 0 5px;width: 140px;padding: 2px"}
+        .label.left{:style => "width: 50px;"} Priority:
+        .current_priority.left{:id => "priority_#{@task.id}", :style => "text-align:right;width: 80px"}
+          = @task.priority
     .clear
   %p
     .left
       %strong Description:
     .right{:style => "text-align: left"}
-      .left{:style => "width: 120px"}
-        %strong State:
-        = @task.state == 1 ? "To do" : @task.state == 2 ? "Progress" : "Done"
-      .left{:style => "margin:0 5px;width: 120px"}
-        %strong Status:
-        = @task.status
+      .left{:style => "width: 140px;margin: 0 5px;padding: 2px"}
+        .label.left{:style => "width: 50px;"} User:
+        .left{ :style => "text-align:right;width: 70px" }= @task.user.try(:username) || "---"
+      .left{:style => "width: 140px;margin: 0 5px;padding: 2px"}
+        .label.left{:style => "width: 70px"} Assigned:
+        .current_assigned.left{:id => "assigned_#{@task.id}", :style => "text-align:right;width: 70px"}
+          = @task.assigned.try(:username) || "---"
+      .clear
     .clear
-    = simple_format @task.description, :class => 'text_area'
+    %p{:class => 'current_description text_area', :id => "description_#{@task.id}"}
+      = @task.description
   %ul#comments
     #counter
       %h4= "Comments (#{@task.comments.size})"
     - @task.comments.each do |comment|
       = render :partial => 'tasks/comment', :locals => {:comment => comment}
-      
+
   #comment_form
     %h4 Comment this task
     = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true, :method => :post  do

@@ -20,7 +20,7 @@ a
   width: 90%
   margin: 0 auto
   background: white
-  padding: 20px 
+  padding: 20px
   border: solid 1px black
   margin-top: 20px
 
@@ -86,10 +86,10 @@ a
     margin: 5px
     float: left
     &:hover
-      background: #4183C4 
+      background: #4183C4
       //background: #DD4B39
       //border: solid 1px #DD4B39
-      border: solid 1px blue 
+      border: solid 1px blue
       color: #fff
 .left
   float: left
@@ -116,7 +116,7 @@ a
   .panel
     float: left
     width: 32%
-    margin: 7px 
+    margin: 7px
     ul.content
       min-height: 800px
       border: #ccc solid 1px
@@ -158,13 +158,6 @@ a
     .locked
     .abandoned
     .aproved
-  .current_status, .current_user
-    float: left
-    form
-      select
-        font-size: 11px !important
-        margin: 0
-        padding: 0
   .footer
     border-top: #222 1px solid
     padding-top: 5px
@@ -260,16 +253,23 @@ input#email
   border: solid 1px #ccc
   border-radius: 3px
   font-size: 12px
-.ui-autocomplete-loading 
+.ui-autocomplete-loading
   background: white url('/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat
 .error_autocomplete
   background: #F2B6C5 url(/images/error.png) 98% center no-repeat
   border: solid 1px #DD4B39 !important
 .ok_autocomplete
   background: #BDF2AE url(/images/ok.png) 98% center no-repeat
-  border: solid 1px #66cc66 !important 
+  border: solid 1px #66cc66 !important
 
 #task
+  .current_status, .current_assigned,
+  .current_priority, .current_description
+    form
+      select
+        font-size: 11px !important
+        margin: 0
+        padding: 0
   width: 600px
   padding: 10px
   #new_comment
@@ -300,3 +300,4 @@ input#email
         font-size: 11px
       .body
         padding: 5px
+

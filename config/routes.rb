@@ -4,17 +4,16 @@ Tracker::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   post '/tasks/state' => "tasks#move_state"
-  post '/collaborator/update' => 'projects#update_collaborator' 
-  post '/tasks/update/status' => 'tasks#update_status' 
-  post '/tasks/update/assigned' => 'tasks#update_assigned' 
+  post '/collaborator/update' => 'projects#update_collaborator'
+  post '/tasks/update_in_place' => 'tasks#update_in_place'
   resources :sessions
   resources :users
   resources :tasks, :only => [:show, :edit, :update, :destroy] do
     member do
       post 'comments/add' => "tasks#add_comments"
       post 'comments/remove' => "tasks#remove_comments"
-    end  
-  end  
+    end
+  end
   resources :task_lists do
     resources :tasks, :only => [:index,:new, :create]
   end

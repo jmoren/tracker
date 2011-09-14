@@ -1,12 +1,12 @@
 :javascript
   $(function() {
-    $('a[rel*=facebox]').facebox({        
-      loadingImage : '/images/loader.gif',        
+    $('a[rel*=facebox]').facebox({
+      loadingImage : '/images/loader.gif',
       closeImage   : '/images/closelabel.png',
     });
     $( ".draggable" ).draggable({revert: 'invalid'});
     $( ".droppable" ).droppable({
-      tolerance: 'fit', 
+      tolerance: 'fit',
       hoverClass: 'drophover',
       drop: function(event,ui){
         var $item = ui.draggable;
@@ -16,35 +16,6 @@
         $item.fadeOut('slow').remove();
       }
     });
-    $('.task').live('click',function(){
-      $('.current_status').editable('/tasks/update/status',{
-        data      : " { 'pending':'pending','working':'working','locked':'locked','aproved':'aproved','abandoned':'abandoned' }",
-        type      : 'select',
-        onblur    : 'submit',
-        tooltip   : 'Click to edit...',
-        indicator : '<img style="float:left" src="/images/loading.gif">',
-        callback : function(value, settings) {
-          $(this).parent().parent().after().html("<div class=\" " + value + "\"><div class=\"label left\" style=\"width: 50px\">Status:</div> " 
-                                            +"<div class=\"current_status left\" id=\"status_7\">"
-                                            + value + "</div><div class=\"clear\"></div></div>");
-          console.log(this);
-          console.log(value);
-          console.log(settings);
-        }
-      });
-      $('.current_user').editable('/tasks/update/assigned',{
-        data      : "{#{ @task_list.project.all_members_formatted}}",
-        type      : 'select',
-        onblur    : 'submit',
-        tooltip   : 'Click to edit...',
-        indicator : '<img style="float:left" src="/images/loading.gif">',
-        callback : function(value, settings) {
-          console.log(this);
-          console.log(value);
-          console.log(settings);
-        }
-      });
-    });
   });
 #title
   == Task list: #{@task_list.title.titleize}
@@ -52,7 +23,7 @@
   Created on
   %strong
     = l @task_list.created_at, :format => '%A, %d %B of %Y'
-  by 
+  by
   = @task_list.user.username
 .clear
 .flash.left{:style => "display:none"}

@@ -152,12 +152,6 @@ a {
   .task .task_status, .task .priority {
     color: black;
     margin: 3px 0; }
-  .task .current_status, .task .current_user {
-    float: left; }
-    .task .current_status form select, .task .current_user form select {
-      font-size: 11px !important;
-      margin: 0;
-      padding: 0; }
   .task .footer {
     border-top: #222222 1px solid;
     padding-top: 5px;
@@ -279,6 +273,11 @@ input#email {
 #task {
   width: 600px;
   padding: 10px; }
+  #task .current_status form select, #task .current_assigned form select,
+  #task .current_priority form select, #task .current_description form select {
+    font-size: 11px !important;
+    margin: 0;
+    padding: 0; }
   #task #new_comment {
     width: 100%;
     margin: auto;
