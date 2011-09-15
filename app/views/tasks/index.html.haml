@@ -35,11 +35,11 @@
   = link_to "Back to List", @task_list
 .clear
 #panel
-  #todo.panel.droppable
+  #todo.panel
     = render :partial =>"tasks", :locals => { :tasks => @todo, :state => 1 }
-  #progress.panel.droppable
+  #progress.panel
     = render :partial => "tasks", :locals => { :tasks => @progress, :state => 2 }
-  #done.panel.droppable
+  #done.panel
     = render :partial => "tasks", :locals => { :tasks => @merged, :state => 3 }
 .clear
 

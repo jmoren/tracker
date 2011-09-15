@@ -105,6 +105,7 @@ a
     width: 15% !important
     margin: 5px
 .todo
+  background: #fff
   border: solid 1px #ccc
 .done
   border: solid 1px #66cc66
@@ -124,7 +125,36 @@ a
       margin: 0 auto
       padding: 0
       li
-        margin-left: 3px
+        margin: 5px
+        border-radius: 5px
+        height: 180px
+        .task
+          padding: 10px
+          min-height: 150px
+          width: 140px
+          font-size: 11px
+          .label
+            display: inline
+            font-weight: bold
+            margin: 0
+            width: 40px
+          .task_description
+            height: 85px
+          .task_status,.priority
+            color: #000
+            margin: 3px 0
+          .working
+          .locked
+          .abandoned
+          .aproved
+          .footer
+            border-top: #222 1px solid
+            padding-top: 5px
+            font-size: 10px
+        &:hover
+          border: solid #666 2px !important
+          margin: 4px
+          cursor: pointer
     .drophover
       background: #fafafa
     .title
@@ -137,35 +167,6 @@ a
       color: #DD4B39
       font-weight: bold
       font-size: 17px
-.task
-  border-radius: 5px
-  padding: 10px
-  min-height: 150px
-  width: 140px
-  margin: 5px
-  font-size: 11px
-  .label
-    display: inline
-    font-weight: bold
-    margin: 0
-    width: 40px
-  .task_description
-    height: 85px
-  .task_status,.priority
-    color: #000
-    margin: 3px 0
-    .working
-    .locked
-    .abandoned
-    .aproved
-  .footer
-    border-top: #222 1px solid
-    padding-top: 5px
-    font-size: 10px
-  &:hover
-    border: solid #666 2px !important
-    margin: 4px
-    cursor: pointer
 #title
   font-size: 20px
   font-weight: bold
