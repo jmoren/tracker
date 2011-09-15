@@ -12,11 +12,11 @@
     = link_to "New Project", new_project_path
   .user_info
     %p
-      Email:
-      = current_user.email
+      = image_tag current_user.gravatar_url
     %p
-      Username:
-      = current_user.username
+      .username{'original-title' => "<span style='font-size:12px;font-weight:bold'>#{current_user.email}</span>", :class => 'tipsy-e'}
+        User:
+        = current_user.username
     %p
       = link_to 'Edit Profile', edit_current_user_path
   
