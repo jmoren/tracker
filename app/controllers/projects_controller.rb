@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
   end
 
   def add_collaborator
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_username(params[:email])
     @collaborator = Collaborator.new(:user_id => @user.id, :role => params[:role])
     current_project.collaborators << @collaborator
     respond_to do |format|
@@ -85,9 +85,9 @@ class ProjectsController < ApplicationController
     render :text => @collaborator.role
   end
   def get_users
-    @users = User.where('email LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) 
+    @users = User.where('username LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) 
     respond_to do |format|
-      format.js {render :json => @users.collect{|u| [:id => u.id, :label => u.email, :value => u.email ]}.flatten! }
+      format.js {render :json => @users.collect{|u| [:id => u.id, :label => u.username, :value => u.username ]}.flatten! }
     end
   end
 private

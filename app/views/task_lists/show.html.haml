@@ -1,5 +1,9 @@
 :javascript
   $(function(){
+    $(document).bind('afterClose.facebox', function() {
+      $('li#'+$(this).find('#return_task').val()).find('.task').html("<img src='/images/loading.gif'><span> Updating... </span>");
+      $.ajax('/tasks/update_task/dom?id='+$(this).find('#return_task').val());
+    });
     $('a[rel*=facebox]').facebox({        
       loadingImage : '/images/loader.gif',        
       closeImage   : '/images/closelabel.png',

@@ -115,39 +115,9 @@ a {
   float: left;
   width: 32%;
   margin: 7px; }
-  #panel .panel ul.content {
+  #panel .panel .content {
     min-height: 800px;
-    border: #cccccc solid 1px;
-    list-style: none;
-    margin: 0 auto;
-    padding: 0; }
-    #panel .panel ul.content li {
-      margin: 5px;
-      border-radius: 5px;
-      height: 180px; }
-      #panel .panel ul.content li .task {
-        padding: 10px;
-        min-height: 150px;
-        width: 140px;
-        font-size: 11px; }
-        #panel .panel ul.content li .task .label {
-          display: inline;
-          font-weight: bold;
-          margin: 0;
-          width: 40px; }
-        #panel .panel ul.content li .task .task_description {
-          height: 85px; }
-        #panel .panel ul.content li .task .task_status, #panel .panel ul.content li .task .priority {
-          color: black;
-          margin: 3px 0; }
-        #panel .panel ul.content li .task .footer {
-          border-top: #222222 1px solid;
-          padding-top: 5px;
-          font-size: 10px; }
-      #panel .panel ul.content li:hover {
-        border: solid #666666 2px !important;
-        margin: 4px;
-        cursor: pointer; }
+    border: #cccccc solid 1px; }
   #panel .panel .drophover {
     background: #fafafa; }
   #panel .panel .title {
@@ -160,6 +130,38 @@ a {
     color: #dd4b39;
     font-weight: bold;
     font-size: 17px; }
+
+ul.content, ul#tasks {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0; }
+  ul.content li, ul#tasks li {
+    margin: 5px;
+    border-radius: 5px;
+    height: 180px; }
+    ul.content li .task, ul#tasks li .task {
+      padding: 10px;
+      min-height: 150px;
+      width: 140px;
+      font-size: 11px; }
+      ul.content li .task .label, ul#tasks li .task .label {
+        display: inline;
+        font-weight: bold;
+        margin: 0;
+        width: 40px; }
+      ul.content li .task .task_description, ul#tasks li .task .task_description {
+        height: 85px; }
+      ul.content li .task .task_status, ul.content li .task .priority, ul#tasks li .task .task_status, ul#tasks li .task .priority {
+        color: black;
+        margin: 3px 0; }
+      ul.content li .task .footer, ul#tasks li .task .footer {
+        border-top: #222222 1px solid;
+        padding-top: 5px;
+        font-size: 10px; }
+    ul.content li:hover, ul#tasks li:hover {
+      border: solid #666666 2px !important;
+      margin: 4px;
+      cursor: pointer; }
 
 #title {
   font-size: 20px;

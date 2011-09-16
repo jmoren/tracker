@@ -6,7 +6,7 @@
       $('#project_'+id).slideToggle();
       $(this).toggleClass('minus');
     });
-  }); 
+  });
 #col_right.right
   .button
     = link_to "New Project", new_project_path
@@ -19,11 +19,11 @@
         = current_user.username
     %p
       = link_to 'Edit Profile', edit_current_user_path
-  
+
 #col_left.left
   - @projects.each do |project|
     .project{:class => project.status}
-      .links 
+      .links
         = link_to 'details',"#" , :class => "more_link more", :id => project.id
       .title{ :title => "Status: #{project.status}" }
         = link_to project.name.titleize, project
@@ -34,27 +34,32 @@
             = project.is_collaborator?(current_user) ? image_tag('unlock.png', :title => "Eres miembro de este proyecto") : image_tag('lock.png', :title => "no eres parte de este proyecto")
           .left{:style => "margin: 0px 3px"}
             Created by
-            = project.user.username  
-            on 
+            = project.user.username
+            on
             = l project.created_at, :format => '%A, %d %B of %Y'
-          .clear  
+          .clear
       .more_info{:style => "display:none", :id => "project_#{project.id}"}
         = simple_format project.description,:class => "text_area"
         .dates
           %em.start
-            Start on 
+            Start on
             %strong
               = project.start_date
             and finish on
             %strong
               = project.end_date
         .collaborators
-          %h4== Collaborators #{project.collaborators.size}
-          %ul
+          %h4= "Collaborators (#{project.collaborators.size})"
+          %ul#collaborators
             - project.collaborators.each do |c|
-              %li= c.user.username 
+              %li
+                .collaborator_field.icon.left= image_tag('user.png')
+                .collaborator_field.email.left= c.user.username
+                .collaborator_field.left= c.user.email
+                .clear
       .links
         = link_to image_tag('edit.png', :title => "Edit"), edit_project_path(project)
         = link_to image_tag('trash.png', :title => 'Delete'), project, :confirm => 'Are you sure?', :method => :delete
       .clear
 .clear
+
