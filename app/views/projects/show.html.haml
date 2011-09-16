@@ -13,9 +13,16 @@
       $('#select_rol').attr('disabled',true);
       $('#loading').html('');
     });
+    $('#email').keyup(function(){
+      if ($(this).val().length < 5){
+        $('#email').removeClass("error_autocomplete");
+        $('#email').removeClass("ok_autocomplete");
+        $('#loading').html('');
+      }
+    });
     $('#email').blur(function(){
       if ($(this).val() == ''){
-        $('#loading').html("<span style='color:#D00'> You must select an user.</span>");
+        $('#loading').html("<span style='color:#D00;font-size: 12px;font-weight: bold'> You must select an user.</span>");
       }
     });
     $( "#email" ).autocomplete({
@@ -24,7 +31,7 @@
       select: function(event, ui){
         if (ui.item.value == "#{@project.user.username}"){
           $('#email').addClass("error_autocomplete");
-          $('#loading').html("<span style='color:#D00'> This user is the project owner, select another user.</span>");
+          $('#loading').html("<span style='color:#D00;font-size: 12px;font-weight: bold'> This user is the project owner, select another user.</span>");
           $('#submit_col').attr('disabled',true);
           $('#select_rol').attr('disabled',true);
         }
@@ -47,7 +54,7 @@
   %div{:id => 'project'}
     %p
       %strong Description:
-      = @project.description
+      = simple_format @project.description
     %p
       %strong Start Date:
       =  @project.start_date
@@ -60,36 +67,41 @@
       %strong Owner:
       = @project.user.username
   %div{:id => 'tasks'}
-    .tab_title
-      %strong Tasks list
-    .tab_link_new
-      = link_to "New task list", new_project_task_list_path(@project)
-    #tasks.list
+    %p
+      .tab_title
+        %strong Tasks list
+      .tab_link_new
+        = link_to "New task list", new_project_task_list_path(@project)
       %ol
         - @project.task_lists.each do |tl|
           %li= link_to tl.title, tl
   %div{:id => 'config'}
-    .tab_title
-      %strong Configuration
-    .tab_content
-      - if current_user.is_admin_or_owner?(@project)
-        = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
-          = text_field_tag :email, nil, :size => 50, 'data-placeholder' => "Start typing the username..."
-          %select{:id => "role", :name => "role", 'original-title' => "Select a role for this user", :class =>'focus-example', :id => 'select_rol', :disabled => 'disabled' }
-            - Collaborator::ROLE.each do |r|
-              %option{:value => r}
-                = r
-          = submit_tag "Add", :class => "remote_link", :id => "submit_col", :disabled => 'disabled'
-          %span#loading
-      %p
-        #messages{:style => "display:none"}
-        .clear
-      %ul#collaborators
-        - @project.collaborators.each do |collaborator|
-          = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }
-  .right
+    %p
+      .tab_title
+        %strong Configuration
+      .tab_content
+        - if current_user.is_admin_or_owner?(@project)
+          .left
+            %strong Add member
+          .left{:style => "margin: -5px 3px"}
+            = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
+              = text_field_tag :email, nil, :size => 50, 'data-placeholder' => "Start typing the username..."
+              %select{:id => "role", :name => "role", 'original-title' => "Select a role for this user", :class =>'focus-example', :id => 'select_rol', :disabled => 'disabled' }
+                - Collaborator::ROLE.each do |r|
+                  %option{:value => r}
+                    = r
+              = submit_tag "Add", :class => "remote_link", :id => "submit_col", :disabled => 'disabled'
+              #loading
+        %p
+          #messages{:style => "display:none"}
+          .clear
+        %ul#collaborators
+          - @project.collaborators.each do |collaborator|
+            = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }
+  .clear
+  .left
     = link_to "Edit", edit_project_path(@project)
     |
     = link_to "Destroy", @project, :confirm => 'Are you sure?', :method => :delete
-  .clear
+.clear
 
