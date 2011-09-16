@@ -142,8 +142,11 @@ ul.content, ul#tasks {
     margin: 5px;
     border-radius: 5px;
     height: 200px; }
-    ul.content li .move:hover, ul#tasks li .move:hover {
-      cursor: pointer; }
+    ul.content li .move, ul#tasks li .move {
+      font-size: 11px;
+      text-align: center; }
+      ul.content li .move:hover, ul#tasks li .move:hover {
+        cursor: pointer; }
     ul.content li .task, ul#tasks li .task {
       padding: 10px;
       min-height: 150px;
