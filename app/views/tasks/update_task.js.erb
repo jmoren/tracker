@@ -3,7 +3,7 @@ $('a[rel*=facebox]').facebox({
   loadingImage : '/images/loader.gif',
   closeImage   : '/images/closelabel.png',
 });
-$( ".draggable" ).draggable({revert: 'invalid'});
+$( ".draggable" ).draggable({revert: 'invalid', handle: 'div.move',zIndex: 2000});
 $( ".droppable" ).droppable({
   tolerance: 'fit',
   hoverClass: 'drophover',

@@ -8,7 +8,7 @@
       $('li#'+$(this).find('#return_task').val()).find('.task').html("<img src='/images/loading.gif'><span> Updating... </span>");
       $.ajax('/tasks/update_task/dom?id='+$(this).find('#return_task').val());
     });
-    $( ".draggable" ).draggable({revert: 'invalid'});
+    $( ".draggable" ).draggable({revert: 'invalid', handle: 'div.move',zIndex: 2000});
     $( ".droppable" ).droppable({
       tolerance: 'fit',
       hoverClass: 'drophover',

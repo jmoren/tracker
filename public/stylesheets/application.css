@@ -108,7 +108,7 @@ a {
 
 .done {
   border: solid 1px #66cc66;
-  background: #ccffcc url(/images/ok.png) 95% 8% no-repeat; }
+  background: #ccffcc url(/images/ok.png) 95% 2% no-repeat; }
 
 .progress {
   border: solid 1px #eef296;
@@ -141,7 +141,9 @@ ul.content, ul#tasks {
   ul.content li, ul#tasks li {
     margin: 5px;
     border-radius: 5px;
-    height: 180px; }
+    height: 200px; }
+    ul.content li .move:hover, ul#tasks li .move:hover {
+      cursor: pointer; }
     ul.content li .task, ul#tasks li .task {
       padding: 10px;
       min-height: 150px;
@@ -163,8 +165,7 @@ ul.content, ul#tasks {
         font-size: 10px; }
     ul.content li:hover, ul#tasks li:hover {
       border: solid #666666 2px !important;
-      margin: 4px;
-      cursor: pointer; }
+      margin: 4px; }
 
 #title {
   font-size: 20px;

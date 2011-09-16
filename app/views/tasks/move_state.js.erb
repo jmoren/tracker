@@ -8,7 +8,7 @@ $('a[rel*=facebox]').facebox({
   closeImage   : '/images/closelabel.png',
 });
 $("<%= @dom %>").find('> .title').effect('highlight',{},5000);
-$( ".draggable" ).draggable({revert: 'invalid'});
+$( ".draggable" ).draggable({revert: 'invalid', handle: 'div.move',zIndex: 2000});
 $( ".droppable" ).droppable({
   tolerance: 'fit', 
   hoverClass: 'drophover',

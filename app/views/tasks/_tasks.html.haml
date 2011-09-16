@@ -6,6 +6,8 @@
   %input{:type => 'hidden', :value => state, :name => 'state', :class => 'state'}
   - tasks.each do |task|
     %li.left{:id => task.id, :class => "draggable #{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'}"}
+      %div.move{:style => "font-size:11px;text-align:center"}
+        click here to move me
       = render task
   .clear
 .clear

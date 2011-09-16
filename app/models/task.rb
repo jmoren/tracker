@@ -17,6 +17,7 @@ class Task < ActiveRecord::Base
   def update_field(field, value)
     if field == 'assigned'
       field = 'assigned_id'
+      value = value.id
     end
     self.update_attributes(field.to_sym => value)
   end

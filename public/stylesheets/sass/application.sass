@@ -111,7 +111,7 @@ a
   border: solid 1px #ccc
 .done
   border: solid 1px #66cc66
-  background: #ccffcc url(/images/ok.png) 95% 8% no-repeat
+  background: #ccffcc url(/images/ok.png) 95% 2% no-repeat
 .progress
   border: solid 1px #EEF296
   background: #EEF296
@@ -140,9 +140,12 @@ ul.content, ul#tasks
   margin: 0 auto
   padding: 0
   li
+    .move
+      &:hover
+        cursor: pointer
     margin: 5px
     border-radius: 5px
-    height: 180px
+    height: 200px
     .task
       padding: 10px
       min-height: 150px
@@ -169,7 +172,6 @@ ul.content, ul#tasks
     &:hover
       border: solid #666 2px !important
       margin: 4px
-      cursor: pointer
 
 #title
   font-size: 20px
