@@ -4,7 +4,7 @@ body {
   font-size: 14px; }
 
 a {
-  color: blue; }
+  color: #2e6e9e; }
   a img {
     border: none; }
 
@@ -90,6 +90,9 @@ a {
 
 .right {
   float: right; }
+
+#tabs a {
+  color: #2e6e9e; }
 
 #list_tasks ul {
   margin: 0;
@@ -222,14 +225,14 @@ ul#collaborators {
   margin: 0;
   padding: 0; }
   ul#collaborators li {
-    width: 50%;
+    width: 100%;
     padding: 3px;
     line-height: 1em; }
     ul#collaborators li .collaborator_field {
       float: left;
       padding: 5px; }
     ul#collaborators li .email {
-      width: 48%; }
+      width: 45%; }
     ul#collaborators li .role {
       width: 30%; }
       ul#collaborators li .role form {
@@ -237,12 +240,12 @@ ul#collaborators {
         float: left;
         font-size: 12px; }
     ul#collaborators li .remove {
-      width: 10%;
+      width: 5%;
       text-align: right; }
 
 #messages {
   float: left;
-  width: 35%;
+  width: 75%;
   margin: 0 20px;
   font-size: 11px;
   padding: 3px 0 3px 30px; }
@@ -259,7 +262,10 @@ input#email {
   padding: 3px 5px;
   border: solid 1px #cccccc;
   border-radius: 3px;
-  font-size: 12px; }
+  font-size: 12px;
+  color: #666666; }
+  input#email:focus {
+    color: black; }
 
 .ui-autocomplete-loading {
   background: white url("/stylesheets/images/ui-anim_basic_16x16.gif") right center no-repeat; }

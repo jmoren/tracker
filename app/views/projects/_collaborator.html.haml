@@ -7,17 +7,16 @@
       $('.role').editable('/collaborator/update',{
         data      : " { 'collaborator':'collaborator', 'admin':'admin' }",
         type      : 'select',
-        submit    : 'Ok',
-        style     : 'display:inline',
-        onblur    : 'cancel',
+        onblur    : 'submit',
         tooltip   : 'Click to edit...',
         indicator : '<img style="float:left" src="/images/loading.gif"><span style="font-size: 11px;float:left;margin: -1px 0 0 5px">updating...</span>'
       });
     });
-    
+
 %li{:id => "collaborator_#{collaborator.id}"}
   .collaborator_field.icon= image_tag('user.png')
   .collaborator_field.email= collaborator.user.email
   .collaborator_field.role{:id => "role_#{collaborator.id}"}= collaborator.role
   .collaborator_field.remove{:id => "remove_#{collaborator.id}"}= link_to image_tag('remove.png', :title => "Delete collaborator"), remove_project_path(project, :user => collaborator.id), :remote => true, :method => :post
   .clear
+

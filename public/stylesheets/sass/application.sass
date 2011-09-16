@@ -7,7 +7,7 @@ body
     size: 14px
 
 a
-  color: blue
+  color: #2E6E9E
   img
     border: none
 
@@ -95,7 +95,9 @@ a
   float: left
 .right
   float: right
-
+#tabs
+  a
+    color: #2E6E9E
 #list_tasks
   ul
     margin: 0
@@ -222,14 +224,14 @@ ul#collaborators
   margin: 0
   padding: 0
   li
-    width: 50%
+    width: 100%
     padding: 3px
     line-height: 1em
     .collaborator_field
       float: left
       padding: 5px
     .email
-      width: 48%
+      width: 45%
     .role
       width: 30%
       form
@@ -237,11 +239,11 @@ ul#collaborators
         float: left
         font-size: 12px
     .remove
-      width: 10%
+      width: 5%
       text-align: right
 #messages
   float: left
-  width: 35%
+  width: 75%
   margin: 0 20px
   font-size: 11px
   padding: 3px 0 3px 30px
@@ -256,6 +258,9 @@ input#email
   border: solid 1px #ccc
   border-radius: 3px
   font-size: 12px
+  color: #666
+  &:focus
+    color: #000
 .ui-autocomplete-loading
   background: white url('/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat
 .error_autocomplete
