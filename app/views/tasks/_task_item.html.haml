@@ -1,3 +1,4 @@
-%li{:id => task.id, :class => "#{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'} left "}
-  = render task
+%li{:class => "#{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'} left "}
+  %div{:id => task.id}
+    = render task
 

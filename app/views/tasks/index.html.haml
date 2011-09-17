@@ -21,18 +21,15 @@
       }
     });
   });
-#title
-  == Task list: #{@task_list.title.titleize}
-%small
-  Created on
-  %strong
-    = l @task_list.created_at, :format => '%A, %d %B of %Y'
-  by
-  = @task_list.user.username
-.clear
+- title link_to @task_list.title.titleize, @task_list
+%p{:style => "margin: 10px"}
+  %small
+    Created on
+    %strong
+      = l @task_list.created_at, :format => '%A, %d %B of %Y'
+    by
+    = @task_list.user.username
 .flash.left{:style => "display:none"}
-.task_list_button.right
-  = link_to "Back to List", @task_list
 .clear
 #panel
   #todo.panel

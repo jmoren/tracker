@@ -15,6 +15,9 @@
 
   %body
     #container
+      #logo
+        .left= image_tag('anana.png')
+        %span.left anana
       #menu
         - if current_user
           #user_menu.right
@@ -26,6 +29,7 @@
             |
             %span= link_to "Profile", edit_current_user_path
             %span= link_to "Salir", logout_path
+          .clear
           #nav_bar
             %span= link_to "Projects", projects_path
             %span= link_to "Users", users_path

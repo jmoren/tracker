@@ -5,8 +5,11 @@
 %ul.content.droppable{:id => "list_#{state}"}
   %input{:type => 'hidden', :value => state, :name => 'state', :class => 'state'}
   - tasks.each do |task|
-    %li.left{:id => task.id, :class => "draggable #{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'}"}
-      = render task
+    %li.left{:class => "draggable #{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'}"}
+      .move
+        click here to move me
+      %div{:id => task.id }
+        = render task
   .clear
 .clear
 

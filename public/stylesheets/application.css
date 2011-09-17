@@ -1,10 +1,11 @@
 body {
-  background-color: #4b7399;
+  background-color: #f1f1f1;
   font-family: Ubuntu, Verdana, Helvetica, Arial;
   font-size: 14px; }
 
 a {
-  color: #2e6e9e; }
+  color: #2e6e9e;
+  text-decoration: none; }
   a img {
     border: none; }
 
@@ -14,11 +15,15 @@ a {
   overflow: hidden; }
 
 #container {
+  -webkit-box-shadow: 0px 0px 5px 5px #cccccc;
+  -moz-box-shadow: 0px 0px 5px 5px #cccccc;
+  box-shadow: 0px 0px 5px 5px #cccccc;
   width: 90%;
   margin: 0 auto;
   background: white;
   padding: 20px;
-  border: solid 1px black;
+  border: solid 1px white;
+  border-radius: 10px;
   margin-top: 20px; }
 
 #flash_notice,
@@ -63,12 +68,23 @@ a {
   .error_messages ul {
     margin: 0; }
 
+#logo {
+  float: left;
+  margin: -18px; }
+  #logo img {
+    padding: 0;
+    margin: 0; }
+  #logo span {
+    font-weight: bold;
+    font-size: 1.8em;
+    margin-top: 20px; }
+
 #menu {
   margin: 10px 3px; }
   #menu #user_menu {
     padding-top: 3px; }
   #menu #nav_bar span {
-    float: left;
+    float: right;
     margin: 0 3px;
     padding-top: 3px; }
     #menu #nav_bar span:hover {
@@ -78,7 +94,7 @@ a {
       text-decoration: none; }
 
 #login_form {
-  width: 50%;
+  width: 25%;
   margin: 20px auto;
   padding: 10px;
   border: solid #cccccc 7px;
@@ -240,13 +256,13 @@ ul.content, ul#tasks {
   font-weight: bold;
   margin: 5px 0; }
 
-#text_area {
+.text_area {
   background: #f1f1f1;
   padding: 5px;
   border: solid #cccccc 1px;
   border-radius: 5px;
   min-height: 50px; }
-  #text_area textarea {
+  .text_area textarea {
     width: 99%; }
 
 #col_right {

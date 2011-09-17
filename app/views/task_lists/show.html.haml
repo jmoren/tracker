@@ -17,17 +17,14 @@
       return false;
     });
   });
-#title
-  Title:
-  = @task_list.title.titleize
-  %small
-    (
-    = link_to @task_list.project.name, @task_list.project
-    )
-%small
+- title @task_list.title.titleize  
+
+%small.left
+  Project: 
+  =link_to @task_list.project.name, @task_list.project
+%small.right
   = "Created by #{@task_list.user.try(:username) || 'unknown'} on #{l @task_list.created_at, :format => '%d, %A %B of %Y'}"
-%p
-  = simple_format @task_list.comments, :class => "text_area"
+.clear
 %p
   .left{:style => "width: 45%"}
     %strong Status:
@@ -36,7 +33,8 @@
     %strong End Date:
     = @task_list.end_date? ? (l @task_list.end_date, :format => '%A, %d of %B, %Y') : "No dates"
   .clear
-
+%p
+  = simple_format @task_list.comments, :class => "text_area"
 .task_list_button
   = link_to "Panel", task_list_tasks_path(@task_list), 'original-title' => "You can manage your task here", :class => 'tipsy-s'
 .task_list_button
