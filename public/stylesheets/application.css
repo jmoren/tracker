@@ -123,7 +123,7 @@ ul#users {
     border-radius: 4px;
     padding: 5px; }
     ul#users .user .user_photo {
-      padding: 5px;
+      padding: 7px 5px;
       width: 60px; }
     ul#users .user .user_info {
       margin-left: 5px; }

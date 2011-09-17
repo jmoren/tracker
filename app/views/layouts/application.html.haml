@@ -22,7 +22,7 @@
               .right
                 = current_user.username
               .left{:style => "margin: 0 5px"}
-                = image_tag current_user.gravatar_url(:size => 20) || image_tag('user.png')
+                = image_tag current_user.gravatar_url(:size => 20, :default => 'wavatar')
             |
             %span= link_to "Profile", edit_current_user_path
             %span= link_to "Salir", logout_path
