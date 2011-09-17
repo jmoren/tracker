@@ -7,28 +7,36 @@
       changeYear: true
     });
   })
-#project_form{:style => "width:80%;margin:auto;padding: 10px; border: solid 1px #ccc"}
-  %h1 New Project
+#project_form
+  %h2
+    = @project.new_record? ? "Create a Project" : "Update Project"
   = form_for @project do |f|
     = f.error_messages
-    .left{:style => "width: 50%"}
+    #col_left
       %p
         = f.label :name
+        %br
         = f.text_field :name
       %p
         = f.label :status
+        %br
         = f.select :status, TaskList::STATUS
-    .right{:style => "width: 50%;"}
+    #col_right
       %p
         = f.label :start_date
+        %br
         = f.text_field :start_date, :value => @project.start_date ? (l @project.start_date, :format => '%A, %d %B, %Y') : nil,:class => 'date', :size => 30
       %p
         = f.label :end_date
+        %br
         = f.text_field :end_date, :value => @project.end_date ? (l @project.end_date, :format => '%A, %d %B, %Y') : nil, :class => 'date', :size => 30
     .clear
-    %p
+    #description
       = f.label :description
       %br
       = f.text_area :description, :rows => 5, :cols => 110
-    %p
+    #submit
       = f.submit
+      or
+      = link_to 'Cancel', @project.new_record? ? projects_path : @project
+

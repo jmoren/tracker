@@ -106,6 +106,7 @@ a
   li.task_item
     width: 15% !important
     margin: 5px
+
 .todo
   background: #fff
   border: solid 1px #ccc
@@ -115,6 +116,7 @@ a
 .progress
   border: solid 1px #EEF296
   background: #EEF296
+
 #panel
   .panel
     float: left
@@ -135,6 +137,7 @@ a
       color: #DD4B39
       font-weight: bold
       font-size: 17px
+
 ul.content, ul#tasks
   list-style: none
   margin: 0 auto
@@ -179,9 +182,11 @@ ul.content, ul#tasks
   font-size: 20px
   font-weight: bold
   margin: 5px 0
+
 #menu
   margin: 10px 3px
-.text_area
+
+#text_area
   background: #f1f1f1
   padding: 5px
   border: solid #ccc 1px
@@ -245,9 +250,10 @@ ul#collaborators
     .remove
       width: 5%
       text-align: right
+
 #messages
   float: left
-  width: 75%
+  width: 65%
   margin: 0 20px
   font-size: 11px
   padding: 3px 0 3px 30px
@@ -257,6 +263,7 @@ ul#collaborators
 .alert
   border: solid 1px #DD4B39
   background: #F2B6C5 url(/images/error.png) 2% 49% no-repeat
+
 input#email
   padding: 3px 5px
   border: solid 1px #ccc
@@ -265,6 +272,7 @@ input#email
   color: #666
   &:focus
     color: #000
+
 .ui-autocomplete-loading
   background: white url('/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat
 .error_autocomplete
@@ -312,4 +320,42 @@ input#email
         font-size: 11px
       .body
         padding: 5px
+#project_form
+  width: 70%
+  margin: auto
+  border: solid 1px #ccc
+  border-radius: 5px
+  padding: 10px
+  h2
+    margin: 0
+    text-align: center
+    padding: 0
+    color: #3D9400
+  #submit
+    width: 96%
+    margin: 5px auto 
+    input[type='submit']
+      padding: 2px
+      border-radius: 3px
+      border: solid 1px #ccc
+      width: 20%
+  label
+    font-weight: bold
+  input
+    border: solid 1px #f1f1f1
+    width: 100%
+  #description
+    width: 96%
+    margin: auto
+    textarea
+      margin: 5px 0
+      width: 99%
+      font-family: Ubuntu
+      border: solid 1px #ccc
+  #col_left
+    float: left
+    width: 47%
+  #col_right
+    float: left
+    width: 45%
 

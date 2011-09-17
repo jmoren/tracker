@@ -178,13 +178,13 @@ ul.content, ul#tasks {
 #menu {
   margin: 10px 3px; }
 
-.text_area {
+#text_area {
   background: #f1f1f1;
   padding: 5px;
   border: solid #cccccc 1px;
   border-radius: 5px;
   min-height: 50px; }
-  .text_area textarea {
+  #text_area textarea {
     width: 99%; }
 
 #col_right {
@@ -249,7 +249,7 @@ ul#collaborators {
 
 #messages {
   float: left;
-  width: 75%;
+  width: 65%;
   margin: 0 20px;
   font-size: 11px;
   padding: 3px 0 3px 30px; }
@@ -318,3 +318,42 @@ input#email {
         font-size: 11px; }
       #task ul#comments li .body {
         padding: 5px; }
+
+#project_form {
+  width: 70%;
+  margin: auto;
+  border: solid 1px #cccccc;
+  border-radius: 5px;
+  padding: 10px; }
+  #project_form h2 {
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    color: #3d9400; }
+  #project_form #submit {
+    width: 96%;
+    margin: 5px auto; }
+    #project_form #submit input[type='submit'] {
+      padding: 2px;
+      border-radius: 3px;
+      border: solid 1px #cccccc;
+      width: 20%; }
+  #project_form label {
+    font-weight: bold; }
+  #project_form input {
+    border: solid 1px #f1f1f1;
+    width: 100%; }
+  #project_form #description {
+    width: 96%;
+    margin: auto; }
+    #project_form #description textarea {
+      margin: 5px 0;
+      width: 99%;
+      font-family: Ubuntu;
+      border: solid 1px #cccccc; }
+  #project_form #col_left {
+    float: left;
+    width: 47%; }
+  #project_form #col_right {
+    float: left;
+    width: 45%; }
