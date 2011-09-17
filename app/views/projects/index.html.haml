@@ -1,65 +1,39 @@
 - title "My Projects (#{@projects.size})"
 :javascript
   $(function(){
-    $('.more_link').click(function(){
+    $('.more_link').live('click',function(){
       var id = $(this).attr('id')
       $('#project_'+id).slideToggle();
       $(this).toggleClass('minus');
     });
+    $('.filter').click(function(){
+      var action = $(this).attr('data-action');
+      $('.' + action).fadeToggle('slow');
+      $(this).toggleClass('active');
+      return false
+    });
+    $('#q').keyup(function(){
+      $('#q').addClass("ui-autocomplete-loading");
+      $('#projects').html("<div> <img src='/images/loading.gif'> Searching projects... </div>");
+      $.get("#{projects_path}" + '/?q=' +  $(this).val(), function(){$('#q').removeClass('ui-autocomplete-loading')}, 'script');
+    });  
   });
 #col_right.right
-  .button
+  #new_project
     = link_to "New Project", new_project_path
-  .user_info
-    %p
-      = image_tag current_user.gravatar_url
-    %p
-      .username{'original-title' => "<span style='font-size:12px;font-weight:bold'>#{current_user.email}</span>", :class => 'tipsy-e'}
-        User:
-        = current_user.username
-    %p
-      = link_to 'Edit Profile', edit_current_user_path
-
+  #search_projects
+    .label Search:
+    = form_tag projects_path, :remote => true do
+      = text_field_tag :q,nil,'data-placeholder' => 'start typing to search...', :id => 'q'
+  - unless @projects.empty?
+    #filter_projects
+      .title_section Filter by:
+      %div= link_to "Open", "#", 'data-action' => 'open', :class => 'filter' 
+      %div= link_to "Reopened", "#", 'data-action' => 'reopened', :class => 'filter' 
+      %div= link_to "Closed", "#", 'data-action' => 'closed', :class => 'filter' 
 #col_left.left
-  - @projects.each do |project|
-    .project{:class => project.status}
-      .links
-        = link_to 'details',"#" , :class => "more_link more", :id => project.id
-      .title{ :title => "Status: #{project.status}" }
-        = link_to project.name.titleize, project
-      .clear
-      %p
-        .owner
-          .left{:style => "margin: 0 5px"}
-            = project.is_collaborator?(current_user) ? image_tag('unlock.png', :title => "Eres miembro de este proyecto") : image_tag('lock.png', :title => "no eres parte de este proyecto")
-          .left{:style => "margin: 0px 3px"}
-            Created by
-            = project.user.username
-            on
-            = l project.created_at, :format => '%A, %d %B of %Y'
-          .clear
-      .more_info{:style => "display:none", :id => "project_#{project.id}"}
-        = simple_format project.description,:class => "text_area"
-        .dates
-          %em.start
-            Start on
-            %strong
-              = project.start_date
-            and finish on
-            %strong
-              = project.end_date
-        .collaborators
-          %h4= "Collaborators (#{project.collaborators.size})"
-          %ul#collaborators
-            - project.collaborators.each do |c|
-              %li
-                .collaborator_field.icon.left= image_tag('user.png')
-                .collaborator_field.email.left= c.user.username
-                .collaborator_field.left= c.user.email
-                .clear
-      .links
-        = link_to image_tag('edit.png', :title => "Edit"), edit_project_path(project)
-        = link_to image_tag('trash.png', :title => 'Delete'), project, :confirm => 'Are you sure?', :method => :delete
-      .clear
+  #projects
+    = render 'projects'
+  
 .clear
 

@@ -28,7 +28,10 @@ a
 #flash_error,
 #flash_alert
   padding: 5px 8px
-  margin: 10px 0
+  margin: 10px auto
+  text-align: center
+  font-size: 12px
+  width: 50%
 
 #flash_notice
   background-color: #ccffcc
@@ -65,6 +68,48 @@ a
   ul
     margin: 0
 
+#menu
+  margin: 10px 3px
+  #user_menu
+    padding-top: 3px
+  #nav_bar
+    span
+      float: left
+      margin: 0 3px
+      padding-top: 3px
+      &:hover
+        padding-top: 1px
+        border-top: solid 2px #ccc
+      a
+        text-decoration: none
+
+#login_form
+  width: 50%
+  margin: 20px auto
+  padding: 10px
+  border: solid #ccc 7px
+  border-radius: 8px
+  .block
+    margin: auto
+    width: 80%
+    .label
+      color: #3D9400
+      text-align: center
+      font-weight: bold
+      margin: 5px 0
+    .input
+      input
+        font-size: 15px
+        padding: 3px
+        text-align: center
+        margin: auto
+        width: 99%
+        border: solid 1px #ccc
+    input[type='submit']
+      float: right
+      padding: 2px 10px
+      margin: 15px -3px
+
 .flash
   width: 30%
   margin: auto
@@ -74,6 +119,30 @@ a
   background-color: #ccffcc
   border: solid 1px #66cc66
   border-radius: 4px
+
+
+ul#users
+  list-style: none
+  .user
+    float: left
+    width: 30%
+    margin: 10px
+    border: solid 2px #ccc
+    border-radius: 4px
+    padding: 5px
+    .user_photo
+      padding: 5px
+      width: 60px
+    .user_info  
+      h2
+        color: #3D9400
+        margin: -5px 0
+        padding: 5px 0
+      margin-left: 5px
+  .you
+    background: transparent url(/images/user.png) 97% 15% no-repeat 
+    border: solid 2px #66cc66
+
 .task_list_button
   a
     border: solid 1px #ccc
@@ -183,9 +252,6 @@ ul.content, ul#tasks
   font-weight: bold
   margin: 5px 0
 
-#menu
-  margin: 10px 3px
-
 #text_area
   background: #f1f1f1
   padding: 5px
@@ -196,10 +262,52 @@ ul.content, ul#tasks
     width: 99%
 
 #col_right
-  width: 15%
+  width: 20%
   padding: 10px
+  #new_project
+    background: #f1f1f1
+    padding: 5px
+    margin: 10px 0
+    border: solid #ccc 1px
+    border-radius: 5px
+    text-align: center
+    a
+      text-decoration: none
+      font-weight: bold
+    &:hover
+      background: #2E6E9E
+      border: #2E6E9E solid 1px
+      a
+        color: #F0EDE9
+  #filter_projects
+    div
+      margin: 5px 0
+    a
+      text-decoration: none
+    font-size: 12px
+    .filter
+      padding: 2px 20px 2px 2px
+    .active
+      color: #666
+      font-weight: bold
+      padding: 2px 20px 2px 2px
+      background: transparent url(/images/minus.png) right center no-repeat
+  #search_projects
+    .label
+      margin: 3px 0
+      font-size: 12px
+    input
+      padding-left: 5px
+      color: darkGrey
+      width: 100%
+      border: solid 1px #ccc !important
+      -webkit-appearance: none
+      &:focus
+        color: #666 
+        border: solid 1px blue
 #col_left
-  width: 80%
+  border-right: solid 1px #ccc
+  width: 75%
   padding: 10px
 .project
   border: solid #ccc 1px
@@ -339,11 +447,15 @@ input#email
       border-radius: 3px
       border: solid 1px #ccc
       width: 20%
-  label
-    font-weight: bold
-  input
-    border: solid 1px #f1f1f1
-    width: 100%
+  .col_left, .col_right
+    width: 45%
+    margin: 10px 15px
+    float: left
+    label
+      font-weight: bold
+    input
+      border: solid 1px #f1f1f1
+      width: 100%
   #description
     width: 96%
     margin: auto

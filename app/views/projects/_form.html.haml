@@ -12,7 +12,7 @@
     = @project.new_record? ? "Create a Project" : "Update Project"
   = form_for @project do |f|
     = f.error_messages
-    #col_left
+    .col_left
       %p
         = f.label :name
         %br
@@ -21,7 +21,7 @@
         = f.label :status
         %br
         = f.select :status, TaskList::STATUS
-    #col_right
+    .col_right
       %p
         = f.label :start_date
         %br

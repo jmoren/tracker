@@ -1,0 +1,16 @@
+%h1 Users
+
+%ul#users
+  - @users.each do |user|
+    %li{:class => "user #{user == current_user ? 'you' : nil}"}
+      .user_photo.left
+        = image_tag user.gravatar_url(:size => 55)
+      .user_info.left
+        %h2
+          = user.username
+        .email= user.email
+        .projects
+          Projects: 
+          = user.projects.size
+      .clear
+.clear

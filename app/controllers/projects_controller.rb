@@ -4,7 +4,15 @@ class ProjectsController < ApplicationController
   before_filter :allow_members, :except => [:new, :create, :index, :update_collaborator]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
   def index
-    @projects = current_user.my_projects
+    if params[:q] && !params[:q].blank?
+      @projects = current_user.projects.where('name LIKE ?', "%" + params[:q] + "%")
+    else
+      @projects = current_user.my_projects
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
