@@ -50,35 +50,39 @@
     });
   });
 #task
+  %h3.left= "Task ID ##{@task.id}"
+  %h3.right{:style => "text-align: left"}
+    .left{:style => "width: 140px;margin: 0 5px;padding: 2px"}
+      .label.left{:style => "width: 50px;"} User:
+      .left{ :style => "text-align:right;width: 70px" }= @task.user.try(:username) || "---"
+  .clear
   %input{:id => "return_task",:type => 'hidden', :value => @task.id }
     %p
       .left
         %strong Project:
-        = link_to @task.project.name, @task.project
+        = link_to @task.project.name.titleize, @task.project
       .right{:style => "text-align: left"}
-        .left{:style => "width: 120px;margin: 0 5px;padding: 2px"}
+        .left{:style => "width: 140px;margin: 0 5px;padding: 2px"}
           .label.left{:style => "width: 50px;"} State:
-          .left{:style => "width: 70px"}= @task.state == 1 ? "To do" : @task.state == 2 ? "Progress" : "Done"
+          .left{:style => "text-align:right;width: 80px"}= @task.state == 1 ? "To do" : @task.state == 2 ? "Progress" : "Done"
         .left{:style => "margin: 0 5px;width: 140px;padding: 2px"}
           .label.left{:style => "width: 50px"} Status:
           .current_status.left{:id => "status_#{@task.id}", :style => "text-align:right;width: 80px"}
             = @task.status
-        .left{:style => "margin: 0 5px;width: 140px;padding: 2px"}
-          .label.left{:style => "width: 50px;"} Priority:
-          .current_priority.left{:id => "priority_#{@task.id}", :style => "text-align:right;width: 80px"}
-            = @task.priority
+        .clear
       .clear
     %p
       .left
         %strong Description:
       .right{:style => "text-align: left"}
-        .left{:style => "width: 140px;margin: 0 5px;padding: 2px"}
-          .label.left{:style => "width: 50px;"} User:
-          .left{ :style => "text-align:right;width: 70px" }= @task.user.try(:username) || "---"
-        .left{:style => "width: 140px;margin: 0 5px;padding: 2px"}
+        .left{:style => "width: 160px;margin: 0 5px;padding: 2px"}
           .label.left{:style => "width: 70px"} Assigned:
-          .current_assigned.left{:id => "assigned_#{@task.id}", :style => "text-align:right;width: 70px"}
+          .current_assigned.left{:id => "assigned_#{@task.id}", :style => "text-align:right;width: 80px"}
             = @task.assigned.try(:username) || "---"
+        .left{:style => "margin: 0 5px;width: 140px;padding: 2px"}
+          .label.left{:style => "width: 50px;"} Priority:
+          .current_priority.left{:id => "priority_#{@task.id}", :style => "text-align:right;width: 80px"}
+            = @task.priority
         .clear
       .clear
       %p{:class => 'current_description text_area', :id => "description_#{@task.id}"}

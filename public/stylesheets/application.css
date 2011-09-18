@@ -181,7 +181,8 @@ ul#users {
   list-style: none; }
 #list_tasks li.task_item {
   width: 15% !important;
-  margin: 5px; }
+  margin: 5px;
+  height: 180px; }
 
 .todo {
   background: white;
@@ -189,7 +190,7 @@ ul#users {
 
 .done {
   border: solid 1px #66cc66;
-  background: #ccffcc url(/images/ok.png) 95% 2% no-repeat; }
+  background: #ccffcc; }
 
 .progress {
   border: solid 1px #eef296;

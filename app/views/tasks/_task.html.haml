@@ -12,14 +12,14 @@
     .left= task.priority
     .clear
   .task_status
-    %div{:class => task.status}
-      .label.left{:style => "width: 50px"} Status:
-      .left= task.status
+    .label.left{:style => "width: 50px"} Status:
+    .left= task.status
+    .right= image_tag("#{task.status}.png")
     .clear
   .footer
     .links.right
       = link_to 'Destroy', task, :method => :delete, :remote => true, :class => "delete_task"
     .info.left
-      = link_to "ID # #{task.id}", task_url(task), :class => 'popup', :rel => "facebox", 'original-title' => "View more details or edit this task ", :class => 'tipsy-s'
+      = link_to "show/edit", task_url(task), :class => 'popup', :rel => "facebox", 'original-title' => "View more details or edit this task ", :class => 'tipsy-s'
     .clear
 

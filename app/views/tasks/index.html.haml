@@ -21,9 +21,11 @@
       }
     });
   });
-- title link_to @task_list.title.titleize, @task_list
-%p{:style => "margin: 10px"}
+- title @task_list.title.titleize
+%p
   %small
+    %div.left{:style => "margin: 0 15px"}
+      = link_to "Back", @task_list
     Created on
     %strong
       = l @task_list.created_at, :format => '%A, %d %B of %Y'
