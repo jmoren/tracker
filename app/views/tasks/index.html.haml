@@ -14,8 +14,8 @@
       hoverClass: 'drophover',
       drop: function(event,ui){
         var $item = ui.draggable;
-        var st = $(this).find('input.state').val();
-        var id = $(ui.draggable).attr('id');
+        var st =  $(this).find('input.state').val();
+        var id = $(ui.draggable).attr('data-id');
         $.post('/tasks/state?id=' + id + '&state=' + st);
         $item.fadeOut('slow').remove();
       }
