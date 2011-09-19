@@ -237,16 +237,29 @@ ul.content, ul#tasks {
   margin: 0 auto;
   padding: 0; }
   ul.content li, ul#tasks li {
-    margin: 5px;
     border-radius: 5px;
-    height: 200px; }
+    margin: 3px;
+    height: 210px; }
     ul.content li .move, ul#tasks li .move {
+      height: 17px;
+      background: transparent;
+      padding: 3px 10px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
       font-size: 11px;
-      text-align: center; }
+      border: solid 1px #f1f1f1;
+      border-bottom: solid #666666 1px; }
+      ul.content li .move .text, ul#tasks li .move .text {
+        float: left; }
       ul.content li .move:hover, ul#tasks li .move:hover {
         cursor: pointer; }
+    ul.content li .moving, ul#tasks li .moving {
+      background: #666666;
+      border: solid 1px #666666 !important;
+      color: white; }
     ul.content li .task, ul#tasks li .task {
-      padding: 10px;
+      margin: 5px 3px;
+      padding: 5px 10px;
       min-height: 150px;
       width: 140px;
       font-size: 11px; }
@@ -264,9 +277,6 @@ ul.content, ul#tasks {
         border-top: #222222 1px solid;
         padding-top: 5px;
         font-size: 10px; }
-    ul.content li:hover, ul#tasks li:hover {
-      border: solid #666666 2px !important;
-      margin: 4px; }
 
 #title {
   font-size: 20px;

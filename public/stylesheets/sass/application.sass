@@ -242,15 +242,28 @@ ul.content, ul#tasks
   padding: 0
   li
     .move
+      height: 17px
+      background: transparent
+      padding: 3px 10px
+      border-top-left-radius: 5px
+      border-top-right-radius: 5px
       font-size: 11px
-      text-align: center
+      border: solid 1px #f1f1f1
+      border-bottom: solid #666 1px
+      .text
+        float: left
       &:hover
         cursor: pointer
-    margin: 5px
+    .moving
+      background: #666
+      border: solid 1px #666 !important
+      color: #fff
     border-radius: 5px
-    height: 200px
+    margin: 3px
+    height: 210px
     .task
-      padding: 10px
+      margin: 5px 3px
+      padding: 5px 10px
       min-height: 150px
       width: 140px
       font-size: 11px
@@ -268,9 +281,6 @@ ul.content, ul#tasks
         border-top: #222 1px solid
         padding-top: 5px
         font-size: 10px
-    &:hover
-      border: solid #666 2px !important
-      margin: 4px
 
 #title
   font-size: 20px

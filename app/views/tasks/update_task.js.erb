@@ -1,9 +1,22 @@
 $("#<%= @task.id %>").html("<%= escape_javascript(render @task) %>");
+$('.tipsy-s').tipsy({gravity: 's'});
 $('a[rel*=facebox]').facebox({
   loadingImage : '/images/loader.gif',
   closeImage   : '/images/closelabel.png',
 });
-$( ".draggable" ).draggable({revert: 'invalid', handle: 'div.move',zIndex: 2000});
+$( ".draggable" ).draggable({
+  revert: 'invalid', 
+  handle: 'div.move',
+  zIndex: 2000,
+  start : function(event,ui){
+    $(this).find('.move').addClass('moving');
+    $('.moving .text').text("moving...");
+  },
+  stop : function(event,ui){
+    $(this).find('.move').removeClass('moving');
+    $('.move .text').text("click here to move me");
+  }
+});
 $( ".droppable" ).droppable({
   tolerance: 'fit',
   hoverClass: 'drophover',
