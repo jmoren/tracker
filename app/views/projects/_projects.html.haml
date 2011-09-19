@@ -12,7 +12,7 @@
       %p
         .owner
           .left{:style => "margin: 0 5px"}
-            = project.is_collaborator?(current_user) ? image_tag('unlock.png', :title => "Eres miembro de este proyecto") : image_tag('lock.png', :title => "no eres parte de este proyecto")
+            = project.is_collaborator?(current_user) ? image_tag('unlocked.png', :title => "Eres miembro de este proyecto") : image_tag('locked.png', :title => "no eres parte de este proyecto")
           .left{:style => "margin: 0px 3px"}
             Created by
             = project.user.username

@@ -93,6 +93,22 @@ a {
     #menu #nav_bar span a {
       text-decoration: none; }
 
+.button {
+  background: #f1f1f1;
+  padding: 5px;
+  margin: 10px 0;
+  border: solid #cccccc 1px;
+  border-radius: 5px;
+  text-align: center; }
+  .button a {
+    text-decoration: none;
+    font-weight: bold; }
+  .button:hover {
+    background: #2e6e9e;
+    border: #2e6e9e solid 1px; }
+    .button:hover a {
+      color: #f0ede9 !important; }
+
 #login_form {
   width: 25%;
   margin: 20px auto;
@@ -269,21 +285,6 @@ ul.content, ul#tasks {
 #col_right {
   width: 20%;
   padding: 10px; }
-  #col_right #new_project {
-    background: #f1f1f1;
-    padding: 5px;
-    margin: 10px 0;
-    border: solid #cccccc 1px;
-    border-radius: 5px;
-    text-align: center; }
-    #col_right #new_project a {
-      text-decoration: none;
-      font-weight: bold; }
-    #col_right #new_project:hover {
-      background: #2e6e9e;
-      border: #2e6e9e solid 1px; }
-      #col_right #new_project:hover a {
-        color: #f0ede9; }
   #col_right #filter_projects {
     font-size: 12px; }
     #col_right #filter_projects div {
@@ -297,13 +298,11 @@ ul.content, ul#tasks {
       font-weight: bold;
       padding: 2px 20px 2px 2px;
       background: transparent url(/images/minus.png) right center no-repeat; }
-  #col_right #search_projects .label {
-    margin: 3px 0;
-    font-size: 12px; }
   #col_right #search_projects input {
+    float: left;
     padding-left: 5px;
     color: darkGrey;
-    width: 100%;
+    width: 85%;
     border: solid 1px #cccccc !important;
     -webkit-appearance: none; }
     #col_right #search_projects input:focus {

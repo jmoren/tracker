@@ -19,12 +19,13 @@
     });  
   });
 #col_right.right
-  #new_project
+  .button
     = link_to "New Project", new_project_path
   #search_projects
-    .label Search:
     = form_tag projects_path, :remote => true do
+      .right= image_tag('search.png')
       = text_field_tag :q,nil,'data-placeholder' => 'start typing to search...', :id => 'q'
+      .clear
   - unless @projects.empty?
     #filter_projects
       .title_section Filter by:
