@@ -23,7 +23,7 @@
     = link_to "New Project", new_project_path
   #search_projects
     = form_tag projects_path, :remote => true do
-      .right= image_tag('search.png')
+      .right{:style => "margin: -2px 0;"}= image_tag('search.png')
       = text_field_tag :q,nil,'data-placeholder' => 'start typing to search...', :id => 'q'
       .clear
   - unless @projects.empty?

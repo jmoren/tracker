@@ -25,12 +25,17 @@
 %p
   %small
     %div.left{:style => "margin: 0 15px"}
-      = link_to "Back", @task_list
-    Created on
-    %strong
-      = l @task_list.created_at, :format => '%A, %d %B of %Y'
-    by
-    = @task_list.user.username
+      .left
+        = link_to(@task_list) do
+          .left{:style => "margin: -4px 5px 0 0"}= image_tag('back.png')
+          .left Go back
+    .right
+      Created on
+      %strong
+        = l @task_list.created_at, :format => '%A, %d %B of %Y'
+      by
+      = @task_list.user.username
+    .clar  
 .flash.left{:style => "display:none"}
 .clear
 #panel

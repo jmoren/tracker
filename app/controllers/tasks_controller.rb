@@ -69,19 +69,24 @@ class TasksController < ApplicationController
   end
 
   def move_state
+    # find objects
     @task = Task.find(params[:id])
     @task_list = @task.task_list
-
-
+    
+    #save information
     @old_state = @task.state
     @old_dom = @old_state == 1 ? '#todo' : @old_state == 2 ? '#progress' : '#done'
-    #after update:
+    
+    #update:
     @task.update_state(params[:state])
+    
+    #save new information
     @state = @task.state
     @dom = params[:state] == '1' ? '#todo' : params[:state] == '2' ? '#progress' : '#done'
-
+    
+    #update lists
     @old_tasks = Task.by_state(@old_state, @task_list)
-    @tasks = Task.by_state(params[:state],@task_list)
+    @tasks = Task.by_state(@state, @task_list)
   end
 
   def update_in_place
