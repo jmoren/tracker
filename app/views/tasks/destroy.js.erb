@@ -1,4 +1,4 @@
-$('#<%= @id %>').fadeOut('slow');
-$('#<%= @id %>').remove();
+$("[data-id=<%= @id %>]").fadeOut('slow');
+$("[data-id=<%= @id %>]").remove();
 $("<%= @dom %>").html("<%= escape_javascript(render :partial => 'tasks/tasks', :locals => { :tasks => @tasks , :state => @state}) %>");
 $("<%= @dom %>").find('> .title').effect('highlight',{},5000);

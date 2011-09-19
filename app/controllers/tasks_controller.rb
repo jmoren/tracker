@@ -44,6 +44,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
+    @id = @task.id
     @dom = @task.state == 1 ? '#todo' : @task.state == 2 ? '#progress' : '#done'
     @state = @task.state
     @tasks = Task.by_state(@task.state, @task.task_list)
