@@ -9,8 +9,8 @@
         %h2
           = user.username
         .email= user.email
-        .projects
+        .projects{:class => 'tipsy-w','original-title' => "<div style='text-align:left;font-size: 12px'><strong>#{user.username.titleize}</strong> is owner of <strong>#{pluralize(user.projects.size,'project')}</strong> and is member in #{pluralize(user.my_projects.size - user.projects.size, 'project')}</div>"}
           Projects: 
-          = user.projects.size
+          = user.my_projects.size
       .clear
 .clear

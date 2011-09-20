@@ -8,6 +8,7 @@ $(function(){
   });
   $('.tipsy-s').tipsy({gravity: 's'});
   $('.tipsy-e').tipsy({gravity: 'e',html: true});
+  $('.tipsy-w').tipsy({gravity: 'w',html: true});
 
   $('.delete_task').click(function(){
     var p = this.href
