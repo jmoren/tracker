@@ -7,5 +7,10 @@
       .label= label_tag :password
       .input= password_field_tag :password
     .block
+      .left{:style => "font-size:10px;margin-top: 11px"}
+        Don't have an account?
+        %br
+        .left= link_to "Sign up!", signup_path
+        .right= link_to "Help", "#"
       = submit_tag "Log in"
     .clear  

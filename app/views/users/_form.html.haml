@@ -1,20 +1,29 @@
-= form_for @user do |f|
-  = f.error_messages
-  %p
-    = f.label :username
-    %br
-    = f.text_field :username
-  %p
-    = f.label :email, "Email Address"
-    %br
-    = f.text_field :email
-  %p
-    = f.label :password
-    %br
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation, "Confirm Password"
-    %br
-    = f.password_field :password_confirmation
-  %p
-    = f.submit (@user.new_record? ? "Sign up" : "Update")
+#signup_form
+  %h1 
+    = @user.new_record? ? "New Account" : "Update profile"
+  = form_for @user do |f|
+    = f.error_messages
+    %p
+      = f.label :username
+      = f.text_field :username
+    %p
+      = f.label :email, "Email Address"
+      = f.text_field :email
+    %p
+      = f.label :password
+      = f.password_field :password
+    %p
+      = f.label :password_confirmation, "Confirm Password"
+      = f.password_field :password_confirmation
+    #form_footer
+      #submit_button
+        = f.submit (@user.new_record? ? "Sign up!" : "Update")
+      - if @user.new_record?
+        #submit_links
+          Already have an account?
+          %div
+            %strong= link_to "Login", login_path
+            |
+            = link_to "Help", "#"
+        .clear
+    .clear  

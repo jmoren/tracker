@@ -1,0 +1,31 @@
+!!!
+%html
+
+  %head
+    %title
+      = yield(:title) || "Untitled"
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag "application"
+    %link{ :href => '/stylesheets/jquery-ui-1.8.16.custom.css',:media => 'screen',:rel => 'stylesheet', :type => 'text/css'}
+    %link{ :href => '/stylesheets/facebox.css',:media => 'screen',:rel => 'stylesheet', :type => 'text/css'}
+    %link{ :href => '/stylesheets/tipsy.css',:media => 'screen',:rel => 'stylesheet', :type => 'text/css'}
+    = javascript_include_tag :defaults,'jquery.autogrow.js', 'jquery.jeditable.js','facebox.js','jquery.tipsy.js'
+    = csrf_meta_tag
+    = yield(:head)
+
+  %body
+    #container{:style => "height: 500px"}
+      #logo{:style => "margin: 0px 0"}
+        .left= image_tag('anana.png')
+        %h1.left anana
+        .clear
+      - if controller_name != 'home'    
+        #links 
+          .right= link_to "Home", root_url
+      .clear
+      %hr
+      -if controller_name == 'sessions'
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
+      = yield
+

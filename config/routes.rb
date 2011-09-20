@@ -1,4 +1,5 @@
 Tracker::Application.routes.draw do
+  get "home/index"
   match 'user/edit' => 'users#edit', :as => :edit_current_user
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -26,6 +27,6 @@ Tracker::Application.routes.draw do
       post 'remove'  => "projects#remove_collaborator"
     end
   end
-  root :to => "projects#index"
+  root :to => "home#index"
 end
 
