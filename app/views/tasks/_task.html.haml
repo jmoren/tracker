@@ -4,7 +4,7 @@
     .left
       = task.assigned.nil? ? "Edit this field" : task.assigned.username
     .clear
-  %div{:id => "task_info_#{task.id}", :style => "display: #{task.state == 3 ? 'none' : 'block'}"}    
+  %div{:id => "task_info_#{task.id}", :style => "display: #{task.state != 3 || item ? 'block' : 'none'}"}    
     .task_description
       .label Description:
       %p= truncate(task.description, :length => 80 )
