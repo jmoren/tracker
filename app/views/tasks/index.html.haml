@@ -1,5 +1,10 @@
 :javascript
   $(function() {
+    $('.move').live('click', function(){
+      var d = $(this).attr('data-info')
+      $('#task_info_'+d).slideToggle();
+      return false;
+    });  
     $('.more').live('click',function(){
       $('li.to_hide').hide();
       $(this).addClass('minus');

@@ -6,7 +6,7 @@
   %input{:type => 'hidden', :value => state, :name => 'state', :class => 'state'}
   - tasks.each do |task|
     %li.left{:class => "draggable #{task.state == 1 ? 'todo' : task.state == 2 ? 'progress' : 'done'} #{task.assigned.try(:username) == current_user.username ? nil : 'to_hide'}", 'data-id' => task.id}
-      .move
+      .move{'data-info' => task.id}
         - if task.comments.size > 0
           .right
             =image_tag('attachment.png', :class => 'tipsy-s','original-title' => "This task has #{pluralize(task.comments.size,'comment')}")

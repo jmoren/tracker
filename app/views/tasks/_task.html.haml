@@ -4,13 +4,14 @@
     .left
       = task.assigned.nil? ? "Edit this field" : task.assigned.username
     .clear
-  .task_description
-    .label Description:
-    %p= truncate(task.description, :length => 80 )
-  .priority
-    .label.left{:style => "width: 50px"} Priority:
-    .left= task.priority
-    .clear
+  %div{:id => "task_info_#{task.id}", :style => "display: #{task.state == 3 ? 'none' : 'block'}"}    
+    .task_description
+      .label Description:
+      %p= truncate(task.description, :length => 80 )
+    .priority
+      .label.left{:style => "width: 50px"} Priority:
+      .left= task.priority
+      .clear
   .task_status
     .label.left{:style => "width: 50px"} Status:
     .left= task.status
