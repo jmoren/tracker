@@ -223,7 +223,7 @@ ul#users {
     background: #fafafa; }
   #panel .panel .title {
     text-align: center;
-    padding-right: 5px;
+    padding: 5px 10px;
     border: solid 1px #cccccc;
     border-bottom: white solid 1px;
     border-top-left-radius: 5px;
@@ -334,15 +334,18 @@ ul.content, ul#tasks {
     font-weight: bold; }
   .project .owner {
     font-size: 11px; }
-  .project .links, .project .more_link {
-    float: right;
-    font-size: 11px; }
-  .project .minus {
-    padding: 0 0 3px 20px;
-    background: url("/images/minus.png") no-repeat !important; }
-  .project .more {
-    padding: 0 0 3px 20px;
-    background: url("/images/more.png") 0 0 no-repeat; }
+
+.links, .more_link {
+  float: right;
+  font-size: 11px; }
+
+.minus {
+  padding: 0 0 3px 20px;
+  background: url("/images/minus.png") no-repeat !important; }
+
+.more {
+  padding: 0 0 3px 20px;
+  background: url("/images/more.png") 0 0 no-repeat; }
 
 .open {
   background: url("/images/open.png") 1% 8px no-repeat; }
@@ -391,14 +394,26 @@ ul#collaborators {
   border: solid 1px #dd4b39;
   background: #f2b6c5 url(/images/error.png) 2% 49% no-repeat; }
 
-input#email {
-  padding: 3px 5px;
-  border: solid 1px #cccccc;
-  border-radius: 3px;
-  font-size: 12px;
-  color: #666666; }
-  input#email:focus {
-    color: black; }
+#tasks h3 {
+  padding: 0;
+  margin: 8px 5px; }
+
+#config h3 {
+  margin: 0 10px;
+  padding: 5px; }
+#config #new_collaborator {
+  margin: -3px 5px;
+  width: 100%; }
+  #config #new_collaborator input#email {
+    padding: 3px 5px;
+    float: left;
+    margin: 3px 5px;
+    border: solid 1px #cccccc;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #666666; }
+    #config #new_collaborator input#email:focus {
+      color: black; }
 
 .ui-autocomplete-loading {
   background: white url("/stylesheets/images/ui-anim_basic_16x16.gif") right center no-repeat; }

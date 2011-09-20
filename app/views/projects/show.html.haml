@@ -3,7 +3,7 @@
   $(function(){
     $('#tabs').tabs();
     $('.remote_link').click(function(){
-      $('#loading').html("<div><img style='float:left;margin:2px 5px 0 0' src='/images/loading.gif'> adding collaborator </div>");
+      $('#loading').html("<img style='margin: -4px 5px' src='/images/loading.gif'> adding collaborator ");
     });
     $('#email').focus(function(){
       $(this).val('');
@@ -54,24 +54,33 @@
   %div{:id => 'project'}
     %p
       %strong Description:
-      = simple_format @project.description
+      = simple_format @project.description, :class => "text_area"
     %p
-      %strong Start Date:
-      =  @project.start_date
-      %strong End Date:
-      = @project.end_date
+      .left{:style => "margin: -5px 5px 0 0 "}= image_tag('calendar.png')
+      Start on
+      %strong
+        = l @project.start_date, :format => '%d of %B, %Y'
+      and ends on
+      %strong
+        = l @project.end_date, :format => '%d of %B, %Y'
     %p
+      .left{:style => "margin: -5px 5px 0 0 "}= image_tag('info.png')
       %strong Status:
       = @project.status
     %p
+      .left{:style => "margin: -5px 5px 0 0 "}= image_tag('owner.png')
       %strong Owner:
       = @project.user.username
+    %p
+      .left
+        .button.left{:style => "margin-right: 10px"}= link_to "Edit", edit_project_path(@project)
+        .button.left= link_to "Destroy", @project, :confirm => 'Are you sure?', :method => :delete
   %div{:id => 'tasks'}
     %p
       .tab_title
-        .left{:style => 'margin: 10px'}
-          %strong Tasks lists
-        .button.right{:style => 'width: 40%'}
+        .left
+          %h3 Tasks lists
+        .button.right{:style => 'width: 20%'}
           = link_to "New task list", new_project_task_list_path(@project)
         .clear
       %ol
@@ -81,9 +90,8 @@
     %p
       .tab_content
         - if current_user.is_admin_or_owner?(@project)
+          %h3 Add member:
           .left
-            %strong Add member
-          .left{:style => "margin: -5px 3px"}
             = form_tag add_collaborator_project_path(@project),:id => "new_collaborator", :remote => true do
               = text_field_tag :email, nil, :size => 50, 'data-placeholder' => "Start typing the username..."
               %select{:id => "role", :name => "role", 'original-title' => "Select a role for this user", :class =>'focus-example', :id => 'select_rol', :disabled => 'disabled' }
@@ -91,18 +99,14 @@
                   %option{:value => r}
                     = r
               = submit_tag "Add", :class => "remote_link", :id => "submit_col", :disabled => 'disabled'
-              #loading
+              %span#loading
           .clear
         %p
           #messages{:style => "display:none"}
-          .clear    
+          .clear
         %ul#collaborators
           - @project.collaborators.each do |collaborator|
             = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }
   .clear
-  .left
-    = link_to "Edit", edit_project_path(@project)
-    |
-    = link_to "Destroy", @project, :confirm => 'Are you sure?', :method => :delete
 .clear
 

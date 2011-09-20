@@ -1,7 +1,7 @@
 $primary_color: #4b7399
 
 body
-  background-color: #f1f1f1 
+  background-color: #f1f1f1
   //$primary_color
   font:
     family: Ubuntu,Verdana, Helvetica, Arial
@@ -162,14 +162,14 @@ ul#users
     .user_photo
       padding: 7px 5px
       width: 60px
-    .user_info  
+    .user_info
       h2
         color: #3D9400
         margin: -5px 0
         padding: 5px 0
       margin-left: 5px
   .you
-    background: transparent url(/images/user.png) 97% 15% no-repeat 
+    background: transparent url(/images/user.png) 97% 15% no-repeat
     border: solid 2px #66cc66
 
 .task_list_button
@@ -196,6 +196,7 @@ ul#users
 #tabs
   a
     color: #2E6E9E
+
 #list_tasks
   ul
     margin: 0
@@ -227,7 +228,7 @@ ul#users
       background: #fafafa
     .title
       text-align: center
-      padding-right: 5px
+      padding: 5px 10px
       border: solid 1px #ccc
       border-bottom: #fff solid 1px
       border-top-left-radius: 5px
@@ -299,7 +300,7 @@ ul.content, ul#tasks
 #col_right
   width: 20%
   padding: 10px
-  
+
   #filter_projects
     div
       margin: 5px 0
@@ -322,7 +323,7 @@ ul.content, ul#tasks
       border: solid 1px #ccc !important
       -webkit-appearance: none
       &:focus
-        color: #666 
+        color: #666
         border: solid 1px blue
 #col_left
   border-right: solid 1px #ccc
@@ -338,15 +339,15 @@ ul.content, ul#tasks
     font-weight: bold
   .owner
     font-size: 11px
-  .links, .more_link
-    float: right
-    font-size: 11px
-  .minus
-    padding: 0  0 3px 20px
-    background: url('/images/minus.png') no-repeat !important
-  .more
-    padding: 0 0 3px  20px
-    background: url('/images/more.png') 0 0 no-repeat
+.links, .more_link
+  float: right
+  font-size: 11px
+.minus
+  padding: 0  0 3px 20px
+  background: url('/images/minus.png') no-repeat !important
+.more
+  padding: 0 0 3px  20px
+  background: url('/images/more.png') 0 0 no-repeat
 
 .open
   background: url('/images/open.png') 1% 8px no-repeat
@@ -390,15 +391,27 @@ ul#collaborators
 .alert
   border: solid 1px #DD4B39
   background: #F2B6C5 url(/images/error.png) 2% 49% no-repeat
-
-input#email
-  padding: 3px 5px
-  border: solid 1px #ccc
-  border-radius: 3px
-  font-size: 12px
-  color: #666
-  &:focus
-    color: #000
+#tasks
+  h3
+    padding: 0
+    margin: 8px 5px
+#config
+  h3
+    margin: 0 10px
+    padding: 5px
+  #new_collaborator
+    margin: -3px 5px
+    width: 100%
+    input#email
+      padding: 3px 5px
+      float: left
+      margin: 3px 5px
+      border: solid 1px #ccc
+      border-radius: 3px
+      font-size: 12px
+      color: #666
+      &:focus
+        color: #000
 
 .ui-autocomplete-loading
   background: white url('/stylesheets/images/ui-anim_basic_16x16.gif') right center no-repeat
@@ -460,7 +473,7 @@ input#email
     color: #3D9400
   #submit
     width: 96%
-    margin: 5px auto 
+    margin: 5px auto
     input[type='submit']
       padding: 2px
       border-radius: 3px

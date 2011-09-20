@@ -1,15 +1,29 @@
 :javascript
   $(function() {
-    $('a[rel*=facebox]').facebox({
+    $('.more').live('click',function(){
+      $('li.to_hide').hide();
+      $(this).addClass('minus');
+      $(this).removeClass('more');
+      $(this).text("All tasks");
+      return false;
+    });
+    $('.minus').live('click',function(){
+      $('li.to_hide').show();
+      $(this).removeClass('minus');
+      $(this).addClass('more');
+      $(this).text("My tasks")
+      return false;
+    });
+    $("a[rel*=facebox]").facebox({
       loadingImage : '/images/loader.gif',
       closeImage   : '/images/closelabel.png',
     });
     $(document).bind('afterClose.facebox', function() {
-      $('li#'+$(this).find('#return_task').val()).find('.task').html("<img src='/images/loading.gif'><span> Updating... </span>");
+      $("li#"+$(this).find('#return_task').val()).find('.task').html("<img src='/images/loading.gif'><span> Updating... </span>");
       $.ajax('/tasks/update_task/dom?id='+$(this).find('#return_task').val());
     });
     $( ".draggable" ).draggable({
-      revert: 'invalid', 
+      revert: 'invalid',
       handle: 'div.move',
       zIndex: 2000,
       start : function(event,ui){
@@ -19,7 +33,7 @@
       stop : function(event,ui){
         $(this).find('.move').removeClass('moving');
         $('.move .text').text("click here to move me");
-      }  
+      }
     });
     $( ".droppable" ).droppable({
       tolerance: 'fit',
@@ -36,18 +50,22 @@
 - title @task_list.title.titleize
 %p
   %small
-    %div.left{:style => "margin: 0 15px"}
+    .left{:style => "margin: 0 15px"}
       .left
         = link_to(@task_list) do
           .left{:style => "margin: -4px 5px 0 0"}= image_tag('back.png')
           .left Go back
-    .right
-      Created on
-      %strong
-        = l @task_list.created_at, :format => '%A, %d %B of %Y'
-      by
-      = @task_list.user.username
-    .clar  
+    .right{:style => "margin: 0 15px 0 0;"}
+      .links{:style => "margin:0 20px;float: left"}
+        = link_to "#", :class => "more_link more hide_tasks tipsy-s", 'original-title' => "Close this panel", 'data-user' => current_user.username do
+          My tasks
+      .right
+        Created on
+        %strong
+          = l @task_list.created_at, :format => '%A, %d %B of %Y'
+        by
+        = @task_list.user.username
+    .clar
 .flash.left{:style => "display:none"}
 .clear
 #panel
