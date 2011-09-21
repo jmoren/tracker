@@ -1,4 +1,4 @@
-$("#<%= @task.id %>").html("<%= escape_javascript(render @task) %>");
+$("#<%= @task.id %>").html("<%= escape_javascript(render :partial => 'tasks/task', :locals => {:task => @taskm, :item => false }) %>");
 $('.tipsy-s').tipsy({gravity: 's'});
 $('a[rel*=facebox]').facebox({
   loadingImage : '/images/loader.gif',
