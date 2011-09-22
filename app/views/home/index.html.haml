@@ -1,22 +1,36 @@
-%h1{:style => "text-align: center;width: 60%;margin: 0 auto"}
-  Welcome to anana!
+
 #content{:style => "width: 90%;margin:20px auto"}
+  #nav
+    %ul
+      %li= link_to "Screenshots","#"
+      %li= link_to "Pricing", "#"
+      %li= link_to "Contact us","#"
+    .clear 
   .left{:style => "width: 70%"}
     #anana
-      .title    
-        What is anana?...
+      %h2.title    
+        What is anana? ...
       %p
+        .left{:style => "margin-right: 15px"}= image_tag('organize.png')
         Anana is a simple web application that helps you and your team to keep your task organizaded. 
+      %h3.title    
+        What is new? ...  
       %p
+        .left{:style => "margin-right: 15px"}= image_tag('panel.png')
         With a clean panel, you can view how is your progress, check status, difficults.
+      %h3.title    
+        Some features ... 
       %p
-        You can organize your tasks with lists, tagging them and comment on them to not forget what your were doing, assigne each one to know who is doing what. 
-        %br
-        Also you can add collaborators, with differents permissions on your project. 
+        .left{:style => "margin-right: 15px"}= image_tag('comment.png')
+        Add collaborators, commnet or tag your task, assign them, etc
+      %h3.title    
+        This is important ...  
       %p
-        And one more thing, all projects are 
+        .left{:style => "margin-right: 15px"}= image_tag('private.png')
+        Your projects are
         %b private
         , this means that only you and your team can view and manage your tasks.
+      %hr{:style => "width: 100%"}
       %p
         %small
           .left{:style => "margin: 2px 5px"}= image_tag('ok.png')
@@ -24,7 +38,7 @@
           %em demo
           user (username: demo, password: demo)
     #funcionalidades
-      .title
+      %h2.title
         We are working on...
       %table
         %tr
@@ -42,14 +56,20 @@
             = image_tag('working.png')
           %td.task Permissions
           %td.status waiting...
+        %tr
+          %td.image 
+            = image_tag('working.png')
+          %td.task Text editor
+          %td.status waiting...
   .right{:style => "width: 30%"}
     #go
+      %h2 Login
       = form_tag sessions_path do
         %em= label_tag :login, "Username or Email"
         = text_field_tag :login, params[:login], :value => 'demo'
         %em= label_tag :password
         = password_field_tag :password
-        %p= submit_tag "Log in"
+        = submit_tag "Log in"
     %hr
     #footer
       Don't have an account?

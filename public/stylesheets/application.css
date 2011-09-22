@@ -79,36 +79,52 @@ a {
     font-size: 1.8em;
     margin-top: 20px; }
 
-#content #anana {
-  padding: 0 5px; }
-#content #funcionalidades .title, #content #anana .title {
-  margin: 5px 0;
-  font-size: 18px;
+#content #nav {
+  font-size: 12px;
+  border-bottom: #cccccc 1px solid;
+  background: #f1f1f1;
   font-weight: bold; }
-#content #funcionalidades table, #content #anana table {
-  margin: 15px 0;
-  width: 98%;
-  padding: 5px;
-  border: solid #cccccc 1px;
-  border-collapse: collapse; }
-  #content #funcionalidades table tr, #content #anana table tr {
-    background: #f2f0f0;
-    margin: 4px 0;
-    padding: 3px;
-    line-height: 1.8em;
-    border: white solid 1px; }
-    #content #funcionalidades table tr td.image, #content #anana table tr td.image {
+  #content #nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    #content #nav ul li {
       float: left;
-      margin: 3px 0 0 3px;
-      width: 5%; }
-    #content #funcionalidades table tr td.task, #content #anana table tr td.task {
-      font-weight: bold;
-      color: #333333;
-      width: 80%; }
-    #content #funcionalidades table tr td.status, #content #anana table tr td.status {
-      font-size: 12px;
-      color: #666666;
-      width: 10%; }
+      padding: 5px;
+      margin: 0 5px; }
+#content #anana {
+  padding: 5px 10px;
+  margin: 20px 0;
+  border-radius: 4px; }
+  #content #anana p {
+    margin-bottom: 25px;
+    clear: both; }
+#content #funcionalidades {
+  margin: 20px 0; }
+  #content #funcionalidades table {
+    margin: 15px 0;
+    width: 98%;
+    padding: 5px;
+    border: solid #cccccc 1px;
+    border-collapse: collapse; }
+    #content #funcionalidades table tr {
+      background: #f2f0f0;
+      margin: 4px 0;
+      padding: 3px;
+      line-height: 1.8em;
+      border: white solid 1px; }
+      #content #funcionalidades table tr td.image {
+        float: left;
+        margin: 3px 0 0 3px;
+        width: 5%; }
+      #content #funcionalidades table tr td.task {
+        font-weight: bold;
+        color: #333333;
+        width: 80%; }
+      #content #funcionalidades table tr td.status {
+        font-size: 12px;
+        color: #666666;
+        width: 10%; }
 #content #users {
   width: 75%;
   margin: 20px auto; }
@@ -120,11 +136,15 @@ a {
       float: left;
       margin: 2px; }
 #content #go {
+  width: 80%;
   padding: 10px;
   margin: auto; }
+  #content #go h2 {
+    margin: 10px 0;
+    padding: 0; }
   #content #go form {
-    width: 80%;
-    margin: auto; }
+    width: 100%;
+    margin: 5px 5px 5px 5px 5px auto; }
     #content #go form label {
       font-size: 12px;
       margin: 3px 0;
@@ -135,7 +155,8 @@ a {
       border: solid #cccccc 1px; }
     #content #go form input[type="submit"] {
       border-radius: 4px;
-      width: 40%; }
+      width: 40%;
+      margin: 10px 0; }
 #content #footer, #content #users, #content hr {
   margin: 20px auto;
   width: 80%; }
