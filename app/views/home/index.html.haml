@@ -8,35 +8,37 @@
     .clear 
   .left{:style => "width: 70%"}
     #anana
-      %h2.title    
+      %h1.title    
         What is anana? ...
-      %p
+      .expl
         .left{:style => "margin-right: 15px"}= image_tag('organize.png')
         Anana is a simple web application that helps you and your team to keep your task organizaded. 
       %h3.title    
         What is new? ...  
-      %p
+      .expl
         .left{:style => "margin-right: 15px"}= image_tag('panel.png')
         With a clean panel, you can view how is your progress, check status, difficults.
       %h3.title    
         Some features ... 
-      %p
+      .expl
         .left{:style => "margin-right: 15px"}= image_tag('comment.png')
         Add collaborators, commnet or tag your task, assign them, etc
       %h3.title    
         This is important ...  
-      %p
+      .expl
         .left{:style => "margin-right: 15px"}= image_tag('private.png')
         Your projects are
         %b private
-        , this means that only you and your team can view and manage your tasks.
-      %hr{:style => "width: 100%"}
+        , this means that only you and your team can view your tasks.
       %p
         %small
           .left{:style => "margin: 2px 5px"}= image_tag('ok.png')
-          You can test the application login in as 
-          %em demo
-          user (username: demo, password: demo)
+          You can test the application login in as demo
+          %em (username: 
+          %b demo
+          , password: 
+          %b demo
+          )
     #funcionalidades
       %h2.title
         We are working on...
