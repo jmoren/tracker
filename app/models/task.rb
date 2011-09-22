@@ -5,7 +5,7 @@ class Task < ActiveRecord::Base
   belongs_to :assigned, :class_name => 'User', :foreign_key => :assigned_id
   has_many :comments, :dependent => :destroy
 
-  STATUS=['pending','working','locked','aproved','abandoned']
+  STATUS=['created','pending','working','locked','aproved','abandoned']
   PRIORITY=['high','medium','low','unknown']
   attr_accessible :task_list_id, :project_id, :description, :status, :user_id, :priority,:state, :assigned_id
 
