@@ -79,6 +79,35 @@ a {
     font-size: 1.8em;
     margin-top: 20px; }
 
+#content #funcionalidades, #content #mejoras {
+  margin: 0 5px;
+  padding: 0 5px; }
+  #content #funcionalidades ul, #content #mejoras ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    #content #funcionalidades ul li .status, #content #mejoras ul li .status {
+      padding: 3px 40px;
+      width: 70%;
+      margin: 3px 0; }
+    #content #funcionalidades ul li .working, #content #mejoras ul li .working {
+      border: solid 1px #faef52;
+      background: #f2f0a0 url(/images/working.png) left center no-repeat; }
+#content #go {
+  padding: 10px;
+  margin: auto;
+  border-left: 2px #cccccc solid; }
+  #content #go form {
+    width: 80%;
+    margin: auto; }
+    #content #go form input {
+      width: 100%;
+      border: solid #cccccc 1px; }
+  #content #go #footer {
+    margin: auto;
+    width: 80%;
+    font-size: 11px; }
+
 #menu {
   margin: 10px 3px; }
   #menu #user_menu {
