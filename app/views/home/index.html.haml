@@ -2,33 +2,66 @@
   Welcome to anana!
 #content{:style => "width: 90%;margin:20px auto"}
   .left{:style => "width: 70%"}
-    %p{:style => 'font-size: 17px; font-weight: bold'}
-      What is anana?...
-
-    #funcionalidades.left{:style => "width: 47%"}
-      Funcionalidades planificadas:
-      %ul
-        %li
-          .status.working Notificaciones
-        %li
-          .status.pending Mails
-        %li
-          .status.future  Permisos por lista de tareas
-    #mejoras.left{:style => "width: 47%"} 
-      Mejoras Pendientes
-      %ul
-        %li Notificaciones
-        %li Mails
-        %li Permisos por lista de tareas
+    #anana
+      .title    
+        What is anana?...
+      %p
+        Anana is a simple web application that helps you and your team to keep your task organizaded. 
+      %p
+        With a clean panel, you can view how is your progress, check status, difficults.
+      %p
+        You can organize your tasks with lists, tagging them and comment on them to not forget what your were doing, assigne each one to know who is doing what. 
+        %br
+        Also you can add collaborators, with differents permissions on your project. 
+      %p
+        And one more thing, all projects are 
+        %b private
+        , this means that only you and your team can view and manage your tasks.
+      %p
+        %small
+          .left{:style => "margin: 2px 5px"}= image_tag('ok.png')
+          You can test the application login in as 
+          %em demo
+          user (username: demo, password: demo)
+    #funcionalidades
+      .title
+        We are working on...
+      %table
+        %tr
+          %td.image 
+            = image_tag('working.png')
+          %td.task Notifications
+          %td.status working....
+        %tr
+          %td.image
+            = image_tag('working.png')
+          %td.task Mails
+          %td.status pending...
+        %tr
+          %td.image 
+            = image_tag('working.png')
+          %td.task Permissions
+          %td.status waiting...
   .right{:style => "width: 30%"}
     #go
       = form_tag sessions_path do
-        = label_tag :login, "Username or Email"
-        = text_field_tag :login, params[:login]
-        = label_tag :password
+        %em= label_tag :login, "Username or Email"
+        = text_field_tag :login, params[:login], :value => 'demo'
+        %em= label_tag :password
         = password_field_tag :password
         %p= submit_tag "Log in"
-      #footer
-        .left Don't have an account?
-        .right= link_to "Sign up!", signup_path
-        .clear  
+    %hr
+    #footer
+      Don't have an account?
+      .button= link_to "Sign up for Free!", signup_path
+    %hr
+    #users
+      %h4.left
+        Users all ready registered
+      .clear
+      %ul
+        - User.all.each do |user|
+          %li.user{:class => 'tipsy-s', 'original-title' => 'I\'am ' + user.username} 
+            = image_tag user.gravatar_url(:size => 33, :default => 'wavatar') 
+        .clear
+  .clear
