@@ -83,15 +83,20 @@ a {
   margin: 10px 3px; }
   #menu #user_menu {
     padding-top: 3px; }
-  #menu #nav_bar span {
-    float: right;
-    margin: 0 3px;
-    padding-top: 3px; }
-    #menu #nav_bar span:hover {
-      padding-top: 1px;
-      border-top: solid 2px #cccccc; }
-    #menu #nav_bar span a {
-      text-decoration: none; }
+
+#bar {
+  margin: 30px 10px 10px 10px;
+  font-weight: bold;
+  background: #f1f1f1;
+  border-bottom: solid #cccccc 1px; }
+  #bar .title {
+    font-size: 20px;
+    padding: 5px;
+    color: #666666; }
+  #bar .nav {
+    margin-top: 10px; }
+    #bar .nav a {
+      padding: 0px 10px; }
 
 .button {
   background: #f1f1f1;
