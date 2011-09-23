@@ -11,7 +11,16 @@
     = javascript_include_tag :defaults,'jquery.autogrow.js', 'jquery.jeditable.js','facebox.js','jquery.tipsy.js'
     = csrf_meta_tag
     = yield(:head)
-
+    :javascript
+      $(function(){
+        $('#projects_menu').hover(function(){
+          $('#project_list').slideDown('fast');
+          $(this).addClass('selected');
+        }, function(){
+          $('#project_list').slideUp('fast');
+          $(this).removeClass('selected');
+        })
+      })
   %body
     #container
       #logo
@@ -30,8 +39,22 @@
       .clear
       #bar
         .nav.right
-          = link_to "projects", projects_path
           = link_to "users", users_path
+          #projects_menu.left
+            = link_to 'projects', "#"
+            #project_list{:style => 'display:none'}
+              %ul
+                - current_user.my_projects.each do |project|
+                  %li
+                    .menu_link
+                      = link_to project.name, project
+                    .sub_title
+                      %small
+                        Created by 
+                        = project.user.username
+              %p.last_link
+                = link_to "view all projects", projects_path
+            .clear    
           = link_to "edit", edit_current_user_path
           = link_to "logout", logout_path
         .title.left

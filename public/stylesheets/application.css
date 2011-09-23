@@ -94,9 +94,43 @@ a {
     padding: 5px;
     color: #666666; }
   #bar .nav {
+    padding: 5px 0;
     margin-top: 10px; }
     #bar .nav a {
-      padding: 0px 10px; }
+      padding: 5px 10px; }
+  #bar .selected a {
+    background: white;
+    color: #666666; }
+  #bar #project_list {
+    border-radius: 3px;
+    -webkit-box-shadow: 3px 3px 5px 0px #cccccc;
+    -moz-box-shadow: 3px 3px 5px 0px #cccccc;
+    box-shadow: 3px 3px 5px 0px #cccccc;
+    position: absolute;
+    background: white;
+    padding-bottom: 5px;
+    z-index: 10000;
+    margin: 5px 0; }
+    #bar #project_list .last_link {
+      width: 80%;
+      padding-top: 5px;
+      margin: 10px auto;
+      text-align: center;
+      border-top: 1px #cccccc solid;
+      font-size: 11px; }
+    #bar #project_list ul {
+      margin: 0 0 0 10px;
+      padding: 5px 0 0 20px; }
+      #bar #project_list ul li {
+        margin: 5px; }
+        #bar #project_list ul li .sub_title {
+          margin: -2px 10px;
+          color: #999999; }
+        #bar #project_list ul li .menu_link {
+          margin: 0; }
+          #bar #project_list ul li .menu_link a {
+            color: #666666;
+            text-decoration: none; }
 
 .button {
   background: #f1f1f1;
