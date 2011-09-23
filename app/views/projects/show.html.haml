@@ -55,14 +55,16 @@
     %p
       %strong Description:
       = simple_format @project.description, :class => "text_area"
-    %p
-      .left{:style => "margin: -5px 5px 0 0 "}= image_tag('calendar.png')
-      Start on
-      %strong
-        = l @project.start_date, :format => '%d of %B, %Y'
-      and ends on
-      %strong
-        = l @project.end_date, :format => '%d of %B, %Y'
+    - if @project.start_date
+      %p
+        .left{:style => "margin: -5px 5px 0 0 "}= image_tag('calendar.png')
+        Start on
+        %strong
+          = l @project.start_date, :format => '%d of %B, %Y'
+        - if @project.end_date
+          and ends on
+          %strong
+            = l @project.end_date, :format => '%d of %B, %Y'
     %p
       .left{:style => "margin: -5px 5px 0 0 "}= image_tag('info.png')
       %strong Status:

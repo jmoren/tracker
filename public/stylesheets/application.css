@@ -381,6 +381,12 @@ ul.content, ul#tasks {
     font-weight: bold; }
   .project .owner {
     font-size: 11px; }
+  .project .dates {
+    margin-top: -5px;
+    float: left;
+    font-size: 11px; }
+    .project .dates img {
+      margin: -1px 5px; }
 
 .links, .more_link {
   float: right;

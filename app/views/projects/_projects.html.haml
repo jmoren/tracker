@@ -13,7 +13,7 @@
         .owner
           .left{:style => "margin: 0 5px"}
             = project.is_collaborator?(current_user) ? image_tag('unlocked.png', :title => "Eres miembro de este proyecto") : image_tag('locked.png', :title => "no eres parte de este proyecto")
-          .left{:style => "margin: 0px 3px"}
+          .left{:style => "margin: -1px 3px"}
             Created by
             = project.user.username
             on
@@ -21,14 +21,7 @@
           .clear
         .more_info{:style => "display:none", :id => "project_#{project.id}"}
           = simple_format project.description,:class => "text_area"
-          .dates
-            %em.start
-              Start on
-              %strong
-                = project.start_date
-              and finish on
-              %strong
-                = project.end_date
+          
           .collaborators
             %h4= "Collaborators (#{project.collaborators.size})"
             %ul#collaborators
@@ -38,6 +31,17 @@
                   .collaborator_field.email.left= c.user.username
                   .collaborator_field.left= c.user.email
                   .clear
+      - if project.start_date              
+        .dates
+          .left= image_tag('calendar16.png')
+          %em.start
+            Start on
+            %strong
+              = l project.start_date, :format => :long
+          - if project.end_date
+            and finish on
+            %strong
+              = l project.end_date, :format => :long
       .links
         = link_to image_tag('edit.png', :title => "Edit"), edit_project_path(project)
         = link_to image_tag('trash.png', :title => 'Delete'), project, :confirm => 'Are you sure?', :method => :delete
