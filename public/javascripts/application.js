@@ -6,6 +6,15 @@ $(function(){
     $("*[data-placeholder]").bind('blur', hold );
     $("*[data-placeholder]").each(hold);
   });
+
+  $("a[rel*=facebox]").facebox({
+      loadingImage : '/images/loader.gif',
+      closeImage   : '/images/closelabel.png',
+    });
+  $('.remove_activity').click(function(){
+      var id = $(this).attr('id');
+      $('#activity_'+id + ' .resume').html("<img style='margin: -4px 5px' src='/images/loading.gif'> removeing activity ");
+    });
   $('.tipsy-s').tipsy({gravity: 's'});
   $('.tipsy-e').tipsy({gravity: 'e',html: true});
   $('.tipsy-w').tipsy({gravity: 'w',html: true});

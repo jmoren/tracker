@@ -1,11 +1,34 @@
 - title "Edit my Profile"
 
-.col_left.left
-  %h3 Edit your profile
-  = render 'form'
-.col_right.right
-  %h3 Clean your history
+#edit_form
+  %h1
+    = @user.new_record? ? "New Account" : "Update profile"
+  = form_for @user do |f|
+    = f.error_messages
+    .col.left
+      %p
+        = f.label :username
+        = f.text_field :username
+      %p
+        = f.label :email, "Email Address"
+        = f.text_field :email
+    .col.left
+      %p
+        = f.label :password
+        = f.password_field :password
+      %p
+        = f.label :password_confirmation, "Confirm Password"
+        = f.password_field :password_confirmation
+    .clear
+    #form_footer
+      = f.submit
+      or
+      = link_to "Cancel", root_url
+.clear
+#activities
+  %h2 Clean your history
   %ul
     - current_user.activities.each do |activity|
-      %li= activity.taget_type
-.clear      
+      = render :partial => 'activities/activity', :locals => {:activity => activity }
+.clear
+

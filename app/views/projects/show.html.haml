@@ -5,14 +5,7 @@
     $('.remote_link').click(function(){
       $('#loading').html("<img style='margin: -4px 5px' src='/images/loading.gif'> adding collaborator ");
     });
-    $('.remove_activity').click(function(){
-      var id = $(this).attr('id');
-      $('#activity_'+id + ' .resume').html("<img style='margin: -4px 5px' src='/images/loading.gif'> removeing activity ");
-    });
-    $("a[rel*=facebox]").facebox({
-      loadingImage : '/images/loader.gif',
-      closeImage   : '/images/closelabel.png',
-    });
+
     $('#email').focus(function(){
       $(this).val('');
       $('#email').removeClass("error_autocomplete");
