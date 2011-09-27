@@ -1,9 +1,9 @@
 %li.left.activity{:id => "activity_#{activity.id}"}
+  .icon
+    = image_tag(activity.action + '.png')
   - if current_user.is_admin_or_owner?(activity.project)
     .right
       = link_to image_tag('remove.png'), activity, :method => :delete, :remote => true, :id => activity.id, :class => 'remove_activity'
-    .icon
-      = image_tag(activity.action + '.png')
   - if activity.target_type == 'Task'
     = render :partial => "activities/task_activity", :locals => {:activity => activity}
   - if activity.target_type == 'Collaborator'
