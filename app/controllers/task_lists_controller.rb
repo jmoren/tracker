@@ -18,6 +18,7 @@ class TaskListsController < ApplicationController
     @task_list = TaskList.new(params[:task_list])
     @task_list.user = current_user
     if @task_list.save
+      @task_list.new_activity(@task_list.project.id, current_user.id,'created')
       redirect_to @task_list, :notice => "Successfully created task list."
     else
       render :action => 'new'
@@ -31,8 +32,9 @@ class TaskListsController < ApplicationController
   def update
     @task_list = TaskList.find(params[:id])
     add_user = {}
-    if @task_list.user.nil?; add_user = { :user_id => current_user.id };end 
+    if @task_list.user.nil?; add_user = { :user_id => current_user.id };end
     if @task_list.update_attributes(params[:task_list].merge(add_user))
+      @task_list.new_activity(@task_list.project.id, current_user.id,'updated')
       redirect_to @task_list, :notice  => "Successfully updated task list."
     else
       render :action => 'edit'
@@ -42,7 +44,9 @@ class TaskListsController < ApplicationController
   def destroy
     @task_list = TaskList.find(params[:id])
     @project = @task_list.project
+    @task_list.new_activity(@task_list.project.id, current_user.id,'deleted')
     @task_list.destroy
     redirect_to project_path(@project,:anchor => 'tasks'), :notice => "Successfully destroyed task list."
   end
 end
+

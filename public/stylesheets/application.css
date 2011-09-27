@@ -592,3 +592,27 @@ ul#collaborators {
   #project_form #col_right {
     float: left;
     width: 45%; }
+
+#activities {
+  padding-bottom: 10px; }
+  #activities h2 {
+    margin: 10px 10px 20px 10px; }
+  #activities ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    #activities ul li.activity {
+      width: 48%;
+      margin: 5px 10px 5px 5px; }
+      #activities ul li.activity .icon {
+        margin: 0px 5px;
+        float: left; }
+      #activities ul li.activity .resume {
+        margin-left: 30px;
+        font-size: 13px; }
+      #activities ul li.activity .when {
+        margin: 5px 0;
+        color: #666666;
+        font-size: 11px;
+        border-bottom: solid 1px #cccccc;
+        padding-bottom: 4px; }

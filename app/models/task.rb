@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :assigned, :class_name => 'User', :foreign_key => :assigned_id
   has_many :comments, :dependent => :destroy
-
+  has_many :activities, :as => :target, :dependent => :destroy
   STATUS=['created','pending','working','locked','aproved','abandoned']
   PRIORITY=['high','medium','low','unknown']
   attr_accessible :task_list_id, :project_id, :description, :status, :user_id, :priority,:state, :assigned_id
@@ -22,5 +22,9 @@ class Task < ActiveRecord::Base
     self.update_attributes(field.to_sym => value)
   end
 
+  def new_activity(project, user, action)
+    a = self.activities.new(:project_id => project, :user_id => user, :action => action)
+    a.save
+  end
 end
 

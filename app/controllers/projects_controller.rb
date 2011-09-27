@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   before_filter :allow_members, :except => [:new, :create, :index, :update_collaborator]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
   def index
+    session[:project_id] = nil
     if params[:q] && !params[:q].blank?
       @projects = current_user.projects.where('name LIKE ?', "%" + params[:q] + "%")
     else
@@ -17,6 +18,7 @@ class ProjectsController < ApplicationController
 
   def show
     current_project
+    session[:project_id] = current_project.id
   end
 
   def new
@@ -54,11 +56,12 @@ class ProjectsController < ApplicationController
     @user = User.find_by_username(params[:email])
     @collaborator = Collaborator.new(:user_id => @user.id, :role => params[:role])
     current_project.collaborators << @collaborator
+    @collaborator.new_activity(@collaborator.project.id, current_user.id,'created')
     respond_to do |format|
       format.js { render :add_collaborator }
-    end 
+    end
   end
-  
+
   def remove_collaborator
     collaborator = current_project.collaborators.find(params[:user])
     if current_user.is_admin_or_owner?(current_project) || collaborator.user == current_user
@@ -72,20 +75,21 @@ class ProjectsController < ApplicationController
         @text ="No se pudo encontrar el colaborador"
         @result = false
       end
-      
+
     else
       @text = "You can't delete users if you are not admin or owner"
       @result = false
     end
     respond_to do |format|
       format.js {render :remove_collaborator}
-    end 
+    end
   end
-  
+
   def update_collaborator
     id ||= params[:id].split('_')[1] if params[:id]
     @collaborator = Collaborator.find(id)
     if @collaborator.update_field('role',params[:value])
+      @collaborator.new_activity(@collaborator.project.id, current_user.id,'updated')
       text = "Collaborator #{@collaborator.user.username} was successfully updated"
     else
       text = "Sorry, we couldn't do it..."
@@ -93,29 +97,30 @@ class ProjectsController < ApplicationController
     render :text => @collaborator.role
   end
   def get_users
-    @users = User.where('username LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user) 
+    @users = User.where('username LIKE ?', "%" + params[:term] + "%") - current_project.collaborators.collect(&:user)
     respond_to do |format|
       format.js {render :json => @users.collect{|u| [:id => u.id, :label => u.username, :value => u.username ]}.flatten! }
     end
   end
 private
-  
+
   def load_user
     @user = current_user
   end
-  
+
   def allow_owner
     unless current_project.user == current_user
       redirect_to current_project, :alert => "You don't have permission to do this"
     end
-  end 
+  end
   def allow_members
     if !current_project.is_collaborator?(current_user)
       redirect_to root_url, :alert => "You cant see this project."
     end
   end
-  
+
   def current_project
     @project ||= Project.find(params[:id])
   end
 end
+

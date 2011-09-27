@@ -1,3 +1,11 @@
-- title "Sign up"
+- title "Edit my Profile"
 
-= render 'form'
+.col_left.left
+  %h3 Edit your profile
+  = render 'form'
+.col_right.right
+  %h3 Clean your history
+  %ul
+    - current_user.activities.each do |activity|
+      %li= activity.taget_type
+.clear      

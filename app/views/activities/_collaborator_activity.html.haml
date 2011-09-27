@@ -1,0 +1,9 @@
+.resume
+  - if activity.action == "created"
+    = "#{activity.user.username} has added a #{activity.target.user.username} as #{activity.target.role}"
+    in this project
+  .clear
+  .when
+    = l activity.created_at, :format => :long
+    hs
+

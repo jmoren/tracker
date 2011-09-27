@@ -35,7 +35,9 @@
                 = current_user.username
               .right{:style => "margin: 0 5px"}
                 = image_tag current_user.gravatar_url(:size => 20, :default => 'wavatar')
-             
+        - if @project
+          .recent
+            recent activity information
       .clear
       #bar
         .nav.right

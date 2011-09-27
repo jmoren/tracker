@@ -22,6 +22,7 @@ class TasksController < ApplicationController
     @task.user = current_user
     @task.state = 1
     if @task.save
+      @task.new_activity(@task.project.id, current_user.id,'created')
       respond_to do |format|
         format.html { redirect_to @task.task_list, :notice => "Successfully created task." }
         format.js
@@ -36,6 +37,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(params[:task])
+      @task.new_activity(@task.project.id, current_user.id,'updated')
       redirect_to @task, :notice  => "Successfully updated task."
     else
       render :action => 'edit'
@@ -48,6 +50,7 @@ class TasksController < ApplicationController
     @dom = @task.state == 1 ? '#todo' : @task.state == 2 ? '#progress' : '#done'
     @state = @task.state
     @tasks = Task.by_state(@task.state, @task.task_list)
+    @task.new_activity(@task.project.id, current_user.id,'deleted')
     @task.destroy
     respond_to do |format|
       format.js
@@ -57,6 +60,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @comment = Comment.new(:user_id => current_user.id, :body => params[:body], :task_id => @task.id)
     if @comment.save
+      @task.new_activity(@task.project.id, current_user.id,'commented')
       @task.reload
       render :add_comments
     end
@@ -80,7 +84,7 @@ class TasksController < ApplicationController
     
     #update:
     @task.update_state(params[:state])
-    
+    @task.new_activity(@task.project.id, current_user.id,'updated')
     #save new information
     @state = @task.state
     @dom = params[:state] == '1' ? '#todo' : params[:state] == '2' ? '#progress' : '#done'
@@ -101,6 +105,7 @@ class TasksController < ApplicationController
       end
       @task = Task.find(id)
       @task.update_field(field, value)
+      @task.new_activity(@task.project.id, current_user.id,'updated')
       if field == 'assigned'
         msg = @task.assigned.username
       else

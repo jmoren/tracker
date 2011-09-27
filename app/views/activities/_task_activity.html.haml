@@ -1,0 +1,17 @@
+.resume
+  - if activity.action == "created"
+    == #{activity.user.username}  has #{activity.action} a new
+    = link_to "task", task_path(activity.target, :comment => false), :class => 'popup', :rel => "facebox", 'original-title' => "View more details ", :class => 'tipsy-s'
+  - if activity.action == "updated"
+    == #{activity.user.username} has #{activity.action} the task
+    = link_to "##{activity.target_id}", task_path(activity.target, :comment => false), :class => 'popup', :rel => "facebox", 'original-title' => "View more details ", :class => 'tipsy-s'
+  - if activity.action == "deleted"
+    == #{activity.user.username} has #{activity.action} the task ##{activity.target_id}.
+  - if activity.action == "commented"
+    == #{activity.user.username} has commented on the task
+    = link_to "##{activity.target_id}", task_path(activity.target, :comment => false), :class => 'popup', :rel => "facebox", 'original-title' => "View more details ", :class => 'tipsy-s'
+  .clear
+  .when
+    = l activity.created_at, :format => :long
+    hs
+

@@ -27,6 +27,7 @@ Tracker::Application.routes.draw do
       post 'remove'  => "projects#remove_collaborator"
     end
   end
+  resources :activities
   root :to => "home#index"
 end
 

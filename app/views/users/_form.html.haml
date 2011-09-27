@@ -1,4 +1,4 @@
-#signup_form
+%div{:id => @user.new_record? ? 'signup_form' : 'edit_form'}
   %h1 
     = @user.new_record? ? "New Account" : "Update profile"
   = form_for @user do |f|

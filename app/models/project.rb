@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :collaborators, :dependent => :destroy
   has_many :task_lists, :dependent => :destroy
+  has_many :activities, :dependent => :destroy
   attr_accessible :name, :description, :start_date, :end_date, :status, :user_id
 
   validate :name, :description, :status, :presence => true

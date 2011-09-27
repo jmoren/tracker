@@ -3,10 +3,11 @@ class User < ActiveRecord::Base
   gravtastic
   has_many :collaborators, :dependent => :destroy
   has_many :projects, :dependent => :destroy
-  has_many :task_lists
-  has_many :tasks
-  has_many :comments
+  has_many :task_lists, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   has_many :assigments, :class_name => 'Task'
+  has_many :activities, :dependent => :destroy
   # new columns need to be added here to be writable through mass assignment
   attr_accessible :username, :email, :password, :password_confirmation
 
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
   end
   def is_admin_or_owner?(project)
     project.user == self || project.collaborators.where(:role => 'admin').collect(&:user).include?(self)
-  end  
+  end
   private
 
   def prepare_password
@@ -52,3 +53,4 @@ class User < ActiveRecord::Base
     end
   end
 end
+

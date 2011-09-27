@@ -1,3 +1,4 @@
+- @comment = params[:comment] || true
 :javascript
   $(function(){
     $('.tipsy-s').tipsy({gravity: 's', live: true});
@@ -92,14 +93,14 @@
         %h4= "Comments (#{@task.comments.size})"
       - @task.comments.each do |comment|
         = render :partial => 'tasks/comment', :locals => {:comment => comment}
-
-    #comment_form
-      %h4 Comment this task
-      = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true, :method => :post  do
-        #body
-          = text_area_tag 'body', nil, :id => "comment_input"
-          #error.right
-          #buttons_form
-            = submit_tag "Submit", :id => "submit_button"
-            == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();$('#error').html('');return false;"}
+    - if @comment
+      #comment_form
+        %h4 Comment this task
+        = form_tag comments_add_task_path(@task),:id => "new_comment", :remote => true, :method => :post  do
+          #body
+            = text_area_tag 'body', nil, :id => "comment_input"
+            #error.right
+            #buttons_form
+              = submit_tag "Submit", :id => "submit_button"
+              == o #{link_to "Cancel", "#", :onclick => "$('#new_comment')[0].reset();$('#error').html('');return false;"}
 

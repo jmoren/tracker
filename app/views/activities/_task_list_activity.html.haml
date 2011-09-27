@@ -1,0 +1,14 @@
+.resume
+  - if activity.action == "created"
+    == #{activity.user.username}  has #{activity.action} a new task list
+    = link_to "#{activity.target.title}", task_list_path(activity.target)
+  - if activity.action == "updated"
+    == #{activity.user.username} has #{activity.action} the task list
+    = link_to "#{activity.target.title}", task_list_path(activity.target)
+  - if activity.action == "deleted"
+    == #{activity.user.username} has #{activity.action} the task list #{activity.target.title}.
+  .clear
+  .when
+    = l activity.created_at, :format => :long
+    hs
+

@@ -5,6 +5,14 @@
     $('.remote_link').click(function(){
       $('#loading').html("<img style='margin: -4px 5px' src='/images/loading.gif'> adding collaborator ");
     });
+    $('.remove_activity').click(function(){
+      var id = $(this).attr('id');
+      $('#activity_'+id + ' .resume').html("<img style='margin: -4px 5px' src='/images/loading.gif'> removeing activity ");
+    });
+    $("a[rel*=facebox]").facebox({
+      loadingImage : '/images/loader.gif',
+      closeImage   : '/images/closelabel.png',
+    });
     $('#email').focus(function(){
       $(this).val('');
       $('#email').removeClass("error_autocomplete");
@@ -50,6 +58,7 @@
     %li= link_to "Project", "#project"
     %li= link_to "Tasks", "#tasks"
     %li= link_to "Configuration", "#config"
+    %li= link_to "Activity", "#notifications"
 
   %div{:id => 'project'}
     %p
@@ -106,9 +115,16 @@
         %p
           #messages{:style => "display:none"}
           .clear
+        %h3 Collaborators
         %ul#collaborators
           - @project.collaborators.each do |collaborator|
             = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }
-  .clear
+  %div{:id => 'notifications'}
+    #activities
+      %h2 Recent activity
+      %ul
+        - @project.activities.each do |activity|
+          = render :partial => 'activities/activity', :locals => {:activity => activity}
+      .clear
 .clear
 
