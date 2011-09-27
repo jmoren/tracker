@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
   before_filter :allow_members, :except => [:new, :create, :index, :update_collaborator]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
   def index
-    session[:project_id] = nil
     if params[:q] && !params[:q].blank?
       @projects = current_user.projects.where('name LIKE ?', "%" + params[:q] + "%")
     else
@@ -18,7 +17,6 @@ class ProjectsController < ApplicationController
 
   def show
     current_project
-    session[:project_id] = current_project.id
   end
 
   def new
