@@ -30,4 +30,9 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
+
+  def get_notifications
+    @notifications = current_user.notifications
+    render 'users/notifications', :layout => false
+  end
 end

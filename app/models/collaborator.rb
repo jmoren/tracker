@@ -12,6 +12,7 @@ class Collaborator < ActiveRecord::Base
   def new_activity(project, user, action)
     a = self.activities.new(:project_id => project, :user_id => user, :action => action)
     a.save
+    a.notify!
   end
 
 end

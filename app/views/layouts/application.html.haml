@@ -20,6 +20,11 @@
           $('#project_list').slideUp('fast');
           $(this).removeClass('selected');
         })
+        $('#notification_icon').click(function(){
+          $.get("#{ notifications_path }", function(data){
+            $('#noti_list').html(data) }, 'html');
+            $('#noti_list').slideToggle('slow');
+        })
       })
   %body
     #container
@@ -35,9 +40,10 @@
                 = current_user.username
               .right{:style => "margin: 0 5px"}
                 = image_tag current_user.gravatar_url(:size => 20, :default => 'wavatar')
-        - if @project
-          .recent
-            recent activity information
+              #notification_icon.right{:style => 'position:relative;background: #f1f1f1; color: #666;padding: 0px 3px;border: solid 1px #666;margin: 0 3px'}
+                = current_user.notifications.size
+                .clear
+                #noti_list{:style => "background: #fff;width: 165px;display:none;left: -150px;font-size:11px;position:absolute;z-index:9999;border: solid 1px #ccc;padding: 8px"}
       .clear
       #bar
         .nav.right
