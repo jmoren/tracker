@@ -1,7 +1,9 @@
 %div{:class => " task #{task.status}" }
   .assigned
-    .label.left{:style => "width: 55px"} Assigned:
-    .left
+    .label
+      == ID ##{task.id}
+    .label{:style => "display:inline"} Assigned:
+    .user{:style => "display:inline"}
       = task.assigned.nil? ? "Edit this field" : task.assigned.username
     .clear
   %div{:id => "task_info_#{task.id}", :style => "display: #{task.state != 3 || item ? 'block' : 'none'}"}    

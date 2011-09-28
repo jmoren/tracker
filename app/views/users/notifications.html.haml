@@ -1,22 +1,24 @@
-%ul{:style => "padding: 0; margin: 0;list-style:none"}
-  - @notifications.each do |n|
-    - a = n.activity.target
-    %li.notification{:style => "margin: 8px 2px; border-bottom: solid #ccc 1px;padding-bottom: 3px"}
-      = a.user.username
-      has 
-      = a.action
-      a
-      = a.target_type
-      in the project
-      = link_to a.target.project.name, a.project
-      %div
-        %small
-          - if a.target_type == "TaskList"
-            You can view 
-            = link_to "here", a.target
-          - if a.target_type == "Task"
-            == Task ##{a.target_id}
-            == is in 
-            = link_to a.target.task_list.title, a.target.task_list
+:javascript
+  $(function(){
+    $('.notification').click(function(){
+      $(this).html("<img src='/images/loading.gif' > ");
+      $(this).fadeOut();
+      // marcar como leido, actualizar el contador de notificaciones.
+    });  
+  })
+- @notifications.each do |n|
+  - a = n.activity.target
+  .notification{:id => n.id}
+    == #{a.user.username} has #{a.action} a #{a.target_type}  in the project
+    = link_to a.target.project.name, a.project
+    %div
+      %small
+        - if a.target_type == "TaskList"
+          You can view 
+          = link_to "here", a.target
+        - if a.target_type == "Task"
+          == Task ##{a.target_id}
+          == is in 
+          = link_to a.target.task_list.title, a.target.task_list
           
        

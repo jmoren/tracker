@@ -82,6 +82,7 @@ a {
 #menu {
   margin: 10px 3px; }
   #menu #user_menu {
+    position: relative;
     padding-top: 3px; }
 
 #bar {
@@ -639,3 +640,20 @@ ul#collaborators {
         font-size: 11px;
         border-bottom: solid 1px #cccccc;
         padding-bottom: 4px; }
+
+#noti_list {
+  background: white;
+  width: 165px;
+  top: 25px;
+  font-size: 11px;
+  position: absolute;
+  z-index: 9999;
+  border: solid 1px #cccccc;
+  border-radius: 5px; }
+
+.notification {
+  margin: 0;
+  border-bottom: solid #cccccc 1px;
+  padding: 3px 5px; }
+  .notification:hover {
+    background: #f1f1f1; }
