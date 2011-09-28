@@ -87,7 +87,37 @@ a
   margin: 10px 3px
   #user_menu
     position: relative
-    padding-top: 3px
+    padding: 5px
+    background: #666
+    margin: 2px 5px
+    color: #fff
+    #show_list
+      background: #f1f1f1
+      padding: 0px 5px
+      border-radius: 4px
+      border: solid #ccc solid
+      margin: 0 4px
+    #noti_list
+      background: #fff
+      width: 180px
+      top: 30px
+      font-size: 11px
+      position: absolute
+      z-index: 9999
+      color: #666
+      border: solid 1px #ccc
+      #noti_bar
+        margin: 2px 0
+        text-align: center
+      #noti_footer
+        margin: 2px 0
+        text-align: center
+      .notification
+        margin: 0 
+        border-bottom: solid #ccc 1px
+        padding: 3px 5px
+        &:hover
+          background: #f1f1f1
 #bar
   .title
     font-size: 20px
@@ -636,19 +666,4 @@ ul#collaborators
         font-size: 11px
         border-bottom: solid 1px #ccc
         padding-bottom: 4px
-#noti_list
-  background: #fff
-  width: 165px
-  top: 25px
-  //left: -150px
-  font-size: 11px
-  position: absolute
-  z-index: 9999
-  border: solid 1px #ccc
-  border-radius: 5px
-.notification
-  margin: 0
-  border-bottom: solid #ccc 1px
-  padding: 3px 5px
-  &:hover
-    background: #f1f1f1
+

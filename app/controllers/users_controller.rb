@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def get_notifications
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.readed
     render 'users/notifications', :layout => false
   end
 end

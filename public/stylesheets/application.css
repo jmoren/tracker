@@ -83,7 +83,37 @@ a {
   margin: 10px 3px; }
   #menu #user_menu {
     position: relative;
-    padding-top: 3px; }
+    padding: 5px;
+    background: #666666;
+    margin: 2px 5px;
+    color: white; }
+    #menu #user_menu #show_list {
+      background: #f1f1f1;
+      padding: 0px 5px;
+      border-radius: 4px;
+      border: solid #cccccc solid;
+      margin: 0 4px; }
+    #menu #user_menu #noti_list {
+      background: white;
+      width: 180px;
+      top: 30px;
+      font-size: 11px;
+      position: absolute;
+      z-index: 9999;
+      color: #666666;
+      border: solid 1px #cccccc; }
+      #menu #user_menu #noti_list #noti_bar {
+        margin: 2px 0;
+        text-align: center; }
+      #menu #user_menu #noti_list #noti_footer {
+        margin: 2px 0;
+        text-align: center; }
+      #menu #user_menu #noti_list .notification {
+        margin: 0;
+        border-bottom: solid #cccccc 1px;
+        padding: 3px 5px; }
+        #menu #user_menu #noti_list .notification:hover {
+          background: #f1f1f1; }
 
 #bar {
   margin: 30px 10px 10px 10px;
@@ -640,20 +670,3 @@ ul#collaborators {
         font-size: 11px;
         border-bottom: solid 1px #cccccc;
         padding-bottom: 4px; }
-
-#noti_list {
-  background: white;
-  width: 165px;
-  top: 25px;
-  font-size: 11px;
-  position: absolute;
-  z-index: 9999;
-  border: solid 1px #cccccc;
-  border-radius: 5px; }
-
-.notification {
-  margin: 0;
-  border-bottom: solid #cccccc 1px;
-  padding: 3px 5px; }
-  .notification:hover {
-    background: #f1f1f1; }

@@ -4,8 +4,13 @@
       $(this).html("<img src='/images/loading.gif' > ");
       $(this).fadeOut();
       // marcar como leido, actualizar el contador de notificaciones.
-    });  
+    }); 
+    $('#noti_footer a').click(function(){
+      $('#noti_list').hide();
+    })
   })
+#noti_bar
+  Aca van mas cosas
 - @notifications.each do |n|
   - a = n.activity.target
   .notification{:id => n.id}
@@ -20,5 +25,6 @@
           == Task ##{a.target_id}
           == is in 
           = link_to a.target.task_list.title, a.target.task_list
-          
-       
+#noti_footer
+  = link_to "Close", "#"          
+     
