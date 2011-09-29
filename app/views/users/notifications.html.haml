@@ -1,11 +1,12 @@
 :javascript
   $(function(){
     $('.notification').live('click',function(){
-      $(this).html("<img src='/images/loading.gif'> updating...");
       var id = $(this).attr('data-id');
-      $.get("/notifications/update?id="+ id);
-      var unreaded = $('.unreaded').length; 
-      $('a#show_list').text(unreaded);
+      $.get("/notifications/update?id="+ id, function(){
+        var unreaded = $('.unreaded').length; 
+        $('a#show_list').text(unreaded); 
+      },'script');
+     
     });  
     $('#noti_footer a').click(function(){
       if ($('#show_list').text() == '0'){

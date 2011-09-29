@@ -390,8 +390,7 @@ ul.content, ul#tasks {
   ul.content li, ul#tasks li {
     border-radius: 5px;
     margin: 4px;
-    padding: 5px 0;
-    max-height: 210px; }
+    padding: 5px 0; }
     ul.content li .move, ul#tasks li .move {
       height: 17px;
       background: transparent;
@@ -415,13 +414,14 @@ ul.content, ul#tasks {
       max-height: 150px;
       width: 140px;
       font-size: 11px; }
+      ul.content li .task .user, ul#tasks li .task .user {
+        display: inline; }
       ul.content li .task .label, ul#tasks li .task .label {
         display: inline;
         font-weight: bold;
-        margin: 0;
-        width: 40px; }
+        margin: 0; }
       ul.content li .task .task_description, ul#tasks li .task .task_description {
-        height: 70px; }
+        min-height: 70px; }
       ul.content li .task .task_status, ul.content li .task .priority, ul#tasks li .task .task_status, ul#tasks li .task .priority {
         color: black;
         margin: 3px 0; }
