@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 
-gem 'ssl_requirement'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'kaminari'
