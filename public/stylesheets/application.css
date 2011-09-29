@@ -89,13 +89,20 @@ a {
     color: #f1f1f1; }
     #menu #user_menu #show_list {
       font-size: 11px;
-      background: #cccccc;
-      color: #222222;
       padding: 2px 8px;
       margin: 0 5px; }
       #menu #user_menu #show_list img {
         vertical-align: middle; }
+    #menu #user_menu .empty {
+      background: #cccccc;
+      color: #222222; }
+    #menu #user_menu .notificate {
+      background: #dd4b39;
+      color: white;
+      font-weight: bold; }
     #menu #user_menu .showing {
+      font-weight: normal;
+      color: #222222;
       background: white !important;
       padding: 4px 8px !important; }
     #menu #user_menu #noti_list {
@@ -414,7 +421,7 @@ ul.content, ul#tasks {
         margin: 0;
         width: 40px; }
       ul.content li .task .task_description, ul#tasks li .task .task_description {
-        height: 85px; }
+        height: 70px; }
       ul.content li .task .task_status, ul.content li .task .priority, ul#tasks li .task .task_status, ul#tasks li .task .priority {
         color: black;
         margin: 3px 0; }
