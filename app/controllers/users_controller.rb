@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_required, :except => [:new, :create]
+  #ssl_required :new, :create
   def index
     @users = User.all
   end
@@ -31,13 +32,5 @@ class UsersController < ApplicationController
     end
   end
 
-  def get_notifications
-    @notifications = current_user.notifications.recents
-    render 'users/notifications', :layout => false
-  end
 
-  def update_notification
-    @notification = Notification.find(params[:id])
-    @notification.update_attributes(:readed => true)
-  end
 end

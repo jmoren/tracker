@@ -51,7 +51,8 @@
     %li= link_to "Project", "#project"
     %li= link_to "Tasks", "#tasks"
     %li= link_to "Configuration", "#config"
-    %li= link_to "Activity", "#notifications"
+    - if current_user.is_admin_or_owner?(@project)
+      %li= link_to "Activity", "#notifications"
 
   %div{:id => 'project'}
     %p
@@ -112,12 +113,13 @@
         %ul#collaborators
           - @project.collaborators.each do |collaborator|
             = render :partial => 'projects/collaborator', :locals => {:collaborator => collaborator, :project => @project }
-  %div{:id => 'notifications'}
-    #activities
-      %h2 Recent activity
-      %ul
-        - @project.activities.each do |activity|
-          = render :partial => 'activities/activity', :locals => {:activity => activity}
-      .clear
+  - if current_user.is_admin_or_owner?(@project)
+    %div{:id => 'notifications'}
+      #activities
+        %h2 Recent activity
+        %ul
+          - @project.activities.each do |activity|
+            = render :partial => 'activities/activity', :locals => {:activity => activity}
+        .clear
 .clear
 

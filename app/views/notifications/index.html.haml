@@ -1,0 +1,13 @@
+- title "Notifications (#{@notifications.size})"
+:javascript
+  $(function(){
+    $('.destroy_notification').click(function(){
+      var id = $(this).attr('data-id')
+      $('#noti_'+id).html("<img src='/images/loading.gif'> removing...");
+    })
+  })
+#user_notifications
+  - @notifications.each do |notification|
+    .user_notification{:id => "noti_#{notification.id}"}
+      .right= link_to image_tag('remove.png'), notification, :method => :delete, 'data-id' => notification.id, :remote => true, :class => 'destroy_notification'
+      = render notification

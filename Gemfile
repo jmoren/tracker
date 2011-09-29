@@ -2,13 +2,11 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 
-
+gem 'ssl_requirement'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'paperclip'
 gem 'nifty-generators'
-gem 'ancestry'
 gem 'acts-as-taggable-on'
 gem 'tiny_mce'
 gem 'whenever', '~> 0.6.2'

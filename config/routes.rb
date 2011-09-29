@@ -4,14 +4,18 @@ Tracker::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
-  get '/notifications/update' => 'users#update_notification'
-  get '/notifications' => 'users#get_notifications'
+  get '/notifications/update' => 'notifications#update_notification'
+  get '/user/get_notifications' => 'notifications#get_notifications'
   get '/tasks/update_task/dom' => "tasks#update_task"
   post '/tasks/state' => "tasks#move_state"
   post '/collaborator/update' => 'projects#update_collaborator'
   post '/tasks/update_in_place' => 'tasks#update_in_place'
   resources :sessions
-  resources :users
+  resources :notifications
+  resources :users do
+    resources :notifications, :only => [:index]
+  end
+
   resources :tasks, :only => [:show, :edit, :update, :destroy] do
     member do
       post 'comments/add' => "tasks#add_comments"

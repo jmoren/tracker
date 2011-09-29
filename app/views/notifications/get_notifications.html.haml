@@ -1,0 +1,30 @@
+:javascript
+  $(function(){
+    $('.notification').live('click',function(){
+      var id = $(this).attr('data-id');
+      $.get("/notifications/update?id="+ id, function(){
+        var unreaded = $('.unreaded').length; 
+        $('a#show_list').text(unreaded); 
+      },'script');
+     
+    });  
+    $('#noti_footer a').click(function(){
+      if ($('#show_list').text() == '0'){
+        $('#show_list').removeClass('notificate');
+        $('#show_list').addClass('empty');
+      }
+      $('#noti_list').hide();
+      $('#show_list').removeClass('showing');
+    })
+  })
+#noti_header{:style => "font-weight:bold;margin: 5px"}
+  == Notifications: #{@notifications_total_count}
+  .right
+    = link_to "View all", user_notifications_path(current_user)
+- @notifications.limit(@notifications_count == 0 ? '5' : @notifications_count).each do |n|
+  .notification{:id => "notification_#{n.id}",'data-id' => n.id }
+    = render :partial => 'notifications/notification', :locals => {:notification => n}
+  
+#noti_footer
+  = link_to "Close", "#"          
+     

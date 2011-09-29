@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
+  has_friendly_id :username, :use_slug => true
   has_many :collaborators, :dependent => :destroy
   has_many :projects, :dependent => :destroy
   has_many :task_lists, :dependent => :destroy

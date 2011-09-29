@@ -687,3 +687,17 @@ ul#collaborators {
         font-size: 11px;
         border-bottom: solid 1px #cccccc;
         padding-bottom: 4px; }
+
+#user_notifications {
+  width: 80%;
+  margin: 10px auto; }
+  #user_notifications .user_notification {
+    border-bottom: solid #cccccc 1px;
+    margin: 0;
+    width: 75%;
+    color: #666666;
+    padding: 10px;
+    margin: 1px auto; }
+    #user_notifications .user_notification:hover {
+      background: #f1f1f1;
+      color: #222222; }

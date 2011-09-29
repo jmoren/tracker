@@ -30,7 +30,7 @@
             $(this).removeClass('showing');
           }else{
             $('#noti_list').html("<div style='text-align:center;margin-top: 20px' ><img src='/images/loading.gif'><p> fetching notifications...</p></div>").show();
-            $.get("#{ notifications_path }", function(data){$('#noti_list').html(data);var unreaded = $('.unreaded').length; $(this).text(unreaded); }, 'html');
+            $.get("#{user_get_notifications_path  }", function(data){$('#noti_list').html(data);var unreaded = $('.unreaded').length; $(this).text(unreaded); }, 'html');
             $(this).addClass('showing');
         }});
       });
