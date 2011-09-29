@@ -1,0 +1,1 @@
+$("#notification_<%= @notification.id %>").html("<%= escape_javascript(render :partial => 'users/notification', :locals => {:notification => @notification }) %>");

@@ -1,0 +1,21 @@
+- a = notification.activity.target
+%div{:class => notification.readed ? 'readed' : 'unreaded'}
+  - if a.target_type == 'Collaborator'
+    == #{a.user.username} has added a #{a.target.user.username} as #{a.target.role} in  the project
+    = link_to a.target.project.name, project_path(a.project, :anchor => 'config')
+  - if a.target_type == "TaskList"
+    == #{a.user.username} has #{a.action} a #{a.target_type}  in the project
+    = link_to a.target.project.name, a.project
+    %div
+      %small
+        You can view the task list 
+        = link_to "here", a.target
+  - if a.target_type == "Task"
+    == #{a.user.username} has #{a.action} a #{a.target_type}  in the project
+    = link_to a.target.project.name, a.project
+    %div
+      %small
+        == Task ##{a.target_id}
+        == is in 
+        = link_to a.target.task_list.title, a.target.task_list
+

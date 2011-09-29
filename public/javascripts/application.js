@@ -16,6 +16,7 @@ $(function(){
       $('#activity_'+id + ' .resume').html("<img style='margin: -4px 5px' src='/images/loading.gif'> removeing activity ");
     });
   $('.tipsy-s').tipsy({gravity: 's'});
+  $('.tipsy-n').tipsy({gravity: 'n'});
   $('.tipsy-e').tipsy({gravity: 'e',html: true});
   $('.tipsy-w').tipsy({gravity: 'w',html: true});
 

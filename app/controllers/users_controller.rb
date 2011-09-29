@@ -32,7 +32,12 @@ class UsersController < ApplicationController
   end
 
   def get_notifications
-    @notifications = current_user.notifications.readed
+    @notifications = current_user.notifications.recents
     render 'users/notifications', :layout => false
+  end
+
+  def update_notification
+    @notification = Notification.find(params[:id])
+    @notification.update_attributes(:readed => true)
   end
 end
