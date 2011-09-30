@@ -49,7 +49,7 @@
           #user_menu.left{:style => "margin: 0 10px"}
             .left{:style => "margin: 1px 5px"}
               = current_user.username.titleize
-              = link_to current_user.notifications.recents.unreaded.size, "#", :id => "show_list", :class => current_user.notifications.recents.unreaded.size > 0 ? 'notificate' : 'empty'
+              = link_to current_user.notifications.unreaded.size, "#", :id => "show_list", :class => current_user.notifications.unreaded.size > 0 ? 'notificate' : 'empty'
             .left= image_tag current_user.gravatar_url(:size => 20, :default => 'wavatar')
             .right{:style => "margin: 2px 0 2px 10px"}= link_to image_tag('working.png'), edit_current_user_path, :class => 'tipsy-n', 'original-title' => "Edit your profile"
             #noti_list{:style => "display: none"}     

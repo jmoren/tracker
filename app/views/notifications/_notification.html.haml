@@ -1,5 +1,5 @@
 - a = notification.activity.target
-%div{:class => notification.readed ? 'readed' : 'unreaded'}
+%div{:class => notification.readed ? 'readed' : 'notification_unreaded','data-id' => notification.id}
   - if a.target_type == 'Collaborator'
     == #{a.user.username} has added a #{a.target.user.username} as #{a.target.role} in  the project
     = link_to a.target.project.name, project_path(a.project, :anchor => 'config')

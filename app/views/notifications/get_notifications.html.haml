@@ -1,10 +1,10 @@
 :javascript
   $(function(){
-    $('.notification').live('click',function(){
+    $('.notification_unreaded').live('click',function(){
       var id = $(this).attr('data-id');
       $.get("/notifications/update?id="+ id, function(){
-        var unreaded = $('.unreaded').length; 
-        $('a#show_list').text(unreaded); 
+        //var unreaded = $('.notification_unreaded').length; 
+        //$('a#show_list').text(unreaded); 
       },'script');
      
     });  
@@ -21,8 +21,8 @@
   == Notifications: #{@notifications_total_count}
   .right
     = link_to "View all", user_notifications_path(current_user)
-- @notifications.limit(@notifications_count == 0 ? '5' : @notifications_count).each do |n|
-  .notification{:id => "notification_#{n.id}",'data-id' => n.id }
+- @notifications.order('readed ASC').limit(5).each do |n|
+  .notification{:id => "notification_#{n.id}" }
     = render :partial => 'notifications/notification', :locals => {:notification => n}
   
 #noti_footer

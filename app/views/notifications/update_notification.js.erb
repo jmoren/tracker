@@ -1,1 +1,2 @@
 $("#notification_<%= @notification.id %>").html("<%= escape_javascript(render :partial => 'notifications/notification', :locals => {:notification => @notification }) %>");
+$('#show_list').text("<%= escape_javascript(@unreaded_count.to_s) %>")

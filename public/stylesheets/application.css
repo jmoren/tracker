@@ -129,7 +129,7 @@ a {
         padding: 5px; }
         #menu #user_menu #noti_list .notification:hover {
           background: #f1f1f1; }
-      #menu #user_menu #noti_list .unreaded {
+      #menu #user_menu #noti_list .notification_unreaded {
         font-weight: bold; }
 
 #bar {

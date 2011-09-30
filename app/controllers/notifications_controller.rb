@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   end
 
   def get_notifications
-    @notifications = current_user.notifications.recents
+    @notifications = current_user.notifications
     @notifications_count = current_user.notifications.unreaded.size
     @notifications_total_count = current_user.notifications.size
     render 'get_notifications', :layout => false
@@ -17,6 +17,7 @@ class NotificationsController < ApplicationController
   def update_notification
     @notification = Notification.find(params[:id])
     @notification.update_attributes(:readed => true)
+    @unreaded_count = current_user.notifications.unreaded.size
   end
 
   def destroy
