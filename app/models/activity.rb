@@ -7,9 +7,9 @@ class Activity < ActiveRecord::Base
   def notify!
     project = self.project
     collaborators = project.collaborators
-    self.notifications.create(:user_id => self.project.user.id)
+    self.notifications.create(:user_id => self.project.user.id, :readed => false)
     collaborators.each do |collaborator|
-      self.notifications.create(:user_id => collaborator.user.id)
+      self.notifications.create(:user_id => collaborator.user.id, :readed => false)
     end
   end
 

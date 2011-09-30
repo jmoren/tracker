@@ -7,7 +7,7 @@
     })
   })
 #user_notifications
-  - @notifications.each do |notification|
+  - @notifications.order('created_at DESC').each do |notification|
     .user_notification{:id => "noti_#{notification.id}"}
       .right= link_to image_tag('remove.png'), notification, :method => :delete, 'data-id' => notification.id, :remote => true, :class => 'destroy_notification'
       = render notification
