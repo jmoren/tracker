@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-
+  respond_to :json, :html
   def index
     @notifications = current_user.notifications  
   end
@@ -10,7 +10,10 @@ class NotificationsController < ApplicationController
     @notifications_total_count = current_user.notifications.size
     render 'get_notifications', :layout => false
   end
-
+  def get_unread
+    notifications_count = current_user.notifications.unreaded.size
+    respond_with(notifications_count.to_s)
+  end
   def update_notification
     @notification = Notification.find(params[:id])
     @notification.update_attributes(:readed => true)

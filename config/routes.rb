@@ -4,6 +4,7 @@ Tracker::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
+  get '/notifications/last' => 'notifications#get_unread'
   get '/notifications/update' => 'notifications#update_notification'
   get '/user/get_notifications' => 'notifications#get_notifications'
   get '/tasks/update_task/dom' => "tasks#update_task"
