@@ -104,18 +104,18 @@ a {
       font-weight: normal;
       color: #222222;
       background: white !important;
-      padding: 4px 8px !important; }
+      padding: 4px 8px 8px 8px !important; }
     #menu #user_menu #noti_list {
       min-height: 100px;
       background: white;
       width: 190px;
-      top: 25px;
+      top: 30px;
       right: 10px;
       font-size: 11px;
       position: absolute;
       z-index: 9999;
       color: #666666;
-      border: solid #cccccc 1px;
+      border-left: solid #cccccc 1px;
       -webkit-box-shadow: 3px 3px 5px 0px #cccccc;
       -moz-box-shadow: 3px 3px 5px 0px #cccccc;
       box-shadow: 3px 3px 5px 0px #cccccc;
