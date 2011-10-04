@@ -7,6 +7,7 @@
       changeYear: true
     });
   })
+.clear
 = form_for @task_list do |f|
   = f.error_messages
   - if @task_list.new_record?

@@ -25,5 +25,9 @@ class NotificationsController < ApplicationController
     @id = notification.id
     notification.destroy
   end
-
+  def destroy_all
+    notifications = current_user.notifications
+    notifications.destroy_all
+    redirect_to user_notifications_path(current_user) 
+  end
 end

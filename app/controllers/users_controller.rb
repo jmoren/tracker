@@ -31,6 +31,10 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
-
+  def clean_history
+    a = current_user.activities
+    a.destroy_all
+    redirect_to edit_current_user_path
+  end
 
 end

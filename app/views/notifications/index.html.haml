@@ -6,6 +6,10 @@
       $('#noti_'+id).html("<img src='/images/loading.gif'> removing...");
     })
   })
+.right
+  %button
+    = link_to "Clean all", notifications_clean_path, :confirm => "Are you sure? All your notifications will be deleted"
+.clear
 #user_notifications
   - @notifications.order('created_at DESC').each do |notification|
     .user_notification{:id => "noti_#{notification.id}"}

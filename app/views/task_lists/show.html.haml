@@ -18,32 +18,34 @@
     });
   });
 - title @task_list.title.titleize  
+.right{:style => "margin: 10px 0"}
+  %button
+    = link_to "Panel", task_list_tasks_path(@task_list), 'original-title' => "You can manage your task here", :class => 'tipsy-s'
+  %button
+    = link_to "New Task", "#", :id => "new_task_link", 'original-title' => "Create a new task", :class => 'tipsy-s'
+  %button
+    = link_to "Edit", edit_task_list_path(@task_list), 'original-title' => "Edit your task list", :class => 'tipsy-s'
+  %button
+    = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete, 'original-title' => "Delete this task list and its tasks", :class => 'tipsy-s'
+.clear
 
-%small.left
-  Project: 
-  =link_to @task_list.project.name, @task_list.project
-%small.right
-  = "Created by #{@task_list.user.try(:username) || 'unknown'} on #{l @task_list.created_at, :format => '%d, %A %B of %Y'}"
-.clear
 %p
-  .left{:style => "width: 45%"}
-    %strong Status:
-    = @task_list.status
-  .left{:style => "width: 45%, margin-left: 10px"}  
-    %strong End Date:
-    = @task_list.end_date? ? (l @task_list.end_date, :format => '%A, %d of %B, %Y') : "No dates"
-  .clear
+  .task_list_info
+    .label Created by:
+    %strong= @task_list.user.try(:username) || 'unknown'
+  .task_list_info
+    .label Created at:
+    %strong=l @task_list.created_at, :format => '%A %d %B,%Y'
+  .task_list_info
+    .label Status:
+    %strong= @task_list.status.upcase
+  - if @task_list.end_date? 
+    .task_list_info
+      .label Finish at: 
+      %strong= l @task_list.end_date, :format => '%A %d  %B, %Y'
 %p
+  %strong Description
   = simple_format @task_list.comments, :class => "text_area"
-.task_list_button
-  = link_to "Panel", task_list_tasks_path(@task_list), 'original-title' => "You can manage your task here", :class => 'tipsy-s'
-.task_list_button
-  = link_to "New Task", "#", :id => "new_task_link", 'original-title' => "Create a new task", :class => 'tipsy-s'
-.task_list_button
-  = link_to "Edit", edit_task_list_path(@task_list), 'original-title' => "Edit your task list", :class => 'tipsy-s'
-.task_list_button
-  = link_to "Destroy", @task_list, :confirm => 'Are you sure?', :method => :delete, 'original-title' => "Delete this task list and its tasks", :class => 'tipsy-s'
-.clear
 #task_form{:style => "display:none", :class => "text_area"}
   = render :partial => 'tasks/form', :locals => {:task => @task_list.tasks.new }
 .clear

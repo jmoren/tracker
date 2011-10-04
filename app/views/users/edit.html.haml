@@ -1,8 +1,6 @@
 - title "Edit my Profile"
-
+.clear
 #edit_form
-  %h1
-    = @user.new_record? ? "New Account" : "Update profile"
   = form_for @user do |f|
     = f.error_messages
     .col.left
@@ -26,7 +24,10 @@
       = link_to "Cancel", root_url
 .clear
 #activities
-  %h2 Clean your history
+  - if current_user.activities.size > 0
+    .right{:style => "margin-right: 20px"}= link_to "Clean all", activities_clean_path, :confirm => "Are you sure? All your activities will be deleted!"
+  %h2 
+    Clean your activities
   %ul
     - current_user.activities.each do |activity|
       = render :partial => 'activities/activity', :locals => {:activity => activity }

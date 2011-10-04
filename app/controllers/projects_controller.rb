@@ -3,7 +3,22 @@ class ProjectsController < ApplicationController
   before_filter :load_user, :store_target_location
   before_filter :allow_members, :except => [:new, :create, :index, :update_collaborator]
   before_filter :allow_owner, :only => [:edit, :update, :destroy]
+  before_filter :forget_current_project, :only => [:new, :create, :destroy]
+  before_filter :store_current_project,:set_current_project, :only =>[:show]
+  def set_current_project
+    @current_project = nil
+    if session[:current_project_id]
+      @current_project = Project.find(session[:current_project_id])
+    end
+  end
+  def store_current_project
+    session[:current_project_id] = current_project.id
+  end
+  def forget_current_project
+    session[:current_project_id] = nil
+  end
   def index
+    session[:current_project_id] = nil
     if params[:q] && !params[:q].blank?
       @projects = current_user.projects.where('name LIKE ?', "%" + params[:q] + "%")
     else
@@ -16,6 +31,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    session[:current_project_id] = current_project.id || nil
     current_project
   end
 
@@ -116,7 +132,6 @@ private
       redirect_to root_url, :alert => "You cant see this project."
     end
   end
-
   def current_project
     @project ||= Project.find(params[:id])
   end

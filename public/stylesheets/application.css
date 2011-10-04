@@ -133,7 +133,7 @@ a {
         font-weight: bold; }
 
 #bar {
-  margin: 30px 10px 10px 10px;
+  margin: 30px 0px 10px 0px;
   font-weight: bold;
   background: #f1f1f1;
   border-bottom: solid #cccccc 1px; }
@@ -179,6 +179,51 @@ a {
           #bar #project_list ul li .menu_link a {
             color: #666666;
             text-decoration: none; }
+
+button {
+  font-weight: bold;
+  border: solid 1px #cccccc;
+  background: #f1f1f1;
+  padding: 5px;
+  border-radius: 4px; }
+  button a {
+    color: #666666; }
+  button:hover {
+    border: solid 1px #999999; }
+    button:hover a {
+      color: #333333; }
+
+.triangle_down {
+  padding-right: 20px;
+  background: #f1f1f1 url(/images/triangle_down.png) 95% center no-repeat; }
+
+.triangle_up {
+  padding-right: 20px;
+  background: #f1f1f1 url(/images/triangle_up.png) 95% center no-repeat !important; }
+
+#sub_nav_project {
+  float: left;
+  position: relative;
+  margin: 10px 0;
+  font-weight: bold; }
+  #sub_nav_project ul {
+    position: absolute;
+    border: solid 1px #cccccc;
+    z-index: 999999;
+    background: #f9f9f9;
+    margin: 0 0 0 2px;
+    width: 70%;
+    list-style: none;
+    border-radius: 5px;
+    padding: 5px 10px; }
+    #sub_nav_project ul li {
+      padding: 5px 30px;
+      margin: 5px 0;
+      border-bottom: 1px #cccccc solid; }
+      #sub_nav_project ul li:hover a {
+        color: #666666; }
+    #sub_nav_project ul .list_item {
+      background: transparent url(/images/created.png) left center no-repeat; }
 
 .button {
   background: #f1f1f1;
@@ -318,21 +363,6 @@ ul#users {
     background: transparent url(/images/user.png) 97% 15% no-repeat;
     border: solid 2px #66cc66; }
 
-.task_list_button a {
-  border: solid 1px #cccccc;
-  border-radius: 5px;
-  color: #666666;
-  text-decoration: none;
-  background: #f1f1f1;
-  font-weight: bold;
-  padding: 5px 10px;
-  margin: 5px;
-  float: left; }
-  .task_list_button a:hover {
-    background: #4183c4;
-    border: solid 1px blue;
-    color: white; }
-
 .left {
   float: left; }
 
@@ -341,6 +371,13 @@ ul#users {
 
 #tabs a {
   color: #2e6e9e; }
+
+.task_list_info {
+  margin: 5px 0; }
+  .task_list_info .label {
+    width: 8%;
+    float: left;
+    padding: 0 20px 0 0; }
 
 #list_tasks ul {
   margin: 0;
@@ -442,7 +479,8 @@ ul.content, ul#tasks {
   border-radius: 5px;
   min-height: 50px; }
   .text_area textarea {
-    width: 99%; }
+    width: 99%;
+    border: solid #cccccc 1px; }
 
 #col_right {
   width: 20%;
@@ -647,7 +685,7 @@ ul#collaborators {
     #project_form .col_left label, #project_form .col_right label {
       font-weight: bold; }
     #project_form .col_left input, #project_form .col_right input {
-      border: solid 1px #f1f1f1;
+      border: solid 1px #cccccc;
       width: 100%; }
   #project_form #description {
     width: 96%;

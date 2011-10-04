@@ -78,5 +78,18 @@
         .clear
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
+      - if @current_project.present?
+        #sub_nav_project{:style => "position: relative; margin: 10px 0"}
+          .left
+            %button= link_to"Current Project", @current_project,:title => @current_project.name
+          .left
+            %button= link_to "New Project", new_project_path
+          .right
+            %button.triangle_down{:onclick => "$(this).toggleClass('triangle_up');$('#task_ul').slideToggle()"}= link_to "Change Task list", "#"
+            %ul{:style => "display: none;", :id => 'task_ul'}
+              - @current_project.task_lists.each do |tl|
+                %li.list_item= link_to "#{tl.title} (#{tl.tasks.size})", tl, :title => "Tasks: #{tl.tasks.size}"
+                
+          .clear
       = yield
 

@@ -479,7 +479,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  *
  * http://docs.jquery.com/UI/Tabs#theming
  */
- #tabs{width: 90%;margin: auto}
+/* #tabs{width: 90%;margin: auto}*/
 .ui-tabs { position: relative; padding: .2em; zoom: 1;background: none !important; border: none !important; min-height: 200px} /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 .ui-tabs .ui-tabs-nav { float: left;width: 15%;margin: 0; padding: .2em .2em 0; background: none !important; border: none !important }
 .ui-tabs .ui-tabs-nav li { list-style: none; position: relative; top: 1px; margin: .5em .2em 1px 0; border-bottom: 0 !important; padding: 3px 0; white-space: nowrap;background: none !important; border: none !important }

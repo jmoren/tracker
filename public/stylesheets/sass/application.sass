@@ -140,7 +140,7 @@ a
     font-size: 20px
     padding: 5px
     color: #666
-  margin: 30px 10px 10px 10px
+  margin: 30px 0px 10px 0px
   font-weight: bold
   background: #f1f1f1
   border-bottom: solid #ccc 1px
@@ -184,6 +184,49 @@ a
           a
             color: #666
             text-decoration: none
+button
+  font-weight: bold
+  border: solid 1px #ccc
+  background: #f1f1f1
+  padding: 5px
+  border-radius: 4px
+  a 
+    color: #666
+  &:hover
+    border: solid 1px #999
+    a
+      color: #333
+.triangle_down
+  padding-right: 20px
+  background: #f1f1f1 url(/images/triangle_down.png) 95% center no-repeat
+.triangle_up
+  padding-right: 20px
+  background: #f1f1f1 url(/images/triangle_up.png) 95% center no-repeat !important
+#sub_nav_project
+  float: left
+  position: relative
+  margin: 10px 0
+  font-weight: bold
+  ul
+    position: absolute
+    border: solid 1px #ccc
+    z-index: 999999
+    background: #f9f9f9
+    margin: 0 0 0 2px
+    width: 70%
+    list-style: none
+    border-radius: 5px
+    padding: 5px 10px
+    li
+      padding: 5px 30px
+      margin: 5px 0
+      border-bottom: 1px #ccc solid
+      &:hover
+        a
+          color: #666
+    .list_item
+      background: transparent url(/images/created.png) left center no-repeat
+      
 .button
   background: #f1f1f1
   padding: 5px
@@ -321,24 +364,6 @@ ul#users
   .you
     background: transparent url(/images/user.png) 97% 15% no-repeat
     border: solid 2px #66cc66
-
-.task_list_button
-  a
-    border: solid 1px #ccc
-    border-radius: 5px
-    color: #666
-    text-decoration: none
-    background: #f1f1f1
-    font-weight: bold
-    padding: 5px 10px
-    margin: 5px
-    float: left
-    &:hover
-      background: #4183C4
-      //background: #DD4B39
-      //border: solid 1px #DD4B39
-      border: solid 1px blue
-      color: #fff
 .left
   float: left
 .right
@@ -347,6 +372,12 @@ ul#users
   a
     color: #2E6E9E
 
+.task_list_info
+  .label
+    width: 8%
+    float: left
+    padding: 0 20px 0 0
+  margin: 5px 0
 #list_tasks
   ul
     margin: 0
@@ -447,7 +478,8 @@ ul.content, ul#tasks
   min-height: 50px
   textarea
     width: 99%
-
+    border: solid #ccc 1px
+  
 #col_right
   width: 20%
   padding: 10px
@@ -644,7 +676,7 @@ ul#collaborators
     label
       font-weight: bold
     input
-      border: solid 1px #f1f1f1
+      border: solid 1px #ccc
       width: 100%
   #description
     width: 96%

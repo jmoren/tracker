@@ -6,6 +6,8 @@ Tracker::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   get '/notifications/last' => 'notifications#get_unread'
   get '/notifications/update' => 'notifications#update_notification'
+  get '/notifications/clean' => 'notifications#destroy_all'
+  get '/activities/clean' => 'users#clean_history'
   get '/user/get_notifications' => 'notifications#get_notifications'
   get '/tasks/update_task/dom' => "tasks#update_task"
   post '/tasks/state' => "tasks#move_state"
